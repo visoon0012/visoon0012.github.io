@@ -76,7 +76,7 @@ chmod +x ./kcptun.sh
 </code></pre><p>2.设置加速的 IP：</p>
 <pre><code>请输入需要加速的地址:
 (默认: 127.0.0.1):
-填入上面获取到的加速 IP。如果你想使用 IPv6，请直接填写 IPv6 地址，不需要加 []，脚本会自动添加。
+一般填入你服务器的IP。如果你想使用 IPv6，请直接填写 IPv6 地址，不需要加 []，脚本会自动添加。
 </code></pre><p>3.设置需要加速的端口：</p>
 <pre><code>请输入需要加速的端口 [1-65535]:
 (默认: 12948):
@@ -144,10 +144,8 @@ Kcptun 日志文件目录: /var/log/kcptun/
 注意：服务端的 sndwnd 对应的是客户端的 recwnd，所以请不要问我为什么输出的客户端参数和你配置的服务端参数是反的。
 安装之后，Kcptun 服务交由 Supervisor 管理。
 Supervisor 相关命令：
-1
 service supervisord {start|stop|restart|status}
 Kcptun 相关命令：
-1
 supervisorctl {start|stop|restart|status} kcptun
 Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时先确保 Supervisor 已启动。
 </code></pre>]]></content>
@@ -162,50 +160,6 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
         <tags>
             
             <tag> Shadowsocks </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[【IONIC2+】项目开发 - 2 - 创建项目]]></title>
-      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/</url>
-      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol>
-<li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="external">IONIC官网</a></li>
-<li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li>
-<li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li>
-<li><p>安装ionic</p>
-<pre><code>npm install -g cordova@6.5.0 ionic
-</code></pre></li>
-<li><p>安装完成后，新建项目，这里有几个模板可选</p>
-<pre><code>ionic start myApp tabs
-</code></pre></li>
-<li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p>
-<pre><code>cd myApp
-ionic serve
-</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
-</ol>
-<ul>
-<li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> IONIC2+ </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> IONIC2+ </tag>
-            
-            <tag> NodeJS </tag>
-            
-            <tag> Angular2+ </tag>
             
         </tags>
         
@@ -242,6 +196,50 @@ entryComponents: [
      ]
 </pre></li>
 <li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
+</ol>
+<ul>
+<li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> JAVASCRIPT </category>
+            
+            <category> IONIC2+ </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> IONIC2+ </tag>
+            
+            <tag> NodeJS </tag>
+            
+            <tag> Angular2+ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【IONIC2+】项目开发 - 2 - 创建项目]]></title>
+      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/</url>
+      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol>
+<li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="external">IONIC官网</a></li>
+<li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li>
+<li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li>
+<li><p>安装ionic</p>
+<pre><code>npm install -g cordova@6.5.0 ionic
+</code></pre></li>
+<li><p>安装完成后，新建项目，这里有几个模板可选</p>
+<pre><code>ionic start myApp tabs
+</code></pre></li>
+<li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p>
+<pre><code>cd myApp
+ionic serve
+</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
 </ol>
 <ul>
 <li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li>
