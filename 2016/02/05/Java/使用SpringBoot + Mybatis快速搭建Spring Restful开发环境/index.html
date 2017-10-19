@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Visoon's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="最近项目需要用Spring搭建一个Restful API项目，因此重拾了很久没用的JAVA，发现Spring多了一个SpringBoot项目，集成了嵌入式Tomcat，Jetty容器，无需部署WAR包，Mybatis也有类似的与Spring集成的东西，叫 mybatis-spring-boot ，这两个可以免除写一堆XML配置文件，以前写JAVA痛苦的XML配置过程不堪回首，所以干脆用这个搭一个吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用SpringBoot + Mybatis快速搭建Spring Restful开发环境">
+<meta property="og:url" content="http://visoon0012.github.io/2016/02/05/Java/使用SpringBoot + Mybatis快速搭建Spring Restful开发环境/index.html">
+<meta property="og:site_name" content="Visoon&#39;s Blog">
+<meta property="og:description" content="最近项目需要用Spring搭建一个Restful API项目，因此重拾了很久没用的JAVA，发现Spring多了一个SpringBoot项目，集成了嵌入式Tomcat，Jetty容器，无需部署WAR包，Mybatis也有类似的与Spring集成的东西，叫 mybatis-spring-boot ，这两个可以免除写一堆XML配置文件，以前写JAVA痛苦的XML配置过程不堪回首，所以干脆用这个搭一个吧">
+<meta property="og:image" content="http://blog.visoon.net/wp-content/uploads/2016/02/QQ截图20160205210959.png">
+<meta property="og:updated_time" content="2017-07-10T03:05:22.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用SpringBoot + Mybatis快速搭建Spring Restful开发环境">
+<meta name="twitter:description" content="最近项目需要用Spring搭建一个Restful API项目，因此重拾了很久没用的JAVA，发现Spring多了一个SpringBoot项目，集成了嵌入式Tomcat，Jetty容器，无需部署WAR包，Mybatis也有类似的与Spring集成的东西，叫 mybatis-spring-boot ，这两个可以免除写一堆XML配置文件，以前写JAVA痛苦的XML配置过程不堪回首，所以干脆用这个搭一个吧">
+<meta name="twitter:image" content="http://blog.visoon.net/wp-content/uploads/2016/02/QQ截图20160205210959.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://visoon0012.github.io/2016/02/05/Java/使用SpringBoot + Mybatis快速搭建Spring Restful开发环境/"/>
+
+
+
+
+
+  <title>使用SpringBoot + Mybatis快速搭建Spring Restful开发环境 | Visoon's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Visoon's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">会扯淡的程序猿</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2016/02/05/Java/使用SpringBoot + Mybatis快速搭建Spring Restful开发环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visoon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Visoon's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用SpringBoot + Mybatis快速搭建Spring Restful开发环境</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-05T21:19:28+08:00">
+                2016-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近项目需要用Spring搭建一个Restful API项目，因此重拾了很久没用的JAVA，发现Spring多了一个SpringBoot项目，集成了嵌入式Tomcat，Jetty容器，无需部署WAR包，Mybatis也有类似的与Spring集成的东西，叫 mybatis-spring-boot ，这两个可以免除写一堆XML配置文件，以前写JAVA痛苦的XML配置过程不堪回首，所以干脆用这个搭一个吧。其实官方给的例子已经很详细了，下面是搭建的经验，懂的可以不用看了。</p>
+<a id="more"></a>
+<p>官方链接：</p>
+<blockquote>
+<p><a href="https://spring.io/guides/gs/rest-service/" target="_blank" rel="external">https://spring.io/guides/gs/rest-service/</a></p>
+<p><a href="https://github.com/mybatis/mybatis-spring-boot" target="_blank" rel="external">https://github.com/mybatis/mybatis-spring-boot</a></p>
+</blockquote>
+<ol>
+<li>建立Maven项目，我用的是IDEA</li>
+<li><p>复制pom.xml，添加依赖文件<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;project xmlns=”<a href="http://maven.apache.org/POM/4.0.0" target="_blank" rel="external">http://maven.apache.org/POM/4.0.0</a>“</pre></p>
+<pre><code>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&amp;gt;
+</code></pre><p>&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</p>
+<p>&lt;groupId&gt;visoon&lt;/groupId&gt;<br>&lt;artifactId&gt;visoon&lt;/artifactId&gt;<br>&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</p>
+<p>&lt;parent&gt;</p>
+<pre><code>&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;1.3.2.RELEASE&amp;lt;/version&amp;gt;
+</code></pre><p>&lt;/parent&gt;</p>
+<p>&lt;properties&gt;</p>
+<pre><code>&amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt;
+&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
+</code></pre><p>&lt;/properties&gt;</p>
+<p>&lt;dependencies&gt;</p>
+<pre><code>&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-starter-jdbc&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;!--mysql--&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.apache.tomcat&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;tomcat-jdbc&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+</code></pre><p>&lt;/dependencies&gt;</p>
+<p>&lt;build&gt;</p>
+<pre><code>&amp;lt;plugins&amp;gt;
+    &amp;lt;plugin&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/plugin&amp;gt;
+&amp;lt;/plugins&amp;gt;
+</code></pre><p>&lt;/build&gt;</p>
+<p>&lt;repositories&gt;</p>
+<pre><code>&amp;lt;repository&amp;gt;
+    &amp;lt;id&amp;gt;spring-releases&amp;lt;/id&amp;gt;
+    &amp;lt;url&amp;gt;https://repo.spring.io/libs-release&amp;lt;/url&amp;gt;
+&amp;lt;/repository&amp;gt;
+</code></pre><p>&lt;/repositories&gt;<br>&lt;pluginRepositories&gt;</p>
+<pre><code>&amp;lt;pluginRepository&amp;gt;
+    &amp;lt;id&amp;gt;spring-releases&amp;lt;/id&amp;gt;
+    &amp;lt;url&amp;gt;https://repo.spring.io/libs-release&amp;lt;/url&amp;gt;
+&amp;lt;/pluginRepository&amp;gt;
+</code></pre><p>&lt;/pluginRepositories&gt;<br>&lt;/project&gt;<br>&nbsp;</p>
+</li>
+<li>一般项目结构是这样的：<img src="http://blog.visoon.net/wp-content/uploads/2016/02/QQ截图20160205210959.png" alt="QQ截图20160205210959"></li>
+<li>编写Application.java<br><pre class="brush:java">package cn.visoon;</pre></li>
+</ol>
+<p>import org.apache.ibatis.session.SqlSessionFactory;<br>import org.apache.log4j.Logger;<br>import org.mybatis.spring.SqlSessionFactoryBean;<br>import org.mybatis.spring.annotation.MapperScan;<br>import org.springframework.boot.SpringApplication;<br>import org.springframework.boot.autoconfigure.EnableAutoConfiguration;<br>import org.springframework.boot.autoconfigure.SpringBootApplication;<br>import org.springframework.boot.context.properties.ConfigurationProperties;<br>import org.springframework.context.annotation.Bean;<br>import org.springframework.context.annotation.ComponentScan;<br>import org.springframework.core.io.support.PathMatchingResourcePatternResolver;<br>import org.springframework.jdbc.datasource.DataSourceTransactionManager;<br>import org.springframework.transaction.PlatformTransactionManager;</p>
+<p>import javax.sql.DataSource;</p>
+<p>@EnableAutoConfiguration<br>@SpringBootApplication<br>@ComponentScan<br>@MapperScan(“cn.visoon.wechat.mapper”)<br>public class Application {<br>    private static Logger logger = Logger.getLogger(Application.class);</p>
+<pre><code>@Bean
+@ConfigurationProperties(prefix=&quot;spring.datasource&quot;)
+public DataSource dataSource() {
+    return new org.apache.tomcat.jdbc.pool.DataSource();
+}
+
+@Bean
+public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
+
+    SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+    sqlSessionFactoryBean.setDataSource(dataSource());
+
+    PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+
+    sqlSessionFactoryBean.setMapperLocations(resolver.getResources(&quot;classpath:/mybatis/*.xml&quot;));
+
+    return sqlSessionFactoryBean.getObject();
+}
+
+@Bean
+public PlatformTransactionManager transactionManager() {
+    return new DataSourceTransactionManager(dataSource());
+}
+
+public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+}
+</code></pre><p>}<br><br>&nbsp;</p>
+<ol>
+<li>编写User.java<br><pre class="brush:java">package cn.visoon.wechat.model;</pre></li>
+</ol>
+<p>public class User {<br>    private Integer id;<br>    private String name;<br>    private Integer age;<br>    private String password;</p>
+<pre><code>public String getName() {
+    return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public Integer getAge() {
+    return age;
+}
+
+public void setAge(Integer age) {
+    this.age = age;
+}
+
+public String getPassword() {
+    return password;
+}
+
+public void setPassword(String password) {
+    this.password = password;
+}
+
+public Integer getId() {
+    return id;
+}
+
+public void setId(Integer id) {
+    this.id = id;
+}
+</code></pre><p>}<br><br>&nbsp;</p>
+<ol>
+<li>编写UserService.java<br><pre class="brush:java">package cn.visoon.wechat.service;</pre></li>
+</ol>
+<p>import cn.visoon.wechat.mapper.UserMapper;<br>import cn.visoon.wechat.model.User;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.stereotype.Service;</p>
+<p>@Service<br>public class UserService {<br>    @Autowired<br>    private UserMapper userMapper;</p>
+<pre><code>public User getUserInfo() {
+    User user = userMapper.findUserInfo();
+    return user;
+}
+</code></pre><p>}<br><br>&nbsp;</p>
+<ol>
+<li>编写UserMapper.java<br><pre class="brush:java">package cn.visoon.wechat.mapper;</pre></li>
+</ol>
+<p>import cn.visoon.wechat.model.User;</p>
+<p>public interface UserMapper {<br>    public User findUserInfo();<br>}<br><br>&nbsp;</p>
+<ol>
+<li>编写UserController.java<br><pre class="brush:java">package cn.visoon.wechat.controller;</pre></li>
+</ol>
+<p>import cn.visoon.wechat.model.User;<br>import cn.visoon.wechat.service.UserService;<br>import org.apache.log4j.Logger;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.web.bind.annotation.RequestMapping;<br>import org.springframework.web.bind.annotation.RequestParam;<br>import org.springframework.web.bind.annotation.RestController;</p>
+<p>import java.util.concurrent.atomic.AtomicLong;</p>
+<p>@RestController<br>public class UserController {</p>
+<pre><code>private Logger logger = Logger.getLogger(UserController.class);
+
+@Autowired
+private UserService userService;
+
+@RequestMapping(&quot;/getUser&quot;)
+public User getUser() {
+    User user = userService.getUserInfo();
+    if (user != null) {
+        logger.info(&quot;user.getId():&quot; + user.getId());
+        logger.info(&quot;user.getAge():&quot; + user.getAge());
+        logger.info(&quot;user.getName():&quot; + user.getName());
+    }
+    return user;
+}
+</code></pre><p>}<br><br>&nbsp;</p>
+<ol>
+<li>配置数据库<br><pre class="brush:other">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=gbk&amp;zeroDateTimeBehavior=convertToNull<br>spring.datasource.username=root<br>spring.datasource.password=root<br>spring.datasource.driver-class-name=com.mysql.jdbc.Driver</pre><br>&nbsp;</li>
+<li>配置log4j<br><pre class="brush:other">#config root logger<br>log4j.rootLogger = INFO,system.out<br>log4j.appender.system.out=org.apache.log4j.ConsoleAppender<br>log4j.appender.system.out.layout=org.apache.log4j.PatternLayout<br>log4j.appender.system.out.layout.ConversionPattern=[Log] %5p[%F:%L]:%m%n</pre></li>
+</ol>
+<p>#config this Project.file logger<br>log4j.logger.thisProject.file=INFO,thisProject.file.out<br>log4j.appender.thisProject.file.out=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.thisProject.file.out.File=logContentFile.log<br>log4j.appender.thisProject.file.out.layout=org.apache.log4j.PatternLayout<br><br>&nbsp;</p>
+<ol>
+<li><p>配置查询SQL。UserMapper.xml<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE mapper PUBLIC “-//mybatis.org//DTD Mapper 3.0//EN” “<a href="http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt" target="_blank" rel="external">http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt</a>;<br>&lt;mapper namespace=”cn.visoon.wechat.mapper.UserMapper”&gt;</pre></p>
+<p>&lt;select id=”findUserInfo” resultType=”cn.visoon.wechat.model.User”&gt;<br>select id, name, age,password from user;<br>&lt;/select&gt;</p>
+</li>
+</ol>
+<p>&lt;/mapper&gt;<br>&nbsp;</p>
+<ol>
+<li>最后，运行Application.java，像运行java应用程序一样。程序就跑起来了~<br>&nbsp;</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/28/IONIC1/IONIC手机浏览器INPUT标签点击放大/" rel="next" title="IONIC手机浏览器INPUT标签点击放大">
+                <i class="fa fa-chevron-left"></i> IONIC手机浏览器INPUT标签点击放大
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/18/Linux/Linux下利用iptables添加访问许可/" rel="prev" title="Linux下利用iptables添加访问许可">
+                Linux下利用iptables添加访问许可 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Visoon" />
+            
+              <p class="site-author-name" itemprop="name">Visoon</p>
+              <p class="site-description motion-element" itemprop="description">多动脑，少动手</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Visoon</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
