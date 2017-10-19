@@ -49,9 +49,9 @@
     <link href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu%E4%BD%BF%E7%94%A8KCPTUN%E4%B8%BASS%E5%8A%A0%E9%80%9F/"/>
     <id>http://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/</id>
     <published>2017-10-18T16:00:00.000Z</published>
-    <updated>2017-10-19T03:22:26.545Z</updated>
+    <updated>2017-10-19T03:23:57.893Z</updated>
     
-    <content type="html"><![CDATA[<p>首先，你需要部署好SS。<br>然后一行行运行下面脚本</p><pre><code>wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.shchmod +x ./kcptun.sh./kcptun.sh</code></pre><p>1.设置 Kcptun 的服务端端口：</p><pre><code>请输入 Kcptun Server 端口 [1-65535]:(默认: 29900):请输入一个未被占用的端口，Kcptun 运行时将使用此端口。</code></pre><p>2.设置加速的 IP：</p><pre><code>请输入需要加速的地址:(默认: 127.0.0.1):填入上面获取到的加速 IP。如果你想使用 IPv6，请直接填写 IPv6 地址，不需要加 []，脚本会自动添加。</code></pre><p>3.设置需要加速的端口：</p><pre><code>请输入需要加速的端口 [1-65535]:(默认: 12948):填入上面获取到的加速端口。程序会检查当前是不是有程序占用着此端口，如果你的 Shadowsocks 没在运行，或者没有软件使用此端口，会弹出如下提示：当前没有软件使用此端口, 确定加速此端口?(y/n)如果你确认 Shadowsocks 运行时会使用此端口，那么输入 “y” 回车即可。</code></pre><p>4.设置 Kcptun 密码：</p><pre><code>请输入 Kcptun 密码:(如果不想使用密码请留空):这就是说，你可以为 Kcptun 单独设置一个密码，防止被他人恶意使用。这个密码和 SS 的密码没有半毛钱关系，请不要把它们混淆了。再提一句，Kcptun 和 Shadowsocks 没有任何关系，请不要脑补它们之间存在任何联系，Kcptun 你可以理解为一款网络加速软件，只不过它是通过将 TCP 协议转换为 UDP 协议，然后再通过大量的发送数据包，浪费了带宽以换取网速的提升。它能加速所有以 TCP 协议传输数据的软件，不单单是 Shadowsocks。只是大家都用来……你懂的回到上面的密码设置问题，如果你这里选择直接回车，也就是代表你不自定义密码。但是 Kcptun 有一个默认的密码，这个密码是：  it&apos;s a secrect 。</code></pre><p>5.禁用压缩</p><pre><code>是否禁用数据压缩?(默认: 不禁用) [y/n]:Kcptun 默认是启用压缩的。如果你这里设置为 y，也就是配置为 nocomp:true，那么就是禁用压缩。许多朋友这里设置的是保持默认（启用压缩），而偏偏在软件之中设置为禁用压缩，当然就连不上咯。其他配置项不用我说了，如果你了解它是干什么的，可以自定义配置。如果不知道，那么直接回车使用默认参数。但是，使用默认参数，是有可能浪费大量流量的，如果你想减少流量使用，你需要会调节参数：先将 client rcvwnd 和 server sndwnd 调到一个较小值；同时在两端逐步增大 client rcvwnd 和 server sndwnd ;尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第二步。任何事物都是有两面性的，选择了速度，就只有放弃流量。各参数详细信息请查看：https://github.com/xtaci/kcptun如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。如果安装成功，应该能看到如下输出信息：</code></pre><p>恭喜, Kcptun 服务端配置完毕！</p><pre><code>正在获取当前安装的 Kcptun 版本...服务器IP:  10.10.10.10端口:  29900加速地址: 127.0.0.1:8388密码: 123456加密方式 Crypt:  salsa20当前安装的 Kcptun 版本为: v20160922推荐的客户端配置为: {&quot;localaddr&quot;: &quot;:8388&quot;,&quot;remoteaddr&quot;: &quot;10.10.10.10:29900&quot;,&quot;key&quot;: &quot;123456&quot;,&quot;crypt&quot;: &quot;salsa20&quot;,&quot;mode&quot;: &quot;fast&quot;,&quot;mtu&quot;: 1350,&quot;sndwnd&quot;: 1024,&quot;rcvwnd&quot;: 1024,&quot;datashard&quot;: 10,&quot;parityshard&quot;: 3,&quot;dscp&quot;: 0,&quot;conn&quot;: 1,&quot;autoexpire&quot;: 60,&quot;nocomp&quot;: false}手机端参数可以使用：*******其他参数请自行计算或设置, 详细信息可以查看: https://github.com/xtaci/kcptunKcptun 安装目录: /usr/share/kcptunKcptun 日志文件目录: /var/log/kcptun/请将以上的提示信息复制保存下来，后面配置客户端会用到这些提示信息。注意：服务端的 sndwnd 对应的是客户端的 recwnd，所以请不要问我为什么输出的客户端参数和你配置的服务端参数是反的。安装之后，Kcptun 服务交由 Supervisor 管理。Supervisor 相关命令：1service supervisord {start|stop|restart|status}Kcptun 相关命令：1supervisorctl {start|stop|restart|status} kcptunSupervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时先确保 Supervisor 已启动。</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>首先，你需要部署好SS。<br>然后一行行运行下面脚本</p><pre><code>wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.shchmod +x ./kcptun.sh./kcptun.sh</code></pre><p>1.设置 Kcptun 的服务端端口：</p><pre><code>请输入 Kcptun Server 端口 [1-65535]:(默认: 29900):请输入一个未被占用的端口，Kcptun 运行时将使用此端口。</code></pre><p>2.设置加速的 IP：</p><pre><code>请输入需要加速的地址:(默认: 127.0.0.1):填入上面获取到的加速 IP。如果你想使用 IPv6，请直接填写 IPv6 地址，不需要加 []，脚本会自动添加。</code></pre><p>3.设置需要加速的端口：</p><pre><code>请输入需要加速的端口 [1-65535]:(默认: 12948):填入上面获取到的加速端口。程序会检查当前是不是有程序占用着此端口，如果你的 Shadowsocks 没在运行，或者没有软件使用此端口，会弹出如下提示：当前没有软件使用此端口, 确定加速此端口?(y/n)如果你确认 Shadowsocks 运行时会使用此端口，那么输入 “y” 回车即可。</code></pre><p>4.设置 Kcptun 密码：</p><pre><code>请输入 Kcptun 密码:(如果不想使用密码请留空):这就是说，你可以为 Kcptun 单独设置一个密码，防止被他人恶意使用。这个密码和 SS 的密码没有半毛钱关系，请不要把它们混淆了。再提一句，Kcptun 和 Shadowsocks 没有任何关系，请不要脑补它们之间存在任何联系，Kcptun 你可以理解为一款网络加速软件，只不过它是通过将 TCP 协议转换为 UDP 协议，然后再通过大量的发送数据包，浪费了带宽以换取网速的提升。它能加速所有以 TCP 协议传输数据的软件，不单单是 Shadowsocks。只是大家都用来……你懂的回到上面的密码设置问题，如果你这里选择直接回车，也就是代表你不自定义密码。但是 Kcptun 有一个默认的密码，这个密码是：  it&apos;s a secrect 。</code></pre><p>5.禁用压缩</p><pre><code>是否禁用数据压缩?(默认: 不禁用) [y/n]:Kcptun 默认是启用压缩的。如果你这里设置为 y，也就是配置为 nocomp:true，那么就是禁用压缩。许多朋友这里设置的是保持默认（启用压缩），而偏偏在软件之中设置为禁用压缩，当然就连不上咯。其他配置项不用我说了，如果你了解它是干什么的，可以自定义配置。如果不知道，那么直接回车使用默认参数。但是，使用默认参数，是有可能浪费大量流量的，如果你想减少流量使用，你需要会调节参数：先将 client rcvwnd 和 server sndwnd 调到一个较小值；同时在两端逐步增大 client rcvwnd 和 server sndwnd ;尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第二步。任何事物都是有两面性的，选择了速度，就只有放弃流量。各参数详细信息请查看：https://github.com/xtaci/kcptun</code></pre><p>如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。<br>如果安装成功，应该能看到如下输出信息：</p><pre><code>恭喜, Kcptun 服务端配置完毕！正在获取当前安装的 Kcptun 版本...服务器IP:  10.10.10.10端口:  29900加速地址: 127.0.0.1:8388密码: 123456加密方式 Crypt:  salsa20当前安装的 Kcptun 版本为: v20160922推荐的客户端配置为: {&quot;localaddr&quot;: &quot;:8388&quot;,&quot;remoteaddr&quot;: &quot;10.10.10.10:29900&quot;,&quot;key&quot;: &quot;123456&quot;,&quot;crypt&quot;: &quot;salsa20&quot;,&quot;mode&quot;: &quot;fast&quot;,&quot;mtu&quot;: 1350,&quot;sndwnd&quot;: 1024,&quot;rcvwnd&quot;: 1024,&quot;datashard&quot;: 10,&quot;parityshard&quot;: 3,&quot;dscp&quot;: 0,&quot;conn&quot;: 1,&quot;autoexpire&quot;: 60,&quot;nocomp&quot;: false}手机端参数可以使用：*******其他参数请自行计算或设置, 详细信息可以查看: https://github.com/xtaci/kcptunKcptun 安装目录: /usr/share/kcptunKcptun 日志文件目录: /var/log/kcptun/请将以上的提示信息复制保存下来，后面配置客户端会用到这些提示信息。注意：服务端的 sndwnd 对应的是客户端的 recwnd，所以请不要问我为什么输出的客户端参数和你配置的服务端参数是反的。安装之后，Kcptun 服务交由 Supervisor 管理。Supervisor 相关命令：1service supervisord {start|stop|restart|status}Kcptun 相关命令：1supervisorctl {start|stop|restart|status} kcptunSupervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时先确保 Supervisor 已启动。</code></pre>]]></content>
     
     <summary type="html">
     
@@ -71,43 +71,11 @@
   </entry>
   
   <entry>
-    <title>【IONIC2+】项目开发 - 3 - 添加页面</title>
-    <link href="http://visoon0012.github.io/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%20-%203%20-%20%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/"/>
-    <id>http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发 - 3 - 添加页面/</id>
-    <published>2017-06-13T08:16:59.000Z</published>
-    <updated>2017-07-10T03:05:22.454Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol><li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="external">IONIC官方教程</a></li><li>如果你看不懂英文，没事，那我们就不学了。</li></ol><h4 id="创建页面有几个重要的地方"><a href="#创建页面有几个重要的地方" class="headerlink" title="创建页面有几个重要的地方"></a>创建页面有几个重要的地方</h4><ol><li>创建 .ts 文件，这个文件是存放页面逻辑的地方，例如我们创建一个帖子页面在 post.ts 文件里<pre>export class PostPage {}</pre></li><li>创建 .html 文件，这个文件是界面</li><li>创建 .scss 文件，这个文件是CSS</li><li>把 .ts 文件中的类的引用添加到 app/app.module.ts 中<pre>import {PostPage} from "../pages/post";</pre></li><li>把类名添加到 NgModule 中的 declarations 和 entryComponents 中(所有新加的页面都要放到这里进行声明，不然会报错)<pre>declarations: [     MyApp,     TabsPage,     PostPage     ]</pre><pre>entryComponents: [     MyApp,     TabsPage,     PostPage     ]</pre></li><li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;往刚才创建的项目中添加页面&quot;&gt;&lt;a href=&quot;#往刚才创建的项目中添加页面&quot; class=&quot;headerlink&quot; title=&quot;往刚才创建的项目中添加页面&quot;&gt;&lt;/a&gt;往刚才创建的项目中添加页面&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;前往官网，查看 &lt;a href=&quot;htt
-      
-    
-    </summary>
-    
-      <category term="JAVASCRIPT" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/"/>
-    
-      <category term="IONIC" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC/"/>
-    
-    
-      <category term="IONIC2+" scheme="http://visoon0012.github.io/tags/IONIC2/"/>
-    
-      <category term="NodeJS" scheme="http://visoon0012.github.io/tags/NodeJS/"/>
-    
-      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
-    
-  </entry>
-  
-  <entry>
     <title>【IONIC2+】项目开发 - 2 - 创建项目</title>
-    <link href="http://visoon0012.github.io/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%20-%202%20-%20%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
-    <id>http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发 - 2 - 创建项目/</id>
+    <link href="http://visoon0012.github.io/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发-2-创建项目/</id>
     <published>2017-06-13T08:16:59.000Z</published>
-    <updated>2017-07-10T07:14:59.981Z</updated>
+    <updated>2017-10-19T03:25:26.639Z</updated>
     
     <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol><li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="external">IONIC官网</a></li><li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li><li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li><li><p>安装ionic</p><pre><code>npm install -g cordova@6.5.0 ionic</code></pre></li><li><p>安装完成后，新建项目，这里有几个模板可选</p><pre><code>ionic start myApp tabs</code></pre></li><li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p><pre><code>cd myAppionic serve</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
     
@@ -123,7 +91,39 @@
     
       <category term="JAVASCRIPT" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/"/>
     
-      <category term="IONIC" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC/"/>
+      <category term="IONIC2+" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC2/"/>
+    
+    
+      <category term="IONIC2+" scheme="http://visoon0012.github.io/tags/IONIC2/"/>
+    
+      <category term="NodeJS" scheme="http://visoon0012.github.io/tags/NodeJS/"/>
+    
+      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【IONIC2+】项目开发 - 3 - 添加页面</title>
+    <link href="http://visoon0012.github.io/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-3-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/"/>
+    <id>http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发-3-添加页面/</id>
+    <published>2017-06-13T08:16:59.000Z</published>
+    <updated>2017-10-19T03:25:26.614Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol><li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="external">IONIC官方教程</a></li><li>如果你看不懂英文，没事，那我们就不学了。</li></ol><h4 id="创建页面有几个重要的地方"><a href="#创建页面有几个重要的地方" class="headerlink" title="创建页面有几个重要的地方"></a>创建页面有几个重要的地方</h4><ol><li>创建 .ts 文件，这个文件是存放页面逻辑的地方，例如我们创建一个帖子页面在 post.ts 文件里<pre>export class PostPage {}</pre></li><li>创建 .html 文件，这个文件是界面</li><li>创建 .scss 文件，这个文件是CSS</li><li>把 .ts 文件中的类的引用添加到 app/app.module.ts 中<pre>import {PostPage} from "../pages/post";</pre></li><li>把类名添加到 NgModule 中的 declarations 和 entryComponents 中(所有新加的页面都要放到这里进行声明，不然会报错)<pre>declarations: [     MyApp,     TabsPage,     PostPage     ]</pre><pre>entryComponents: [     MyApp,     TabsPage,     PostPage     ]</pre></li><li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;往刚才创建的项目中添加页面&quot;&gt;&lt;a href=&quot;#往刚才创建的项目中添加页面&quot; class=&quot;headerlink&quot; title=&quot;往刚才创建的项目中添加页面&quot;&gt;&lt;/a&gt;往刚才创建的项目中添加页面&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;前往官网，查看 &lt;a href=&quot;htt
+      
+    
+    </summary>
+    
+      <category term="JAVASCRIPT" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/"/>
+    
+      <category term="IONIC2+" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC2/"/>
     
     
       <category term="IONIC2+" scheme="http://visoon0012.github.io/tags/IONIC2/"/>
@@ -161,10 +161,10 @@
   
   <entry>
     <title>【IONIC2+】项目开发 - 目录</title>
-    <link href="http://visoon0012.github.io/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%20-%201%20-%20%E7%9B%AE%E5%BD%95/"/>
-    <id>http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发 - 1 - 目录/</id>
+    <link href="http://visoon0012.github.io/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-1-%E7%9B%AE%E5%BD%95/"/>
+    <id>http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发-1-目录/</id>
     <published>2017-05-19T08:16:59.000Z</published>
-    <updated>2017-07-10T03:05:22.453Z</updated>
+    <updated>2017-10-19T03:25:26.263Z</updated>
     
     <content type="html"><![CDATA[<h1 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h1><ul><li>本次项目基于ionic2+，目前是ionic3</li><li>typescript版本为2.2.2</li><li>node -v 6.10.1</li><li>这个系列的文章旨在教你写一个基于ionic2+的搜索App</li><li>你可以学到如下知识：<ul><li>写个跨平台的APP</li><li>了解Angular2+的逻辑</li><li>了解node爬虫</li><li>可以爬到自己想要的东西</li></ul></li><li>文章不会一步步教你怎么做，比如页面怎么写，这不是重点，重点在于编码与解决问题的思路<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1></li></ul><ol><li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li><li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li><li>还在写…别急…</li></ol>]]></content>
     
@@ -181,7 +181,7 @@
     
       <category term="JAVASCRIPT" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/"/>
     
-      <category term="IONIC" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC/"/>
+      <category term="IONIC2+" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC2/"/>
     
     
       <category term="IONIC2+" scheme="http://visoon0012.github.io/tags/IONIC2/"/>
@@ -221,8 +221,8 @@
   
   <entry>
     <title>Ubuntu 14.04 更换内核</title>
-    <link href="http://visoon0012.github.io/2016/Linux/Ubuntu%2014.04%20%E6%9B%B4%E6%8D%A2%E5%86%85%E6%A0%B8/"/>
-    <id>http://visoon0012.github.io/2016/Linux/Ubuntu 14.04 更换内核/</id>
+    <link href="http://visoon0012.github.io/2016/Linux/Ubuntu14.04%E6%9B%B4%E6%8D%A2%E5%86%85%E6%A0%B8/"/>
+    <id>http://visoon0012.github.io/2016/Linux/Ubuntu14.04更换内核/</id>
     <published>2016-09-21T09:13:28.000Z</published>
     <updated>2017-10-19T03:04:04.908Z</updated>
     

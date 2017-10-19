@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/index.html">
 <meta property="og:site_name" content="Visoon&#39;s Blog">
 <meta property="og:description" content="首先，你需要部署好SS。然后一行行运行下面脚本 wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.sh chmod +x ./kcptun.sh ./kcptun.sh 1.设置 Kcptun 的服务端端口： 请输入 Kcptun Server 端口 [1-65">
-<meta property="og:updated_time" content="2017-10-19T03:22:26.545Z">
+<meta property="og:updated_time" content="2017-10-19T03:23:57.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 使用 KCPTUN 为 SS 加速">
 <meta name="twitter:description" content="首先，你需要部署好SS。然后一行行运行下面脚本 wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.sh chmod +x ./kcptun.sh ./kcptun.sh 1.设置 Kcptun 的服务端端口： 请输入 Kcptun Server 端口 [1-65">
@@ -380,11 +380,10 @@ Kcptun 默认是启用压缩的。如果你这里设置为 y，也就是配置�
 尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第二步。
 任何事物都是有两面性的，选择了速度，就只有放弃流量。
 各参数详细信息请查看：https://github.com/xtaci/kcptun
+</code></pre><p>如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。<br>如果安装成功，应该能看到如下输出信息：</p>
+<pre><code>恭喜, Kcptun 服务端配置完毕！
 
-如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。
-如果安装成功，应该能看到如下输出信息：
-</code></pre><p>恭喜, Kcptun 服务端配置完毕！</p>
-<pre><code>正在获取当前安装的 Kcptun 版本...
+正在获取当前安装的 Kcptun 版本...
 
 服务器IP:  10.10.10.10
 端口:  29900
@@ -459,8 +458,8 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/IONIC2+/【IONIC2+】项目开发 - 3 - 添加页面/" rel="next" title="【IONIC2+】项目开发 - 3 - 添加页面">
-                <i class="fa fa-chevron-left"></i> 【IONIC2+】项目开发 - 3 - 添加页面
+              <a href="/2017/IONIC2+/【IONIC2+】项目开发-2-创建项目/" rel="next" title="【IONIC2+】项目开发 - 2 - 创建项目">
+                <i class="fa fa-chevron-left"></i> 【IONIC2+】项目开发 - 2 - 创建项目
               </a>
             
           </div>

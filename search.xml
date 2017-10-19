@@ -101,11 +101,10 @@ Kcptun 默认是启用压缩的。如果你这里设置为 y，也就是配置�
 尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第二步。
 任何事物都是有两面性的，选择了速度，就只有放弃流量。
 各参数详细信息请查看：https://github.com/xtaci/kcptun
+</code></pre><p>如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。<br>如果安装成功，应该能看到如下输出信息：</p>
+<pre><code>恭喜, Kcptun 服务端配置完毕！
 
-如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。
-如果安装成功，应该能看到如下输出信息：
-</code></pre><p>恭喜, Kcptun 服务端配置完毕！</p>
-<pre><code>正在获取当前安装的 Kcptun 版本...
+正在获取当前安装的 Kcptun 版本...
 
 服务器IP:  10.10.10.10
 端口:  29900
@@ -168,8 +167,52 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
     </entry>
     
     <entry>
+      <title><![CDATA[【IONIC2+】项目开发 - 2 - 创建项目]]></title>
+      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/</url>
+      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol>
+<li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="external">IONIC官网</a></li>
+<li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li>
+<li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li>
+<li><p>安装ionic</p>
+<pre><code>npm install -g cordova@6.5.0 ionic
+</code></pre></li>
+<li><p>安装完成后，新建项目，这里有几个模板可选</p>
+<pre><code>ionic start myApp tabs
+</code></pre></li>
+<li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p>
+<pre><code>cd myApp
+ionic serve
+</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
+</ol>
+<ul>
+<li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> JAVASCRIPT </category>
+            
+            <category> IONIC2+ </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> IONIC2+ </tag>
+            
+            <tag> NodeJS </tag>
+            
+            <tag> Angular2+ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【IONIC2+】项目开发 - 3 - 添加页面]]></title>
-      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%20-%203%20-%20%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/</url>
+      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-3-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/</url>
       <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol>
 <li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="external">IONIC官方教程</a></li>
 <li>如果你看不懂英文，没事，那我们就不学了。</li>
@@ -208,51 +251,7 @@ entryComponents: [
             
             <category> JAVASCRIPT </category>
             
-            <category> IONIC </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> IONIC2+ </tag>
-            
-            <tag> NodeJS </tag>
-            
-            <tag> Angular2+ </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[【IONIC2+】项目开发 - 2 - 创建项目]]></title>
-      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%20-%202%20-%20%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/</url>
-      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol>
-<li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="external">IONIC官网</a></li>
-<li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li>
-<li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li>
-<li><p>安装ionic</p>
-<pre><code>npm install -g cordova@6.5.0 ionic
-</code></pre></li>
-<li><p>安装完成后，新建项目，这里有几个模板可选</p>
-<pre><code>ionic start myApp tabs
-</code></pre></li>
-<li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p>
-<pre><code>cd myApp
-ionic serve
-</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
-</ol>
-<ul>
-<li><a href="http://example.com/" target="_blank" rel="external">创建一个ionic2+ 的项目。</a></li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> IONIC </category>
+            <category> IONIC2+ </category>
             
         </categories>
         
@@ -295,7 +294,7 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
     
     <entry>
       <title><![CDATA[【IONIC2+】项目开发 - 目录]]></title>
-      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%20-%201%20-%20%E7%9B%AE%E5%BD%95/</url>
+      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-1-%E7%9B%AE%E5%BD%95/</url>
       <content type="html"><![CDATA[<h1 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h1><ul>
 <li>本次项目基于ionic2+，目前是ionic3</li>
 <li>typescript版本为2.2.2</li>
@@ -321,7 +320,7 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
             
             <category> JAVASCRIPT </category>
             
-            <category> IONIC </category>
+            <category> IONIC2+ </category>
             
         </categories>
         
@@ -382,7 +381,7 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
     
     <entry>
       <title><![CDATA[Ubuntu 14.04 更换内核]]></title>
-      <url>/2016/Linux/Ubuntu%2014.04%20%E6%9B%B4%E6%8D%A2%E5%86%85%E6%A0%B8/</url>
+      <url>/2016/Linux/Ubuntu14.04%E6%9B%B4%E6%8D%A2%E5%86%85%E6%A0%B8/</url>
       <content type="html"><![CDATA[<ol>
 <li><p>查看当前内核版本：</p>
 <pre class="brush:other">uname -r</pre>
