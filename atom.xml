@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://visoon0012.github.io/"/>
-  <updated>2017-10-19T03:22:14.434Z</updated>
+  <updated>2017-10-19T03:36:31.089Z</updated>
   <id>http://visoon0012.github.io/</id>
   
   <author>
@@ -21,15 +21,16 @@
     <link href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     <id>http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/</id>
     <published>2017-10-18T16:00:00.000Z</published>
-    <updated>2017-10-19T03:22:14.434Z</updated>
+    <updated>2017-10-19T03:36:31.089Z</updated>
     
-    <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install shadowsocks    $ apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"Server IP",        "server_port":8388,        "local_port":1080,        "password":"password",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="external">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install setuptools    $ sudo apt-get install python-gevent python-pip    $ sudo pip install shadowsocks    $ apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"Server IP",        "server_port":8388,        "local_port":1080,        "password":"password",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="external">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。&lt;/p&gt;
 &lt;pre class=&quot;brush:bash&quot;&gt;
     $ sudo apt-get update
+    $ sudo apt-get install setuptools
     $ sudo apt-get install python-gevent python-pip
     $ sudo pip install shadowsocks
     $ apt-get install python-m2crypto
