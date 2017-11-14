@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Angular2+/Angula2中innerHtml的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Visoon">
@@ -272,7 +272,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/" itemprop="url">Ubuntu 搭建 Shadowsocks 进行科学上网</a></h1>
+                <a class="post-title-link" href="/2017/Angular2+/Angula2中innerHtml的问题/" itemprop="url">Angula2中innerHtml的问题</a></h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T00:00:00+08:00">
-                2017-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T00:00:00+08:00">
+                2017-11-14
               </time>
             
 
@@ -307,8 +307,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Shadowsocks/" itemprop="url" rel="index">
-                    <span itemprop="name">Shadowsocks</span>
+                  <a href="/categories/JAVASCRIPT/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVASCRIPT</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVASCRIPT/Angular2/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular2+</span>
                   </a>
                 </span>
 
@@ -345,21 +356,21 @@
 
       
         
-          <p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
-<pre class="brush:bash">
-    $ sudo apt-get update
-    $ sudo apt-get install python-gevent python-pip
-    $ sudo pip install setuptools
-    $ sudo pip install shadowsocks
-    $ apt-get install python-m2crypto
-</pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p>
+<ol>
+<li><p>导入包</p>
+<pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;
+</code></pre></li>
+<li><p>constructor() 中添加</p>
+<pre><code>public sanitizer: DomSanitizer
+</code></pre></li>
+<li><p>转换数据</p>
+<pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);
+</code></pre></li>
+</ol>
+
+          
         
       
     </div>
@@ -584,6 +595,159 @@ supervisorctl {start|stop|restart|status} kcptun
 Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时先确保 Supervisor 已启动。
 </code></pre>
           
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visoon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Visoon's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/" itemprop="url">Ubuntu 搭建 Shadowsocks 进行科学上网</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T00:00:00+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shadowsocks/" itemprop="url" rel="index">
+                    <span itemprop="name">Shadowsocks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
+<pre class="brush:bash">
+    $ sudo apt-get update
+    $ sudo apt-get install python-gevent python-pip
+    $ sudo pip install setuptools
+    $ sudo pip install shadowsocks
+    $ apt-get install python-m2crypto
+</pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1463,6 +1627,177 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2016/Shadowsocks/Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visoon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Visoon's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/Shadowsocks/Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)/" itemprop="url">Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-12T11:04:57+08:00">
+                2016-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shadowsocks/" itemprop="url" rel="index">
+                    <span itemprop="name">Shadowsocks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>首先安装GO语言环境</p>
+<pre><code>apt-get update
+apt-get install golang-go
+</code></pre></li>
+<li><p>设置GOPATH变量，指定工作空间</p>
+<pre><code>echo &quot;export GOPATH=/opt/go&quot; &gt;&gt; ~/.bashrc       
+source ~/.bashrc
+</code></pre></li>
+<li><p>安装kcpraw集成环境</p>
+<pre><code>wget https://github.com/ccsexyz/kcpraw/releases/download/v20171019/kcpraw-linux-amd64-20171019.tar.gz
+tar -xvzf kcpraw-linux-amd64-20171019.tar.gz
+chmod 777 kcpraw_server_linux_amd64
+</code></pre></li>
+<li><p>新建bash</p>
+<pre><code>vim start_kcpraw
+</code></pre></li>
+<li><p>ESC + I 切换输入模式，输入以下东西</p>
+<pre><code>#!/bin/bash
+nohup ./kcpraw_server_linux_amd64 --target 服务器ip:8388 --ssproxy --sskey 密码
+</code></pre></li>
+<li><p>ESC + : 切换保存模式，输入 wq 保存退出</p>
+</li>
+<li><p>赋予脚本权限</p>
+<pre><code>chmod 777 start_kcpraw
+</code></pre></li>
+<li><p>运行脚本</p>
+<pre><code>./start_kcpraw
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2016/Linux/Ubuntu14.04更换内核/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1618,317 +1953,6 @@ $ sudo apt-get purge linux-image-3.16.0-36-generic linux-image-extra-3.16.0-36-g
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2016/Linux/Linux下利用iptables添加访问许可/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Visoon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Visoon's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/Linux/Linux下利用iptables添加访问许可/" itemprop="url">Linux下利用iptables添加访问许可</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-18T14:12:47+08:00">
-                2016-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务器/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>禁用某个IP段：</p>
-<p><pre class="brush:other">iptables -I INPUT -s 14.215.1.0/24 -j DROP</pre><br>&nbsp;</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2016/Java/使用SpringBoot + Mybatis快速搭建Spring Restful开发环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Visoon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Visoon's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/Java/使用SpringBoot + Mybatis快速搭建Spring Restful开发环境/" itemprop="url">使用SpringBoot + Mybatis快速搭建Spring Restful开发环境</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-05T21:19:28+08:00">
-                2016-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近项目需要用Spring搭建一个Restful API项目，因此重拾了很久没用的JAVA，发现Spring多了一个SpringBoot项目，集成了嵌入式Tomcat，Jetty容器，无需部署WAR包，Mybatis也有类似的与Spring集成的东西，叫 mybatis-spring-boot ，这两个可以免除写一堆XML配置文件，以前写JAVA痛苦的XML配置过程不堪回首，所以干脆用这个搭一个吧。其实官方给的例子已经很详细了，下面是搭建的经验，懂的可以不用看了。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/Java/使用SpringBoot + Mybatis快速搭建Spring Restful开发环境/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1983,7 +2007,7 @@ $ sudo apt-get purge linux-image-3.16.0-36-generic linux-image-extra-3.16.0-36-g
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1994,7 +2018,7 @@ $ sudo apt-get purge linux-image-3.16.0-36-generic linux-image-extra-3.16.0-36-g
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2005,7 +2029,7 @@ $ sudo apt-get purge linux-image-3.16.0-36-generic linux-image-extra-3.16.0-36-g
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
