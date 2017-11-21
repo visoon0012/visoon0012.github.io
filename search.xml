@@ -3,32 +3,72 @@
   
     
     <entry>
-      <title><![CDATA[Chrome下开启跨域功能]]></title>
-      <url>/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/</url>
-      <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p>
-<ol>
-<li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p>
-<pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData
-</code></pre></li>
-<li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p>
-</li>
-</ol>
+      <title></title>
+      <url>/2017/Shadowsocks/Ubuntu%E4%BD%BF%E7%94%A8KCPRAW%E4%BC%AA%E8%A3%85UDP%E8%AF%B7%E6%B1%82%E9%98%B2%E6%AD%A2%E8%BF%90%E8%90%A5%E5%95%86%E6%8B%A6%E6%88%AA/</url>
+      <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a><img src="logo.png" alt="kcptun" height="54px"></h1><p><img src="kcptun.png" alt="kcptun" height="300px"></p>
+<p>-</p>
+<h3 id="原因及原理"><a href="#原因及原理" class="headerlink" title="原因及原理"></a>原因及原理</h3><p>因为KCP多倍发包原理，有些地方运营商会拦截多倍的UDP请求，使用KCPRAW可以把UDP伪装成TCP流量，防止运营商拦截</p>
+<h3 id="快速设定"><a href="#快速设定" class="headerlink" title="快速设定"></a>快速设定</h3><p>客户端、服务器分别<strong>下载</strong>对应平台的<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="external">预编译版本</a>，并<strong>解压</strong>，通过下面的命令<strong>启动</strong>端口转发。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">KCP客户端: ./client_darwin_amd64 -r &quot;KCP服务器IP地址:4000&quot; -l &quot;:8388&quot; -mode fast2</div><div class="line">KCP服务器: ./server_linux_amd64 -t &quot;目标服务器IP地址:8388&quot; -l &quot;:4000&quot; -mode fast2</div></pre></td></tr></table></figure></p>
+<p>以上命令可以实现8388/tcp端口的转发（通过4000/udp端口），即：</p>
+<p>Application -&gt; KCP客户端(8388/tcp) -&gt; KCP服务器(4000/udp) -&gt; Server(8388/tcp)</p>
+<h3 id="从源码安装"><a href="#从源码安装" class="headerlink" title="从源码安装"></a>从源码安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$go get -u github.com/xtaci/kcptun/client</div><div class="line">$go get -u github.com/xtaci/kcptun/server</div></pre></td></tr></table></figure>
+<p>注意: 如果出现错误提示，请确保依赖库能正确访问到。</p>
+<p>Release中的所有二进制版本，是通过 <code>build-release.sh</code> 脚本生成并优化。</p>
+<h3 id="速度对比"><a href="#速度对比" class="headerlink" title="速度对比"></a>速度对比</h3><p><img src="fast.png" alt="fast.com" height="256px">       </p>
+<ul>
+<li>测速网站: <a href="https://fast.com" target="_blank" rel="external">https://fast.com</a></li>
+<li>接入速度: 100Mbps</li>
+<li>WIFI: 5GHz TL-WDR3320</li>
+</ul>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>在Mac OS X El Capitan下的帮助输出，注意默认值: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">$ ./client_darwin_amd64 -h</div><div class="line">NAME:</div><div class="line">   kcptun - client(with SMUX)</div><div class="line"></div><div class="line">USAGE:</div><div class="line">   client_darwin_amd64 [global options] command [command options] [arguments...]</div><div class="line"></div><div class="line">VERSION:</div><div class="line">   20170120</div><div class="line"></div><div class="line">COMMANDS:</div><div class="line">     help, h  Shows a list of commands or help for one command</div><div class="line"></div><div class="line">GLOBAL OPTIONS:</div><div class="line">   --localaddr value, -l value      local listen address (default: &quot;:12948&quot;)</div><div class="line">   --remoteaddr value, -r value     kcp server address (default: &quot;vps:29900&quot;)</div><div class="line">   --key value                      pre-shared secret between client and server (default: &quot;it&apos;s a secrect&quot;) [$KCPTUN_KEY]</div><div class="line">   --crypt value                    aes, aes-128, aes-192, salsa20, blowfish, twofish, cast5, 3des, tea, xtea, xor, none (default: &quot;aes&quot;)</div><div class="line">   --mode value                     profiles: fast3, fast2, fast, normal (default: &quot;fast&quot;)</div><div class="line">   --conn value                     set num of UDP connections to server (default: 1)</div><div class="line">   --autoexpire value               set auto expiration time(in seconds) for a single UDP connection, 0 to disable (default: 0)</div><div class="line">   --mtu value                      set maximum transmission unit for UDP packets (default: 1350)</div><div class="line">   --sndwnd value                   set send window size(num of packets) (default: 128)</div><div class="line">   --rcvwnd value                   set receive window size(num of packets) (default: 512)</div><div class="line">   --datashard value, --ds value    set reed-solomon erasure coding - datashard (default: 10)</div><div class="line">   --parityshard value, --ps value  set reed-solomon erasure coding - parityshard (default: 3)</div><div class="line">   --dscp value                     set DSCP(6bit) (default: 0)</div><div class="line">   --nocomp                         disable compression</div><div class="line">   --snmplog value                  collect snmp to file, aware of timeformat in golang, like: ./snmp-20060102.log</div><div class="line">   --snmpperiod value               snmp collect period, in seconds (default: 60)</div><div class="line">   --log value                      specify a log file to output, default goes to stderr</div><div class="line">   -c value                         config from json file, which will override the command from shell</div><div class="line">   --help, -h                       show help</div><div class="line">   --version, -v                    print the version</div><div class="line"></div><div class="line">$ ./server_darwin_amd64 -h</div><div class="line">NAME:</div><div class="line">   kcptun - server(with SMUX)</div><div class="line"></div><div class="line">USAGE:</div><div class="line">   server_darwin_amd64 [global options] command [command options] [arguments...]</div><div class="line"></div><div class="line">VERSION:</div><div class="line">   20170120</div><div class="line"></div><div class="line">COMMANDS:</div><div class="line">     help, h  Shows a list of commands or help for one command</div><div class="line"></div><div class="line">GLOBAL OPTIONS:</div><div class="line">   --listen value, -l value         kcp server listen address (default: &quot;:29900&quot;)</div><div class="line">   --target value, -t value         target server address (default: &quot;127.0.0.1:12948&quot;)</div><div class="line">   --key value                      pre-shared secret between client and server (default: &quot;it&apos;s a secrect&quot;) [$KCPTUN_KEY]</div><div class="line">   --crypt value                    aes, aes-128, aes-192, salsa20, blowfish, twofish, cast5, 3des, tea, xtea, xor, none (default: &quot;aes&quot;)</div><div class="line">   --mode value                     profiles: fast3, fast2, fast, normal (default: &quot;fast&quot;)</div><div class="line">   --mtu value                      set maximum transmission unit for UDP packets (default: 1350)</div><div class="line">   --sndwnd value                   set send window size(num of packets) (default: 1024)</div><div class="line">   --rcvwnd value                   set receive window size(num of packets) (default: 1024)</div><div class="line">   --datashard value, --ds value    set reed-solomon erasure coding - datashard (default: 10)</div><div class="line">   --parityshard value, --ps value  set reed-solomon erasure coding - parityshard (default: 3)</div><div class="line">   --dscp value                     set DSCP(6bit) (default: 0)</div><div class="line">   --nocomp                         disable compression</div><div class="line">   --snmplog value                  collect snmp to file, aware of timeformat in golang, like: ./snmp-20060102.log</div><div class="line">   --snmpperiod value               snmp collect period, in seconds (default: 60)</div><div class="line">   --log value                      specify a log file to output, default goes to stderr</div><div class="line">   -c value                         config from json file, which will override the command from shell</div><div class="line">   --help, -h                       show help</div><div class="line">   --version, -v                    print the version</div></pre></td></tr></table></figure>
+<h4 id="分层参数图"><a href="#分层参数图" class="headerlink" title="分层参数图"></a>分层参数图</h4><p align="left"><img src="layeredparams.png" alt="params" height="450px"></p>
+
+<p><strong>两端参数必须一致的有</strong>:</p>
+<ul>
+<li>datashard –前向纠错</li>
+<li>parityshard –前向纠错</li>
+<li>nocomp –压缩</li>
+<li>key –密钥</li>
+<li>crypt –加密算法</li>
+</ul>
+<p>其余为两边可独立设定的参数</p>
+<h3 id="内置模式"><a href="#内置模式" class="headerlink" title="内置模式"></a>内置模式</h3><p>响应速度:<br><em>fast3 &gt; fast2 &gt;</em> <strong>[fast]</strong> <em>&gt; normal &gt; default</em><br>有效载荷比:<br><em>default &gt; normal &gt;</em> <strong>[fast]</strong> <em>&gt; fast2 &gt; fast3</em><br>中间-mode参数比较均衡，总之就是越快，包重传越激进。<br>更高级的 <strong>手动档</strong> 需要理解KCP协议，并通过 <strong>隐藏参数</strong> 调整，例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-mode manual -nodelay 1 -resend 2 -nc 1 -interval 20</div></pre></td></tr></table></figure></p>
+<ul>
+<li>搭配1. fast + FEC(5,5)</li>
+<li>搭配2. fast2 + FEC(10,3)</li>
+<li>搭配3. fast2 + FEC(0,0)</li>
+</ul>
+<p>默认profile参考: <a href="https://github.com/xtaci/kcptun/blob/master/client/main.go#L248" target="_blank" rel="external">https://github.com/xtaci/kcptun/blob/master/client/main.go#L248</a></p>
+<h3 id="前向纠错"><a href="#前向纠错" class="headerlink" title="前向纠错"></a>前向纠错</h3><p>前向纠错采用Reed Solomon纠删码, 它的基本原理如下： 给定n个数据块d1, d2,…, dn，n和一个正整数m， RS根据n个数据块生成m个校验块， c1, c2,…, cm。 对于任意的n和m， 从n个原始数据块和m 个校验块中任取n块就能解码出原始数据， 即RS最多<strong>容忍m个数据块或者校验块同时丢失</strong>。</p>
+<p><img src="rs.png" alt="reed-solomon"></p>
+<p>通过参数<figure class="highlight plain"><figcaption><span>n -parityshard m``` 在两端同时设定。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">数据包发送顺序严格遵循: n个datashard紧接m个parityshard，重复。</div><div class="line"></div><div class="line">注意：为了发挥FEC最佳效果，设置 parityshard/(parity+datashard) &gt; packet loss，比如5/(5+5) &gt; 30%</div><div class="line"></div><div class="line">### 窗口调整</div><div class="line">**简易窗口自我调优方法**：</div><div class="line"></div><div class="line">&gt; 第一步：同时在两端逐步增大client rcvwnd和server sndwnd;        </div><div class="line">&gt; 第二步：尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）到达预期则停止，否则跳转到第一步。</div><div class="line"></div><div class="line">**注意：产生大量重传时，一定是窗口偏大了**</div><div class="line"></div><div class="line">### 安全</div><div class="line"></div><div class="line">无论你上层如何加密，如果```-crypt none```，那么**协议头部**都是**明文**的，建议至少采用```-crypt aes-128```加密，并修改密码。</div><div class="line"></div><div class="line">密码可以通过`-key`指定，也可以通过环境变量`KCPTUN_KEY`指定。</div><div class="line"></div><div class="line">注意: ```-crypt xor``` 也是不安全的，除非你知道你在做什么。 </div><div class="line"></div><div class="line">附加密速度Benchmark：</div></pre></td></tr></table></figure></p>
+<p>BenchmarkAES128-4            200000         11182 ns/op<br>BenchmarkAES192-4            200000         12699 ns/op<br>BenchmarkAES256-4            100000         13757 ns/op<br>BenchmarkTEA-4                50000         26441 ns/op<br>BenchmarkSimpleXOR-4        3000000           441 ns/op<br>BenchmarkBlowfish-4           30000         48036 ns/op<br>BenchmarkNone-4            20000000           106 ns/op<br>BenchmarkCast5-4              20000         60222 ns/op<br>BenchmarkTripleDES-4           2000        878759 ns/op<br>BenchmarkTwofish-4            20000         68501 ns/op<br>BenchmarkXTEA-4               20000         77417 ns/op<br>BenchmarkSalsa20-4           300000          4998 ns/op<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 内存控制</div><div class="line"></div><div class="line">路由器，手机等嵌入式设备通常对**内存用量敏感**，通过调节环境变量GOGC（例如GOGC=20)后启动client，可以降低内存使用。      </div><div class="line">参考：https://blog.golang.org/go15gc</div><div class="line"></div><div class="line"></div><div class="line">### DSCP</div><div class="line"></div><div class="line">DSCP差分服务代码点（Differentiated Services Code Point），IETF于1998年12月发布了Diff-Serv（Differentiated Service）的QoS分类标准。它在每个数据包IP头部的服务类别TOS标识字节中，利用已使用的**6比特**和未使用的2比特，通过编码值来区分优先级。     </div><div class="line">常用DSCP值可以参考[Wikipedia DSCP](https://en.wikipedia.org/wiki/Differentiated_services#Commonly_used_DSCP_values)，至于有没有用，完全取决于数据包经过的设备。 </div><div class="line"></div><div class="line">通过 ```-dscp ``` 参数指定dscp值，两端可分别设定。</div><div class="line"></div><div class="line">注意：设置dscp不一定会更好，需要尝试。</div><div class="line"></div><div class="line">### Snappy数据流压缩</div><div class="line"></div><div class="line">&gt; Snappy is a compression/decompression library. It does not aim for maximum</div><div class="line">&gt; compression, or compatibility with any other compression library; instead,</div><div class="line">&gt; it aims for very high speeds and reasonable compression. For instance,</div><div class="line">&gt; compared to the fastest mode of zlib, Snappy is an order of magnitude faster</div><div class="line">&gt; for most inputs, but the resulting compressed files are anywhere from 20% to</div><div class="line">&gt; 100% bigger.</div><div class="line"></div><div class="line">&gt; Reference: http://google.github.io/snappy/</div><div class="line"></div><div class="line">压缩对于非加密，非压缩的数据能降低传输数据量，比如点对点的HTTP数据转发。</div><div class="line"></div><div class="line">通过参数 ```-nocomp``` 在两端同时设定以关闭压缩。</div><div class="line">&gt; 提示: 关闭压缩可能会降低延迟。</div><div class="line"></div><div class="line">### 流量控制</div><div class="line"></div><div class="line">**必要性: 针对流量敏感的服务器，做双保险。**      </div><div class="line"></div><div class="line">&gt; 基本原则: SERVER的发送速率不能超过ADSL下行带宽，否则只会浪费您的服务器带宽。  </div><div class="line"></div><div class="line">在server通过linux tc，可以限制服务器发送带宽。   </div><div class="line">举例:  用linux tc限制server发送带宽为32mbit/s:</div></pre></td></tr></table></figure></p>
+<p>root@kcptun:~# cat tc.sh<br>tc qdisc del dev eth0 root<br>tc qdisc add dev eth0 root handle 1: htb<br>tc class add dev eth0 parent 1: classid 1:1 htb rate 32mbit<br>tc filter add dev eth0 protocol ip parent 1:0 prio 1 handle 10 fw flowid 1:1<br>iptables -t mangle -A POSTROUTING -o eth0  -j MARK –set-mark 10<br>root@kcptun:~#<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">其中eth0为网卡，有些服务器为ens3，有些为p2p1，通过ifconfig查询修改。</div><div class="line"></div><div class="line">### SNMP</div><div class="line"></div><div class="line">```go</div><div class="line">// Snmp defines network statistics indicator</div><div class="line">type Snmp struct &#123;</div><div class="line">    BytesSent        uint64 // raw bytes sent</div><div class="line">    BytesReceived    uint64</div><div class="line">    MaxConn          uint64</div><div class="line">    ActiveOpens      uint64</div><div class="line">    PassiveOpens     uint64</div><div class="line">    CurrEstab        uint64 // count of connections for now</div><div class="line">    InErrs           uint64 // udp read errors</div><div class="line">    InCsumErrors     uint64 // checksum errors from CRC32</div><div class="line">    KCPInErrors      uint64 // packet iput errors from kcp</div><div class="line">    InSegs           uint64</div><div class="line">    OutSegs          uint64</div><div class="line">    InBytes          uint64 // udp bytes received</div><div class="line">    OutBytes         uint64 // udp bytes sent</div><div class="line">    RetransSegs      uint64</div><div class="line">    FastRetransSegs  uint64</div><div class="line">    EarlyRetransSegs uint64</div><div class="line">    LostSegs         uint64 // number of segs infered as lost</div><div class="line">    RepeatSegs       uint64 // number of segs duplicated</div><div class="line">    FECRecovered     uint64 // correct packets recovered from FEC</div><div class="line">    FECErrs          uint64 // incorrect packets recovered from FEC</div><div class="line">    FECSegs          uint64 // FEC segments received</div><div class="line">    FECShortShards   uint64 // number of data shards that&apos;s not enough for recovery</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用<figure class="highlight plain"><figcaption><span>-SIGUSR1 pid``` 可以在控制台打印出SNMP信息，通常用于精细调整**当前链路的有效载荷比**。        </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">观察```RetransSegs,FastRetransSegs,LostSegs,OutSegs```这几者的数值比例，用于参考调整```-mode manual,fec```的参数。    </div><div class="line"></div><div class="line">#### 带宽计算公式</div></pre></td></tr></table></figure></p>
+<p>在不丢包的情况下，有最大-rcvwnd 个数据包在网络上正在向你传输，以平均数据包大小avgsize计算，在任意时刻，有：     </p>
+<pre><code>network_cap = rcvwnd*avgsize
+</code></pre><p>数据流向你，这个值再除以ping值(rtt)，等于最大带宽使用量。</p>
+<pre><code>max_bandwidth = network_cap/rtt = rcvwnd*avgsize/rtt
+</code></pre><p>举例，设rcvwnd = 1024, avgsize = 1KB, rtt = 400ms，则：</p>
+<pre><code>max_bandwidth = 1024 * 1KB / 400ms = 2.5MB/s ~= 25Mbps
+</code></pre><p>（注：以上计算不包括前向纠错的数据量）</p>
+<p>前向纠错是最大带宽量的一个固定比例增加：</p>
+<pre><code>max_bandwidth_fec = max_bandwidth*(datashard+parityshard)/datashard
+</code></pre><p>举例，设datashard = 10 , partiyshard = 3，则：</p>
+<pre><code>max_bandwidth_fec = max_bandwidth * (10 + 3) /10 = 1.3*max_bandwidth ＝ 1.3 * 25Mbps = 32.5Mbps
+</code></pre><p>```</p>
+<h3 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h3><blockquote>
+<p>Q: 客户端和服务器端<strong>皆无</strong> <code>stream opened</code>信息。<br>A: 连接客户端程序的端口设置错误。     </p>
+<p>Q: 客户端有 <code>stream opened</code>信息，服务器端没有。<br>A: 连接服务器的端口设置错误，或者被防火墙拦截。     </p>
+<p>Q: 客户端服务器<strong>皆有</strong> <code>stream opened</code>信息，但无法通信。<br>A: 上层软件的设定错误。     </p>
+</blockquote>
+<h3 id="免责申明"><a href="#免责申明" class="headerlink" title="免责申明"></a>免责申明</h3><p><strong>用户以各种方式使用本软件（包括但不限于修改使用、直接使用、通过第三方使用）的过程中，不得以任何方式利用本软件直接或间接从事违反中国法律、以及社会公德的行为。软件的使用者需对自身行为负责，因使用软件引发的一切纠纷，由使用者承担全部法律及连带责任。作者不承担任何法律及连带责任。</strong>       </p>
+<p><strong>对免责声明的解释、修改及更新权均属于作者本人所有。</strong></p>
+<h3 id="特别鸣谢"><a href="#特别鸣谢" class="headerlink" title="特别鸣谢"></a>特别鸣谢</h3><p>GITHUB上的各位大佬，就不打名字了</p>
+<p>好人一生平安!</p>
 ]]></content>
       
-        <categories>
-            
-            <category> Other </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Other </tag>
-            
-            <tag> Chrome </tag>
-            
-        </tags>
         
     </entry>
     
@@ -60,69 +100,39 @@
         
         <tags>
             
-            <tag> Angular2+ </tag>
-            
             <tag> JAVASCRIPT </tag>
+            
+            <tag> Angular2+ </tag>
             
         </tags>
         
     </entry>
     
     <entry>
-      <title><![CDATA[Ubuntu 搭建 Shadowsocks 进行科学上网]]></title>
-      <url>/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
-      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
-<pre class="brush:bash">
-    $ sudo apt-get update
-    $ sudo apt-get install python-gevent python-pip
-    $ sudo pip install setuptools
-    $ sudo pip install shadowsocks
-    $ apt-get install python-m2crypto
-</pre>
-
-<a id="more"></a>
-<p>创建config.json配置文件：</p>
-<pre class="brush:bash">
-    $ vi /etc/shadowsocks.json
-</pre>
-
-<p>修改config.json：</p>
-<pre class="brush:bash">
-    {
-        "server":"Server IP",
-        "server_port":8388,
-        "local_port":1080,
-        "password":"password",
-        "timeout":600,
-        "method":"aes-256-cfb"
-    }
-</pre>
-&nbsp;
-
-运行Shadowsocks：
-<pre class="brush:bash">
-    $ su -
-    $ ssserver -c /etc/shadowsocks.json -d start
-    $ ssserver -c /etc/shadowsocks.json -d stop
-</pre>
-
-<p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p>
-<p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="external">点我下载</a></p>
-<h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul>
-<li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li>
-</ul>
+      <title><![CDATA[Chrome下开启跨域功能]]></title>
+      <url>/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/</url>
+      <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p>
+<ol>
+<li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p>
+<pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData
+</code></pre></li>
+<li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p>
+</li>
+</ol>
 ]]></content>
       
         <categories>
             
-            <category> Shadowsocks </category>
+            <category> Other </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Shadowsocks </tag>
+            <tag> Other </tag>
+            
+            <tag> Chrome </tag>
             
         </tags>
         
@@ -232,6 +242,66 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
     </entry>
     
     <entry>
+      <title><![CDATA[Ubuntu 搭建 Shadowsocks 进行科学上网]]></title>
+      <url>/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
+      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
+<pre class="brush:bash">
+    $ sudo apt-get update
+    $ sudo apt-get install python-gevent python-pip
+    $ sudo pip install setuptools
+    $ sudo pip install shadowsocks
+    $ apt-get install python-m2crypto
+</pre>
+
+<a id="more"></a>
+<p>创建config.json配置文件：</p>
+<pre class="brush:bash">
+    $ vi /etc/shadowsocks.json
+</pre>
+
+<p>修改config.json：</p>
+<pre class="brush:bash">
+    {
+        "server":"Server IP",
+        "server_port":8388,
+        "local_port":1080,
+        "password":"password",
+        "timeout":600,
+        "method":"aes-256-cfb"
+    }
+</pre>
+&nbsp;
+
+运行Shadowsocks：
+<pre class="brush:bash">
+    $ su -
+    $ ssserver -c /etc/shadowsocks.json -d start
+    $ ssserver -c /etc/shadowsocks.json -d stop
+</pre>
+
+<p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p>
+<p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="external">点我下载</a></p>
+<h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul>
+<li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Shadowsocks </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Shadowsocks </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【IONIC2+】项目开发 - 3 - 添加页面]]></title>
       <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-3-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/</url>
       <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol>
@@ -279,11 +349,11 @@ entryComponents: [
         
         <tags>
             
+            <tag> Angular2+ </tag>
+            
             <tag> IONIC2+ </tag>
             
             <tag> NodeJS </tag>
-            
-            <tag> Angular2+ </tag>
             
         </tags>
         
@@ -323,11 +393,11 @@ ionic serve
         
         <tags>
             
+            <tag> Angular2+ </tag>
+            
             <tag> IONIC2+ </tag>
             
             <tag> NodeJS </tag>
-            
-            <tag> Angular2+ </tag>
             
         </tags>
         
@@ -392,11 +462,53 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
         
         <tags>
             
+            <tag> Angular2+ </tag>
+            
             <tag> IONIC2+ </tag>
             
             <tag> NodeJS </tag>
             
-            <tag> Angular2+ </tag>
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[KCP客户端配置]]></title>
+      <url>/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p>
+<p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p>
+<p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p>
+<h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol>
+<li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li>
+<li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li>
+<li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li>
+<li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li>
+<li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li>
+<li>点击启动</li>
+<li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li>
+<li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li>
+<li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li>
+</ol>
+<h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol>
+<li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="external">https://github.com/xtaci/kcptun/releases</a></li>
+<li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="external">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li>
+<li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="external">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li>
+<li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="external">https://github.com/dfdragon/kcptun_xclient/releases</a></li>
+<li>像Windows下面一样配置</li>
+<li>SS配置如同Windows</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> Shadowsocks </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Shadowsocks </tag>
             
         </tags>
         
@@ -434,48 +546,6 @@ nohup ./kcpraw_server_linux_amd64 --target 服务器ip:8388 --ssproxy --sskey �
 <li><p>运行脚本</p>
 <pre><code>./start_kcpraw
 </code></pre></li>
-</ol>
-]]></content>
-      
-        <categories>
-            
-            <category> Shadowsocks </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Shadowsocks </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[KCP客户端配置]]></title>
-      <url>/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p>
-<p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p>
-<p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p>
-<h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol>
-<li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li>
-<li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li>
-<li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li>
-<li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li>
-<li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li>
-<li>点击启动</li>
-<li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li>
-<li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li>
-<li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li>
-</ol>
-<h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol>
-<li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="external">https://github.com/xtaci/kcptun/releases</a></li>
-<li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="external">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li>
-<li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="external">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li>
-<li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="external">https://github.com/dfdragon/kcptun_xclient/releases</a></li>
-<li>像Windows下面一样配置</li>
-<li>SS配置如同Windows</li>
 </ol>
 ]]></content>
       
