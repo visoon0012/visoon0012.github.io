@@ -87,6 +87,7 @@
 <meta property="og:url" content="http://visoon0012.github.io/2016/IONIC1/Angular_Ionic中使用PUT方法遇到OPTIONS问题的解决方案/index.html">
 <meta property="og:site_name" content="Visoon&#39;s Blog">
 <meta property="og:description" content="开发Angular/Ionic中遇到使用PUT方法遇到OPTIONS问题，使用PUT方法返回405错误，查了许久，看到这篇博文。  http://my.oschina.net/blogshi/blog/303758?fromerr=ALJoxiKgCORS的本质让服务器通过新增响应头Access-Control-Allow-Origin,通过HTTP方式来实现资源共享,让每个请求的服务直接返回资源">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-10-19T03:04:04.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular&#x2F;Ionic中使用PUT方法遇到OPTIONS问题的解决方案">
@@ -366,7 +367,7 @@
       
         <p>开发Angular/Ionic中遇到使用PUT方法遇到OPTIONS问题，使用PUT方法返回405错误，查了许久，看到这篇博文。</p>
 <blockquote>
-<p><a href="http://my.oschina.net/blogshi/blog/303758?fromerr=ALJoxiKg" target="_blank" rel="external">http://my.oschina.net/blogshi/blog/303758?fromerr=ALJoxiKg</a><br>CORS的本质让服务器通过新增响应头Access-Control-Allow-Origin,通过HTTP方式来实现资源共享,让每个请求的服务直接返回资源.它使用了HTTP交互方式来确定请求源是否有资格请求该资源,并且通过设置HTTP Header来控制访问资源的权限.</p>
+<p><a href="http://my.oschina.net/blogshi/blog/303758?fromerr=ALJoxiKg" target="_blank" rel="noopener">http://my.oschina.net/blogshi/blog/303758?fromerr=ALJoxiKg</a><br>CORS的本质让服务器通过新增响应头Access-Control-Allow-Origin,通过HTTP方式来实现资源共享,让每个请求的服务直接返回资源.它使用了HTTP交互方式来确定请求源是否有资格请求该资源,并且通过设置HTTP Header来控制访问资源的权限.</p>
 </blockquote>
 <p>因此需要在后端拦截OPTIONS方法，在headers中返回如下信息：</p>
 <p><pre class="brush:xml">Access-Control-Allow-Origin: “*”</pre></p>
@@ -484,7 +485,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -495,7 +496,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

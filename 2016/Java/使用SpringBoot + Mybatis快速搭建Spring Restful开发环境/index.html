@@ -87,6 +87,7 @@
 <meta property="og:url" content="http://visoon0012.github.io/2016/Java/使用SpringBoot + Mybatis快速搭建Spring Restful开发环境/index.html">
 <meta property="og:site_name" content="Visoon&#39;s Blog">
 <meta property="og:description" content="最近项目需要用Spring搭建一个Restful API项目，因此重拾了很久没用的JAVA，发现Spring多了一个SpringBoot项目，集成了嵌入式Tomcat，Jetty容器，无需部署WAR包，Mybatis也有类似的与Spring集成的东西，叫 mybatis-spring-boot ，这两个可以免除写一堆XML配置文件，以前写JAVA痛苦的XML配置过程不堪回首，所以干脆用这个搭一个吧">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.visoon.net/wp-content/uploads/2016/02/QQ截图20160205210959.png">
 <meta property="og:updated_time" content="2017-07-10T03:05:22.455Z">
 <meta name="twitter:card" content="summary">
@@ -359,12 +360,12 @@
 <a id="more"></a>
 <p>官方链接：</p>
 <blockquote>
-<p><a href="https://spring.io/guides/gs/rest-service/" target="_blank" rel="external">https://spring.io/guides/gs/rest-service/</a></p>
-<p><a href="https://github.com/mybatis/mybatis-spring-boot" target="_blank" rel="external">https://github.com/mybatis/mybatis-spring-boot</a></p>
+<p><a href="https://spring.io/guides/gs/rest-service/" target="_blank" rel="noopener">https://spring.io/guides/gs/rest-service/</a></p>
+<p><a href="https://github.com/mybatis/mybatis-spring-boot" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-spring-boot</a></p>
 </blockquote>
 <ol>
 <li>建立Maven项目，我用的是IDEA</li>
-<li><p>复制pom.xml，添加依赖文件<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;project xmlns=”<a href="http://maven.apache.org/POM/4.0.0" target="_blank" rel="external">http://maven.apache.org/POM/4.0.0</a>“</pre></p>
+<li><p>复制pom.xml，添加依赖文件<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;project xmlns=”<a href="http://maven.apache.org/POM/4.0.0" target="_blank" rel="noopener">http://maven.apache.org/POM/4.0.0</a>“</pre></p>
 <pre><code>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
 xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&amp;gt;
 </code></pre><p>&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</p>
@@ -536,7 +537,7 @@ public User getUser() {
 </ol>
 <p>#config this Project.file logger<br>log4j.logger.thisProject.file=INFO,thisProject.file.out<br>log4j.appender.thisProject.file.out=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.thisProject.file.out.File=logContentFile.log<br>log4j.appender.thisProject.file.out.layout=org.apache.log4j.PatternLayout<br><br>&nbsp;</p>
 <ol>
-<li><p>配置查询SQL。UserMapper.xml<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE mapper PUBLIC “-//mybatis.org//DTD Mapper 3.0//EN” “<a href="http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt" target="_blank" rel="external">http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt</a>;<br>&lt;mapper namespace=”cn.visoon.wechat.mapper.UserMapper”&gt;</pre></p>
+<li><p>配置查询SQL。UserMapper.xml<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE mapper PUBLIC “-//mybatis.org//DTD Mapper 3.0//EN” “<a href="http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt</a>;<br>&lt;mapper namespace=”cn.visoon.wechat.mapper.UserMapper”&gt;</pre></p>
 <p>&lt;select id=”findUserInfo” resultType=”cn.visoon.wechat.model.User”&gt;<br>select id, name, age,password from user;<br>&lt;/select&gt;</p>
 </li>
 </ol>
@@ -652,7 +653,7 @@ public User getUser() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -663,7 +664,7 @@ public User getUser() {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
