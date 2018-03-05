@@ -112,42 +112,6 @@ rmdir d:\temp\
     </entry>
     
     <entry>
-      <title><![CDATA[Angula2中innerHtml的问题]]></title>
-      <url>/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-      <content type="html"><![CDATA[<h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p>
-<ol>
-<li><p>导入包</p>
-<pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;
-</code></pre></li>
-<li><p>constructor() 中添加</p>
-<pre><code>public sanitizer: DomSanitizer
-</code></pre></li>
-<li><p>转换数据</p>
-<pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);
-</code></pre></li>
-</ol>
-]]></content>
-      
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> Angular2+ </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> JAVASCRIPT </tag>
-            
-            <tag> Angular2+ </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Chrome下开启跨域功能]]></title>
       <url>/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/</url>
       <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p>
@@ -178,60 +142,36 @@ rmdir d:\temp\
     </entry>
     
     <entry>
-      <title><![CDATA[Ubuntu 搭建 Shadowsocks 进行科学上网]]></title>
-      <url>/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
-      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
-<pre class="brush:bash">
-    $ sudo apt-get update
-    $ sudo apt-get install python-gevent python-pip
-    $ sudo pip install setuptools
-    $ sudo pip install shadowsocks
-    $ apt-get install python-m2crypto
-</pre>
-
-<a id="more"></a>
-<p>创建config.json配置文件：</p>
-<pre class="brush:bash">
-    $ vi /etc/shadowsocks.json
-</pre>
-
-<p>修改config.json：</p>
-<pre class="brush:bash">
-    {
-        "server":"Server IP",
-        "server_port":8388,
-        "local_port":1080,
-        "password":"password",
-        "timeout":600,
-        "method":"aes-256-cfb"
-    }
-</pre>
-&nbsp;
-
-运行Shadowsocks：
-<pre class="brush:bash">
-    $ su -
-    $ ssserver -c /etc/shadowsocks.json -d start
-    $ ssserver -c /etc/shadowsocks.json -d stop
-</pre>
-
-<p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p>
-<p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p>
-<h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul>
-<li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li>
-</ul>
+      <title><![CDATA[Angula2中innerHtml的问题]]></title>
+      <url>/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p>
+<ol>
+<li><p>导入包</p>
+<pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;
+</code></pre></li>
+<li><p>constructor() 中添加</p>
+<pre><code>public sanitizer: DomSanitizer
+</code></pre></li>
+<li><p>转换数据</p>
+<pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);
+</code></pre></li>
+</ol>
 ]]></content>
       
         <categories>
             
-            <category> Shadowsocks </category>
+            <category> JAVASCRIPT </category>
+            
+            <category> Angular2+ </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Shadowsocks </tag>
+            <tag> JAVASCRIPT </tag>
+            
+            <tag> Angular2+ </tag>
             
         </tags>
         
@@ -341,44 +281,60 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
     </entry>
     
     <entry>
-      <title><![CDATA[【IONIC2+】项目开发 - 2 - 创建项目]]></title>
-      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/</url>
-      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol>
-<li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li>
-<li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li>
-<li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li>
-<li><p>安装ionic</p>
-<pre><code>npm install -g cordova@6.5.0 ionic
-</code></pre></li>
-<li><p>安装完成后，新建项目，这里有几个模板可选</p>
-<pre><code>ionic start myApp tabs
-</code></pre></li>
-<li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p>
-<pre><code>cd myApp
-ionic serve
-</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
-</ol>
-<ul>
-<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
+      <title><![CDATA[Ubuntu 搭建 Shadowsocks 进行科学上网]]></title>
+      <url>/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
+      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
+<pre class="brush:bash">
+    $ sudo apt-get update
+    $ sudo apt-get install python-gevent python-pip
+    $ sudo pip install setuptools
+    $ sudo pip install shadowsocks
+    $ apt-get install python-m2crypto
+</pre>
+
+<a id="more"></a>
+<p>创建config.json配置文件：</p>
+<pre class="brush:bash">
+    $ vi /etc/shadowsocks.json
+</pre>
+
+<p>修改config.json：</p>
+<pre class="brush:bash">
+    {
+        "server":"Server IP",
+        "server_port":8388,
+        "local_port":1080,
+        "password":"password",
+        "timeout":600,
+        "method":"aes-256-cfb"
+    }
+</pre>
+&nbsp;
+
+运行Shadowsocks：
+<pre class="brush:bash">
+    $ su -
+    $ ssserver -c /etc/shadowsocks.json -d start
+    $ ssserver -c /etc/shadowsocks.json -d stop
+</pre>
+
+<p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p>
+<p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p>
+<h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul>
+<li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li>
 </ul>
 ]]></content>
       
         <categories>
             
-            <category> JAVASCRIPT </category>
-            
-            <category> IONIC2+ </category>
+            <category> Shadowsocks </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Angular2+ </tag>
-            
-            <tag> IONIC2+ </tag>
-            
-            <tag> NodeJS </tag>
+            <tag> Shadowsocks </tag>
             
         </tags>
         
@@ -415,6 +371,50 @@ entryComponents: [
      ]
 </pre></li>
 <li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
+</ol>
+<ul>
+<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> JAVASCRIPT </category>
+            
+            <category> IONIC2+ </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Angular2+ </tag>
+            
+            <tag> IONIC2+ </tag>
+            
+            <tag> NodeJS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【IONIC2+】项目开发 - 2 - 创建项目]]></title>
+      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/</url>
+      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol>
+<li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li>
+<li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li>
+<li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li>
+<li><p>安装ionic</p>
+<pre><code>npm install -g cordova@6.5.0 ionic
+</code></pre></li>
+<li><p>安装完成后，新建项目，这里有几个模板可选</p>
+<pre><code>ionic start myApp tabs
+</code></pre></li>
+<li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p>
+<pre><code>cd myApp
+ionic serve
+</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
 </ol>
 <ul>
 <li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
@@ -487,6 +487,41 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
 <li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
 <li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
 <li>还在写…别急…</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> JAVASCRIPT </category>
+            
+            <category> IONIC2+ </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Angular2+ </tag>
+            
+            <tag> IONIC2+ </tag>
+            
+            <tag> NodeJS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【IONIC2+】项目开发 - 目录]]></title>
+      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+      <content type="html"><![CDATA[<h4 id="IONIC2-的生命周期"><a href="#IONIC2-的生命周期" class="headerlink" title="IONIC2+ 的生命周期"></a>IONIC2+ 的生命周期</h4><ol>
+<li>ionViewLoaded - 页面加载完毕触发。该事件发生在页面被创建成 DOM 的时候，且仅仅执行一次。如果页面被缓存（Ionic默认是缓存的）就不会再次触发该事件。该事件中可以放置初始化页面的一些事件。</li>
+<li>ionViewWillEnter - 即将进入一个页面变成当前激活页面的时候执行的事件。</li>
+<li>ionViewDidEnter - 进入了一个页面且变成了当前的激活页面，该事件不管是第一次进入还是缓存后进入都将执行。</li>
+<li>ionViewWillLeave - 将要离开了该页面之后变成了不是当前激活页面的时候执行的事件。</li>
+<li>ionViewDidLeave - 在页面完成了离开该页面并变成了不是当前激活页面的时候执行的事件。</li>
+<li>ionViewWillUnload - 在页面销毁和页面中有元素移除之前执行的事件。</li>
+<li>ionViewDidUnload - 在页面销毁和页面中有元素移除之后执行的事件。</li>
 </ol>
 ]]></content>
       
