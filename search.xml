@@ -23,7 +23,7 @@
     </entry>
     
     <entry>
-      <title>【IONIC2+】项目开发 - 目录</title>
+      <title>【IONIC2+】生命周期</title>
       <link href="/2018/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
       <content type="html"><![CDATA[<h4 id="IONIC2-的生命周期"><a href="#IONIC2-的生命周期" class="headerlink" title="IONIC2+ 的生命周期"></a>IONIC2+ 的生命周期</h4><ol><li><p>ionViewLoaded</p><pre><code>页面加载完毕触发。该事件发生在页面被创建成 DOM 的时候，且仅仅执行一次。如果页面被缓存（Ionic默认是缓存的）就不会再次触发该事件。该事件中可以放置初始化页面的一些事件。</code></pre></li><li><p>ionViewWillEnter</p><pre><code>即将进入一个页面变成当前激活页面的时候执行的事件。</code></pre></li><li><p>ionViewDidEnter</p><pre><code>进入了一个页面且变成了当前的激活页面，该事件不管是第一次进入还是缓存后进入都将执行。</code></pre></li><li><p>ionViewWillLeave</p><pre><code>将要离开了该页面之后变成了不是当前激活页面的时候执行的事件。</code></pre></li><li><p>ionViewDidLeave</p><pre><code>在页面完成了离开该页面并变成了不是当前激活页面的时候执行的事件。</code></pre></li><li><p>ionViewWillUnload</p><pre><code>在页面销毁和页面中有元素移除之前执行的事件。</code></pre></li><li><p>ionViewDidUnload</p><pre><code>在页面销毁和页面中有元素移除之后执行的事件。</code></pre></li></ol>]]></content>
       
@@ -38,11 +38,11 @@
       
         <tags>
             
+            <tag> Angular2+ </tag>
+            
             <tag> IONIC2+ </tag>
             
             <tag> NodeJS </tag>
-            
-            <tag> Angular2+ </tag>
             
         </tags>
       
@@ -126,29 +126,9 @@
       
         <tags>
             
-            <tag> Angular2+ </tag>
-            
             <tag> JAVASCRIPT </tag>
             
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>Ubuntu 使用 KCPTUN 为 SS 加速</title>
-      <link href="/2017/Shadowsocks/Ubuntu%E4%BD%BF%E7%94%A8KCPTUN%E4%B8%BASS%E5%8A%A0%E9%80%9F/"/>
-      <content type="html"><![CDATA[<p>首先，你需要部署好SS。<br>然后一行行运行下面脚本</p><pre><code>wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.shchmod +x ./kcptun.sh./kcptun.sh</code></pre><p>1.设置 Kcptun 的服务端端口：</p><pre><code>请输入 Kcptun Server 端口 [1-65535]:(默认: 29900):请输入一个未被占用的端口，Kcptun 运行时将使用此端口。</code></pre><p>2.设置加速的 IP：</p><pre><code>请输入需要加速的地址:(默认: 127.0.0.1):一般填入你服务器的IP。如果你想使用 IPv6，请直接填写 IPv6 地址，不需要加 []，脚本会自动添加。</code></pre><p>3.设置需要加速的端口：</p><pre><code>请输入需要加速的端口 [1-65535]:(默认: 12948):填入上面获取到的加速端口。程序会检查当前是不是有程序占用着此端口，如果你的 Shadowsocks 没在运行，或者没有软件使用此端口，会弹出如下提示：当前没有软件使用此端口, 确定加速此端口?(y/n)如果你确认 Shadowsocks 运行时会使用此端口，那么输入 “y” 回车即可。</code></pre><p>4.设置 Kcptun 密码：</p><pre><code>请输入 Kcptun 密码:(如果不想使用密码请留空):这就是说，你可以为 Kcptun 单独设置一个密码，防止被他人恶意使用。这个密码和 SS 的密码没有半毛钱关系，请不要把它们混淆了。再提一句，Kcptun 和 Shadowsocks 没有任何关系，请不要脑补它们之间存在任何联系，Kcptun 你可以理解为一款网络加速软件，只不过它是通过将 TCP 协议转换为 UDP 协议，然后再通过大量的发送数据包，浪费了带宽以换取网速的提升。它能加速所有以 TCP 协议传输数据的软件，不单单是 Shadowsocks。只是大家都用来……你懂的回到上面的密码设置问题，如果你这里选择直接回车，也就是代表你不自定义密码。但是 Kcptun 有一个默认的密码，这个密码是：  it&apos;s a secrect 。</code></pre><p>5.禁用压缩</p><pre><code>是否禁用数据压缩?(默认: 不禁用) [y/n]:Kcptun 默认是启用压缩的。如果你这里设置为 y，也就是配置为 nocomp:true，那么就是禁用压缩。许多朋友这里设置的是保持默认（启用压缩），而偏偏在软件之中设置为禁用压缩，当然就连不上咯。其他配置项不用我说了，如果你了解它是干什么的，可以自定义配置。如果不知道，那么直接回车使用默认参数。但是，使用默认参数，是有可能浪费大量流量的，如果你想减少流量使用，你需要会调节参数：先将 client rcvwnd 和 server sndwnd 调到一个较小值；同时在两端逐步增大 client rcvwnd 和 server sndwnd ;尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第二步。任何事物都是有两面性的，选择了速度，就只有放弃流量。各参数详细信息请查看：https://github.com/xtaci/kcptun</code></pre><p>如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。<br>如果安装成功，应该能看到如下输出信息：</p><pre><code>恭喜, Kcptun 服务端配置完毕！正在获取当前安装的 Kcptun 版本...服务器IP:  10.10.10.10端口:  29900加速地址: 127.0.0.1:8388密码: 123456加密方式 Crypt:  salsa20当前安装的 Kcptun 版本为: v20160922推荐的客户端配置为: {&quot;localaddr&quot;: &quot;:8388&quot;,&quot;remoteaddr&quot;: &quot;10.10.10.10:29900&quot;,&quot;key&quot;: &quot;123456&quot;,&quot;crypt&quot;: &quot;salsa20&quot;,&quot;mode&quot;: &quot;fast&quot;,&quot;mtu&quot;: 1350,&quot;sndwnd&quot;: 1024,&quot;rcvwnd&quot;: 1024,&quot;datashard&quot;: 10,&quot;parityshard&quot;: 3,&quot;dscp&quot;: 0,&quot;conn&quot;: 1,&quot;autoexpire&quot;: 60,&quot;nocomp&quot;: false}手机端参数可以使用：*******其他参数请自行计算或设置, 详细信息可以查看: https://github.com/xtaci/kcptunKcptun 安装目录: /usr/share/kcptunKcptun 日志文件目录: /var/log/kcptun/请将以上的提示信息复制保存下来，后面配置客户端会用到这些提示信息。注意：服务端的 sndwnd 对应的是客户端的 recwnd，所以请不要问我为什么输出的客户端参数和你配置的服务端参数是反的。安装之后，Kcptun 服务交由 Supervisor 管理。Supervisor 相关命令：service supervisord {start|stop|restart|status}Kcptun 相关命令：supervisorctl {start|stop|restart|status} kcptunSupervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时先确保 Supervisor 已启动。</code></pre>]]></content>
-      
-      <categories>
-          
-          <category> Shadowsocks </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Shadowsocks </tag>
+            <tag> Angular2+ </tag>
             
         </tags>
       
@@ -175,26 +155,20 @@
     </entry>
     
     <entry>
-      <title>【IONIC2+】项目开发 - 3 - 添加页面</title>
-      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-3-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/"/>
-      <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol><li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="noopener">IONIC官方教程</a></li><li>如果你看不懂英文，没事，那我们就不学了。</li></ol><h4 id="创建页面有几个重要的地方"><a href="#创建页面有几个重要的地方" class="headerlink" title="创建页面有几个重要的地方"></a>创建页面有几个重要的地方</h4><ol><li>创建 .ts 文件，这个文件是存放页面逻辑的地方，例如我们创建一个帖子页面在 post.ts 文件里<pre>export class PostPage {}</pre></li><li>创建 .html 文件，这个文件是界面</li><li>创建 .scss 文件，这个文件是CSS</li><li>把 .ts 文件中的类的引用添加到 app/app.module.ts 中<pre>import {PostPage} from "../pages/post";</pre></li><li>把类名添加到 NgModule 中的 declarations 和 entryComponents 中(所有新加的页面都要放到这里进行声明，不然会报错)<pre>declarations: [     MyApp,     TabsPage,     PostPage     ]</pre><pre>entryComponents: [     MyApp,     TabsPage,     PostPage     ]</pre></li><li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
+      <title>Ubuntu 使用 KCPTUN 为 SS 加速</title>
+      <link href="/2017/Shadowsocks/Ubuntu%E4%BD%BF%E7%94%A8KCPTUN%E4%B8%BASS%E5%8A%A0%E9%80%9F/"/>
+      <content type="html"><![CDATA[<p>首先，你需要部署好SS。<br>然后一行行运行下面脚本</p><pre><code>wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.shchmod +x ./kcptun.sh./kcptun.sh</code></pre><p>1.设置 Kcptun 的服务端端口：</p><pre><code>请输入 Kcptun Server 端口 [1-65535]:(默认: 29900):请输入一个未被占用的端口，Kcptun 运行时将使用此端口。</code></pre><p>2.设置加速的 IP：</p><pre><code>请输入需要加速的地址:(默认: 127.0.0.1):一般填入你服务器的IP。如果你想使用 IPv6，请直接填写 IPv6 地址，不需要加 []，脚本会自动添加。</code></pre><p>3.设置需要加速的端口：</p><pre><code>请输入需要加速的端口 [1-65535]:(默认: 12948):填入上面获取到的加速端口。程序会检查当前是不是有程序占用着此端口，如果你的 Shadowsocks 没在运行，或者没有软件使用此端口，会弹出如下提示：当前没有软件使用此端口, 确定加速此端口?(y/n)如果你确认 Shadowsocks 运行时会使用此端口，那么输入 “y” 回车即可。</code></pre><p>4.设置 Kcptun 密码：</p><pre><code>请输入 Kcptun 密码:(如果不想使用密码请留空):这就是说，你可以为 Kcptun 单独设置一个密码，防止被他人恶意使用。这个密码和 SS 的密码没有半毛钱关系，请不要把它们混淆了。再提一句，Kcptun 和 Shadowsocks 没有任何关系，请不要脑补它们之间存在任何联系，Kcptun 你可以理解为一款网络加速软件，只不过它是通过将 TCP 协议转换为 UDP 协议，然后再通过大量的发送数据包，浪费了带宽以换取网速的提升。它能加速所有以 TCP 协议传输数据的软件，不单单是 Shadowsocks。只是大家都用来……你懂的回到上面的密码设置问题，如果你这里选择直接回车，也就是代表你不自定义密码。但是 Kcptun 有一个默认的密码，这个密码是：  it&apos;s a secrect 。</code></pre><p>5.禁用压缩</p><pre><code>是否禁用数据压缩?(默认: 不禁用) [y/n]:Kcptun 默认是启用压缩的。如果你这里设置为 y，也就是配置为 nocomp:true，那么就是禁用压缩。许多朋友这里设置的是保持默认（启用压缩），而偏偏在软件之中设置为禁用压缩，当然就连不上咯。其他配置项不用我说了，如果你了解它是干什么的，可以自定义配置。如果不知道，那么直接回车使用默认参数。但是，使用默认参数，是有可能浪费大量流量的，如果你想减少流量使用，你需要会调节参数：先将 client rcvwnd 和 server sndwnd 调到一个较小值；同时在两端逐步增大 client rcvwnd 和 server sndwnd ;尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第二步。任何事物都是有两面性的，选择了速度，就只有放弃流量。各参数详细信息请查看：https://github.com/xtaci/kcptun</code></pre><p>如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。<br>如果安装成功，应该能看到如下输出信息：</p><pre><code>恭喜, Kcptun 服务端配置完毕！正在获取当前安装的 Kcptun 版本...服务器IP:  10.10.10.10端口:  29900加速地址: 127.0.0.1:8388密码: 123456加密方式 Crypt:  salsa20当前安装的 Kcptun 版本为: v20160922推荐的客户端配置为: {&quot;localaddr&quot;: &quot;:8388&quot;,&quot;remoteaddr&quot;: &quot;10.10.10.10:29900&quot;,&quot;key&quot;: &quot;123456&quot;,&quot;crypt&quot;: &quot;salsa20&quot;,&quot;mode&quot;: &quot;fast&quot;,&quot;mtu&quot;: 1350,&quot;sndwnd&quot;: 1024,&quot;rcvwnd&quot;: 1024,&quot;datashard&quot;: 10,&quot;parityshard&quot;: 3,&quot;dscp&quot;: 0,&quot;conn&quot;: 1,&quot;autoexpire&quot;: 60,&quot;nocomp&quot;: false}手机端参数可以使用：*******其他参数请自行计算或设置, 详细信息可以查看: https://github.com/xtaci/kcptunKcptun 安装目录: /usr/share/kcptunKcptun 日志文件目录: /var/log/kcptun/请将以上的提示信息复制保存下来，后面配置客户端会用到这些提示信息。注意：服务端的 sndwnd 对应的是客户端的 recwnd，所以请不要问我为什么输出的客户端参数和你配置的服务端参数是反的。安装之后，Kcptun 服务交由 Supervisor 管理。Supervisor 相关命令：service supervisord {start|stop|restart|status}Kcptun 相关命令：supervisorctl {start|stop|restart|status} kcptunSupervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时先确保 Supervisor 已启动。</code></pre>]]></content>
       
       <categories>
           
-          <category> JAVASCRIPT </category>
-          
-          <category> IONIC2+ </category>
+          <category> Shadowsocks </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> IONIC2+ </tag>
-            
-            <tag> NodeJS </tag>
-            
-            <tag> Angular2+ </tag>
+            <tag> Shadowsocks </tag>
             
         </tags>
       
@@ -216,11 +190,37 @@
       
         <tags>
             
+            <tag> Angular2+ </tag>
+            
             <tag> IONIC2+ </tag>
             
             <tag> NodeJS </tag>
             
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>【IONIC2+】项目开发 - 3 - 添加页面</title>
+      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-3-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/"/>
+      <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol><li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="noopener">IONIC官方教程</a></li><li>如果你看不懂英文，没事，那我们就不学了。</li></ol><h4 id="创建页面有几个重要的地方"><a href="#创建页面有几个重要的地方" class="headerlink" title="创建页面有几个重要的地方"></a>创建页面有几个重要的地方</h4><ol><li>创建 .ts 文件，这个文件是存放页面逻辑的地方，例如我们创建一个帖子页面在 post.ts 文件里<pre>export class PostPage {}</pre></li><li>创建 .html 文件，这个文件是界面</li><li>创建 .scss 文件，这个文件是CSS</li><li>把 .ts 文件中的类的引用添加到 app/app.module.ts 中<pre>import {PostPage} from "../pages/post";</pre></li><li>把类名添加到 NgModule 中的 declarations 和 entryComponents 中(所有新加的页面都要放到这里进行声明，不然会报错)<pre>declarations: [     MyApp,     TabsPage,     PostPage     ]</pre><pre>entryComponents: [     MyApp,     TabsPage,     PostPage     ]</pre></li><li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> IONIC2+ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> Angular2+ </tag>
+            
+            <tag> IONIC2+ </tag>
+            
+            <tag> NodeJS </tag>
             
         </tags>
       
@@ -262,11 +262,11 @@
       
         <tags>
             
+            <tag> Angular2+ </tag>
+            
             <tag> IONIC2+ </tag>
             
             <tag> NodeJS </tag>
-            
-            <tag> Angular2+ </tag>
             
         </tags>
       
