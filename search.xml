@@ -23,6 +23,32 @@
     </entry>
     
     <entry>
+      <title>【IONIC2+】项目开发 - 目录</title>
+      <link href="/2018/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+      <content type="html"><![CDATA[<h4 id="IONIC2-的生命周期"><a href="#IONIC2-的生命周期" class="headerlink" title="IONIC2+ 的生命周期"></a>IONIC2+ 的生命周期</h4><ol><li><p>ionViewLoaded</p><pre><code>页面加载完毕触发。该事件发生在页面被创建成 DOM 的时候，且仅仅执行一次。如果页面被缓存（Ionic默认是缓存的）就不会再次触发该事件。该事件中可以放置初始化页面的一些事件。</code></pre></li><li><p>ionViewWillEnter</p><pre><code>即将进入一个页面变成当前激活页面的时候执行的事件。</code></pre></li><li><p>ionViewDidEnter</p><pre><code>进入了一个页面且变成了当前的激活页面，该事件不管是第一次进入还是缓存后进入都将执行。</code></pre></li><li><p>ionViewWillLeave</p><pre><code>将要离开了该页面之后变成了不是当前激活页面的时候执行的事件。</code></pre></li><li><p>ionViewDidLeave</p><pre><code>在页面完成了离开该页面并变成了不是当前激活页面的时候执行的事件。</code></pre></li><li><p>ionViewWillUnload</p><pre><code>在页面销毁和页面中有元素移除之前执行的事件。</code></pre></li><li><p>ionViewDidUnload</p><pre><code>在页面销毁和页面中有元素移除之后执行的事件。</code></pre></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> IONIC2+ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> IONIC2+ </tag>
+            
+            <tag> NodeJS </tag>
+            
+            <tag> Angular2+ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Windows下快速删除Nodejs项目</title>
       <link href="/2017/Nodejs/Windows%E4%B8%8B%E5%BF%AB%E9%80%9F%E5%88%A0%E9%99%A4Nodejs%E9%A1%B9%E7%9B%AE/"/>
       <content type="html"><![CDATA[<h1 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h1><ul><li>删除一个Node项目在Windows下面是一件非常操蛋的事情</li></ul><h1 id="删除工具"><a href="#删除工具" class="headerlink" title="删除工具"></a>删除工具</h1><pre><code>npm install rimraf -grimraf node_modules</code></pre><h1 id="直接Powershell删除"><a href="#直接Powershell删除" class="headerlink" title="直接Powershell删除"></a>直接Powershell删除</h1><pre><code>如删除 D:\temp\目录下的所有文件的写法如下：rmdir d:\temp\</code></pre>]]></content>
@@ -63,30 +89,6 @@
     </entry>
     
     <entry>
-      <title>Angula2中innerHtml的问题</title>
-      <link href="/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-      <content type="html"><![CDATA[<h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p><ol><li><p>导入包</p><pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;</code></pre></li><li><p>constructor() 中添加</p><pre><code>public sanitizer: DomSanitizer</code></pre></li><li><p>转换数据</p><pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);</code></pre></li></ol>]]></content>
-      
-      <categories>
-          
-          <category> JAVASCRIPT </category>
-          
-          <category> Angular2+ </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> JAVASCRIPT </tag>
-            
-            <tag> Angular2+ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>Chrome下开启跨域功能</title>
       <link href="/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/"/>
       <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p><ol><li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p><pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData</code></pre></li><li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p></li></ol>]]></content>
@@ -109,20 +111,24 @@
     </entry>
     
     <entry>
-      <title>Ubuntu 搭建 Shadowsocks 进行科学上网</title>
-      <link href="/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install setuptools    $ sudo pip install shadowsocks    $ apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"Server IP",        "server_port":8388,        "local_port":1080,        "password":"password",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
+      <title>Angula2中innerHtml的问题</title>
+      <link href="/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <content type="html"><![CDATA[<h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p><ol><li><p>导入包</p><pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;</code></pre></li><li><p>constructor() 中添加</p><pre><code>public sanitizer: DomSanitizer</code></pre></li><li><p>转换数据</p><pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);</code></pre></li></ol>]]></content>
       
       <categories>
           
-          <category> Shadowsocks </category>
+          <category> JAVASCRIPT </category>
+          
+          <category> Angular2+ </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Shadowsocks </tag>
+            <tag> Angular2+ </tag>
+            
+            <tag> JAVASCRIPT </tag>
             
         </tags>
       
@@ -149,26 +155,20 @@
     </entry>
     
     <entry>
-      <title>【IONIC2+】项目开发 - 2 - 创建项目</title>
-      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
-      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol><li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li><li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li><li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li><li><p>安装ionic</p><pre><code>npm install -g cordova@6.5.0 ionic</code></pre></li><li><p>安装完成后，新建项目，这里有几个模板可选</p><pre><code>ionic start myApp tabs</code></pre></li><li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p><pre><code>cd myAppionic serve</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
+      <title>Ubuntu 搭建 Shadowsocks 进行科学上网</title>
+      <link href="/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install setuptools    $ sudo pip install shadowsocks    $ apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"Server IP",        "server_port":8388,        "local_port":1080,        "password":"password",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
       
       <categories>
           
-          <category> JAVASCRIPT </category>
-          
-          <category> IONIC2+ </category>
+          <category> Shadowsocks </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Angular2+ </tag>
-            
-            <tag> IONIC2+ </tag>
-            
-            <tag> NodeJS </tag>
+            <tag> Shadowsocks </tag>
             
         </tags>
       
@@ -190,11 +190,37 @@
       
         <tags>
             
+            <tag> IONIC2+ </tag>
+            
+            <tag> NodeJS </tag>
+            
             <tag> Angular2+ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>【IONIC2+】项目开发 - 2 - 创建项目</title>
+      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol><li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li><li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li><li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li><li><p>安装ionic</p><pre><code>npm install -g cordova@6.5.0 ionic</code></pre></li><li><p>安装完成后，新建项目，这里有几个模板可选</p><pre><code>ionic start myApp tabs</code></pre></li><li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p><pre><code>cd myAppionic serve</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> IONIC2+ </category>
+          
+      </categories>
+      
+      
+        <tags>
             
             <tag> IONIC2+ </tag>
             
             <tag> NodeJS </tag>
+            
+            <tag> Angular2+ </tag>
             
         </tags>
       
@@ -236,46 +262,20 @@
       
         <tags>
             
-            <tag> Angular2+ </tag>
-            
             <tag> IONIC2+ </tag>
             
             <tag> NodeJS </tag>
+            
+            <tag> Angular2+ </tag>
             
         </tags>
       
     </entry>
     
     <entry>
-      <title>【IONIC2+】项目开发 - 目录</title>
-      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
-      <content type="html"><![CDATA[<h4 id="IONIC2-的生命周期"><a href="#IONIC2-的生命周期" class="headerlink" title="IONIC2+ 的生命周期"></a>IONIC2+ 的生命周期</h4><ol><li>ionViewLoaded - 页面加载完毕触发。该事件发生在页面被创建成 DOM 的时候，且仅仅执行一次。如果页面被缓存（Ionic默认是缓存的）就不会再次触发该事件。该事件中可以放置初始化页面的一些事件。</li><li>ionViewWillEnter - 即将进入一个页面变成当前激活页面的时候执行的事件。</li><li>ionViewDidEnter - 进入了一个页面且变成了当前的激活页面，该事件不管是第一次进入还是缓存后进入都将执行。</li><li>ionViewWillLeave - 将要离开了该页面之后变成了不是当前激活页面的时候执行的事件。</li><li>ionViewDidLeave - 在页面完成了离开该页面并变成了不是当前激活页面的时候执行的事件。</li><li>ionViewWillUnload - 在页面销毁和页面中有元素移除之前执行的事件。</li><li>ionViewDidUnload - 在页面销毁和页面中有元素移除之后执行的事件。</li></ol>]]></content>
-      
-      <categories>
-          
-          <category> JAVASCRIPT </category>
-          
-          <category> IONIC2+ </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Angular2+ </tag>
-            
-            <tag> IONIC2+ </tag>
-            
-            <tag> NodeJS </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>KCP客户端配置</title>
-      <link href="/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
-      <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
+      <title>Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)</title>
+      <link href="/2016/Shadowsocks/Ubuntu%E9%85%8D%E7%BD%AESS_GO%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83(%E5%8C%85%E6%8B%ACKCP%E5%92%8CKCP%E5%8A%A0%E5%AF%86)/"/>
+      <content type="html"><![CDATA[<ol><li><p>首先安装GO语言环境</p><pre><code>apt-get updateapt-get install golang-go</code></pre></li><li><p>设置GOPATH变量，指定工作空间</p><pre><code>echo &quot;export GOPATH=/opt/go&quot; &gt;&gt; ~/.bashrc       source ~/.bashrc</code></pre></li><li><p>安装kcpraw集成环境</p><pre><code>wget https://github.com/ccsexyz/kcpraw/releases/download/v20171019/kcpraw-linux-amd64-20171019.tar.gztar -xvzf kcpraw-linux-amd64-20171019.tar.gzchmod 777 kcpraw_server_linux_amd64</code></pre></li><li><p>新建bash</p><pre><code>vim start_kcpraw</code></pre></li><li><p>ESC + I 切换输入模式，输入以下东西</p><pre><code>#!/bin/bashnohup ./kcpraw_server_linux_amd64 --target 服务器ip:8388 --ssproxy --sskey 密码</code></pre></li><li><p>ESC + : 切换保存模式，输入 wq 保存退出</p></li><li><p>赋予脚本权限</p><pre><code>chmod 777 start_kcpraw</code></pre></li><li><p>运行脚本</p><pre><code>./start_kcpraw</code></pre></li></ol>]]></content>
       
       <categories>
           
@@ -293,9 +293,9 @@
     </entry>
     
     <entry>
-      <title>Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)</title>
-      <link href="/2016/Shadowsocks/Ubuntu%E9%85%8D%E7%BD%AESS_GO%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83(%E5%8C%85%E6%8B%ACKCP%E5%92%8CKCP%E5%8A%A0%E5%AF%86)/"/>
-      <content type="html"><![CDATA[<ol><li><p>首先安装GO语言环境</p><pre><code>apt-get updateapt-get install golang-go</code></pre></li><li><p>设置GOPATH变量，指定工作空间</p><pre><code>echo &quot;export GOPATH=/opt/go&quot; &gt;&gt; ~/.bashrc       source ~/.bashrc</code></pre></li><li><p>安装kcpraw集成环境</p><pre><code>wget https://github.com/ccsexyz/kcpraw/releases/download/v20171019/kcpraw-linux-amd64-20171019.tar.gztar -xvzf kcpraw-linux-amd64-20171019.tar.gzchmod 777 kcpraw_server_linux_amd64</code></pre></li><li><p>新建bash</p><pre><code>vim start_kcpraw</code></pre></li><li><p>ESC + I 切换输入模式，输入以下东西</p><pre><code>#!/bin/bashnohup ./kcpraw_server_linux_amd64 --target 服务器ip:8388 --ssproxy --sskey 密码</code></pre></li><li><p>ESC + : 切换保存模式，输入 wq 保存退出</p></li><li><p>赋予脚本权限</p><pre><code>chmod 777 start_kcpraw</code></pre></li><li><p>运行脚本</p><pre><code>./start_kcpraw</code></pre></li></ol>]]></content>
+      <title>KCP客户端配置</title>
+      <link href="/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
+      <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
       
       <categories>
           
