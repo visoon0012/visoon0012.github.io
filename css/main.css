@@ -868,7 +868,6 @@ pre .javascript .function {
 .post-body .tabs ul.nav-tabs {
   margin: 0;
   padding: 0;
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-bottom: -1px;
@@ -1249,7 +1248,6 @@ pre .javascript .function {
 .post-sticky-flag {
   display: inline-block;
   font-size: 16px;
-  -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
 }
 .use-motion .post-block,
@@ -1474,7 +1472,6 @@ pre .javascript .function {
   left: 0;
   background-color: #000;
   visibility: hidden;
-  -webkit-transform: scaleX(0);
   transform: scaleX(0);
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
@@ -1482,7 +1479,6 @@ pre .javascript .function {
 }
 .posts-expand .post-title-link:hover::before {
   visibility: visible;
-  -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 .posts-expand .post-title-link .fa {
@@ -1816,7 +1812,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffddc3;
+  background: #e76e65;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2330,8 +2326,6 @@ pre .javascript .function {
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   color: #ccc;
 }
@@ -2486,36 +2480,20 @@ pre .javascript .function {
   padding: 15px 0 15px 10px;
 }
 #schedule ul#event-list li.event-now h2.event-summary:before {
-  -webkit-transform: scale(1.2);
   transform: scale(1.2);
   color: #fff;
-  -webkit-animation: dot-flash 1s alternate infinite ease-in-out;
-          animation: dot-flash 1s alternate infinite ease-in-out;
+  animation: dot-flash 1s alternate infinite ease-in-out;
 }
 #schedule ul#event-list li.event-now * {
   color: #fff !important;
 }
-@-webkit-keyframes dot-flash {
-  from {
-    opacity: 1;
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-  to {
-    opacity: 0;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
 @keyframes dot-flash {
   from {
     opacity: 1;
-    -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
   to {
     opacity: 0;
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
@@ -2762,8 +2740,6 @@ pre .javascript .function {
 .site-nav-toggle {
   left: 20px;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2842,14 +2818,12 @@ pre .javascript .function {
   color: #e34603;
 }
 .links-of-author {
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+      justify-content: center;
 }
 .links-of-author-item {
   margin: 5px 0 0;

@@ -365,7 +365,7 @@
 </blockquote>
 <ol>
 <li>建立Maven项目，我用的是IDEA</li>
-<li><p>复制pom.xml，添加依赖文件<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;project xmlns=”<a href="http://maven.apache.org/POM/4.0.0" target="_blank" rel="noopener">http://maven.apache.org/POM/4.0.0</a>“</pre></p>
+<li><p>复制pom.xml，添加依赖文件<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;project xmlns=”<a href="http://maven.apache.org/POM/4.0.0&quot;" target="_blank" rel="noopener">http://maven.apache.org/POM/4.0.0&quot;</a></pre></p>
 <pre><code>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
 xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&amp;gt;
 </code></pre><p>&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</p>
@@ -537,7 +537,7 @@ public User getUser() {
 </ol>
 <p>#config this Project.file logger<br>log4j.logger.thisProject.file=INFO,thisProject.file.out<br>log4j.appender.thisProject.file.out=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.thisProject.file.out.File=logContentFile.log<br>log4j.appender.thisProject.file.out.layout=org.apache.log4j.PatternLayout<br><br>&nbsp;</p>
 <ol>
-<li><p>配置查询SQL。UserMapper.xml<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE mapper PUBLIC “-//mybatis.org//DTD Mapper 3.0//EN” “<a href="http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt</a>;<br>&lt;mapper namespace=”cn.visoon.wechat.mapper.UserMapper”&gt;</pre></p>
+<li><p>配置查询SQL。UserMapper.xml<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE mapper PUBLIC “-//mybatis.org//DTD Mapper 3.0//EN” “<a href="http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</a>&gt;<br>&lt;mapper namespace=”cn.visoon.wechat.mapper.UserMapper”&gt;</pre></p>
 <p>&lt;select id=”findUserInfo” resultType=”cn.visoon.wechat.model.User”&gt;<br>select id, name, age,password from user;<br>&lt;/select&gt;</p>
 </li>
 </ol>
@@ -653,7 +653,7 @@ public User getUser() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -3,170 +3,79 @@
   
     
     <entry>
-      <title><![CDATA[Windows下快速删除Nodejs项目]]></title>
-      <url>/2017/Nodejs/Windows%E4%B8%8B%E5%BF%AB%E9%80%9F%E5%88%A0%E9%99%A4Nodejs%E9%A1%B9%E7%9B%AE/</url>
-      <content type="html"><![CDATA[<h1 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h1><ul>
-<li>删除一个Node项目在Windows下面是一件非常操蛋的事情</li>
-</ul>
-<h1 id="删除工具"><a href="#删除工具" class="headerlink" title="删除工具"></a>删除工具</h1><pre><code>npm install rimraf -g
-rimraf node_modules
-</code></pre><h1 id="直接Powershell删除"><a href="#直接Powershell删除" class="headerlink" title="直接Powershell删除"></a>直接Powershell删除</h1><pre><code>如删除 D:\temp\目录下的所有文件的写法如下：
-rmdir d:\temp\
-</code></pre>]]></content>
+      <title>Linux部署SSR</title>
+      <link href="/2018/Shadowsocks/Linux%E9%83%A8%E7%BD%B2SSR/"/>
+      <content type="html"><![CDATA[<p>首先，你需要一台运行在国外的服务器。<br>然后一行行运行下面脚本</p><pre><code>wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.shchmod +x shadowsocksR.sh./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</code></pre><p>安装完成后，脚本提示如下：</p><pre><code>Congratulations, ShadowsocksR server install completed!Your Server IP        :your_server_ipYour Server Port      :your_server_portYour Password         :your_passwordYour Protocol         :your_protocolYour obfs             :your_obfsYour Encryption Method:your_encryption_methodWelcome to visit:https://shadowsocks.be/9.htmlEnjoy it!</code></pre><p>卸载方法：<br>使用 root 用户登录，运行以下命令：</p><pre><code>./shadowsocksR.sh uninstall</code></pre><p>安装完成后即已后台启动 ShadowsocksR ，运行：</p><pre><code>/etc/init.d/shadowsocks status</code></pre><p>可以查看 ShadowsocksR 进程是否已经启动。<br>本脚本安装完成后，已将 ShadowsocksR 自动加入开机自启动。</p><p>使用命令：<br>启动：/etc/init.d/shadowsocks start<br>停止：/etc/init.d/shadowsocks stop<br>重启：/etc/init.d/shadowsocks restart<br>状态：/etc/init.d/shadowsocks status</p><p>配置文件路径：/etc/shadowsocks.json<br>日志文件路径：/var/log/shadowsocks.log<br>代码安装目录：/usr/local/shadowsocks</p><p>多用户配置示例：</p><pre><code>{&quot;server&quot;:&quot;0.0.0.0&quot;,&quot;server_ipv6&quot;: &quot;[::]&quot;,&quot;local_address&quot;:&quot;127.0.0.1&quot;,&quot;local_port&quot;:1080,&quot;port_password&quot;:{    &quot;8989&quot;:&quot;password1&quot;,    &quot;8990&quot;:&quot;password2&quot;,    &quot;8991&quot;:&quot;password3&quot;},&quot;timeout&quot;:300,&quot;method&quot;:&quot;aes-256-cfb&quot;,&quot;protocol&quot;: &quot;origin&quot;,&quot;protocol_param&quot;: &quot;&quot;,&quot;obfs&quot;: &quot;plain&quot;,&quot;obfs_param&quot;: &quot;&quot;,&quot;redirect&quot;: &quot;&quot;,&quot;dns_ipv6&quot;: false,&quot;fast_open&quot;: false,&quot;workers&quot;: 1}</code></pre><p>如果你想修改配置文件，请参考：<br><a href="https://github.com/shadowsocksr-backup/shadowsocks-rss/wiki/Server-Setup" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocks-rss/wiki/Server-Setup</a><br><a href="https://github.com/shadowsocksr-backup/shadowsocks-rss/blob/master/ssr.md" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocks-rss/blob/master/ssr.md</a><br><a href="https://github.com/shadowsocksr-backup/shadowsocks-rss/wiki/config.json" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocks-rss/wiki/config.json</a></p>]]></content>
       
-        <categories>
-            
-            <category> Nodejs </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> NodeJS </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Ubuntu使用KCPRAW伪装UDP请求,防止运营商拦截]]></title>
-      <url>/2017/Shadowsocks/Ubuntu%E4%BD%BF%E7%94%A8KCPRAW%E4%BC%AA%E8%A3%85UDP%E8%AF%B7%E6%B1%82%E9%98%B2%E6%AD%A2%E8%BF%90%E8%90%A5%E5%95%86%E6%8B%A6%E6%88%AA/</url>
-      <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a><img src="logo.png" alt="kcptun" height="54px"></h1><p><img src="kcptun.png" alt="kcptun" height="300px"></p>
-<p>-</p>
-<h3 id="原因及原理"><a href="#原因及原理" class="headerlink" title="原因及原理"></a>原因及原理</h3><p>因为KCP多倍发包原理，有些地方运营商会拦截多倍的UDP请求，使用KCPRAW可以把UDP伪装成TCP流量，防止运营商拦截</p>
-<h3 id="快速设定"><a href="#快速设定" class="headerlink" title="快速设定"></a>快速设定</h3><p>客户端、服务器分别<strong>下载</strong>对应平台的<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">预编译版本</a>，并<strong>解压</strong>，通过下面的命令<strong>启动</strong>端口转发。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">KCP客户端: ./client_darwin_amd64 -r &quot;KCP服务器IP地址:4000&quot; -l &quot;:8388&quot; -mode fast2</span><br><span class="line">KCP服务器: ./server_linux_amd64 -t &quot;目标服务器IP地址:8388&quot; -l &quot;:4000&quot; -mode fast2</span><br></pre></td></tr></table></figure></p>
-<p>以上命令可以实现8388/tcp端口的转发（通过4000/udp端口），即：</p>
-<p>Application -&gt; KCP客户端(8388/tcp) -&gt; KCP服务器(4000/udp) -&gt; Server(8388/tcp)</p>
-<h3 id="从源码安装"><a href="#从源码安装" class="headerlink" title="从源码安装"></a>从源码安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$go get -u github.com/xtaci/kcptun/client</span><br><span class="line">$go get -u github.com/xtaci/kcptun/server</span><br></pre></td></tr></table></figure>
-<p>注意: 如果出现错误提示，请确保依赖库能正确访问到。</p>
-<p>Release中的所有二进制版本，是通过 <code>build-release.sh</code> 脚本生成并优化。</p>
-<h3 id="速度对比"><a href="#速度对比" class="headerlink" title="速度对比"></a>速度对比</h3><p><img src="fast.png" alt="fast.com" height="256px">       </p>
-<ul>
-<li>测速网站: <a href="https://fast.com" target="_blank" rel="noopener">https://fast.com</a></li>
-<li>接入速度: 100Mbps</li>
-<li>WIFI: 5GHz TL-WDR3320</li>
-</ul>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>在Mac OS X El Capitan下的帮助输出，注意默认值: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">$ ./client_darwin_amd64 -h</span><br><span class="line">NAME:</span><br><span class="line">   kcptun - client(with SMUX)</span><br><span class="line"></span><br><span class="line">USAGE:</span><br><span class="line">   client_darwin_amd64 [global options] command [command options] [arguments...]</span><br><span class="line"></span><br><span class="line">VERSION:</span><br><span class="line">   20170120</span><br><span class="line"></span><br><span class="line">COMMANDS:</span><br><span class="line">     help, h  Shows a list of commands or help for one command</span><br><span class="line"></span><br><span class="line">GLOBAL OPTIONS:</span><br><span class="line">   --localaddr value, -l value      local listen address (default: &quot;:12948&quot;)</span><br><span class="line">   --remoteaddr value, -r value     kcp server address (default: &quot;vps:29900&quot;)</span><br><span class="line">   --key value                      pre-shared secret between client and server (default: &quot;it&apos;s a secrect&quot;) [$KCPTUN_KEY]</span><br><span class="line">   --crypt value                    aes, aes-128, aes-192, salsa20, blowfish, twofish, cast5, 3des, tea, xtea, xor, none (default: &quot;aes&quot;)</span><br><span class="line">   --mode value                     profiles: fast3, fast2, fast, normal (default: &quot;fast&quot;)</span><br><span class="line">   --conn value                     set num of UDP connections to server (default: 1)</span><br><span class="line">   --autoexpire value               set auto expiration time(in seconds) for a single UDP connection, 0 to disable (default: 0)</span><br><span class="line">   --mtu value                      set maximum transmission unit for UDP packets (default: 1350)</span><br><span class="line">   --sndwnd value                   set send window size(num of packets) (default: 128)</span><br><span class="line">   --rcvwnd value                   set receive window size(num of packets) (default: 512)</span><br><span class="line">   --datashard value, --ds value    set reed-solomon erasure coding - datashard (default: 10)</span><br><span class="line">   --parityshard value, --ps value  set reed-solomon erasure coding - parityshard (default: 3)</span><br><span class="line">   --dscp value                     set DSCP(6bit) (default: 0)</span><br><span class="line">   --nocomp                         disable compression</span><br><span class="line">   --snmplog value                  collect snmp to file, aware of timeformat in golang, like: ./snmp-20060102.log</span><br><span class="line">   --snmpperiod value               snmp collect period, in seconds (default: 60)</span><br><span class="line">   --log value                      specify a log file to output, default goes to stderr</span><br><span class="line">   -c value                         config from json file, which will override the command from shell</span><br><span class="line">   --help, -h                       show help</span><br><span class="line">   --version, -v                    print the version</span><br><span class="line"></span><br><span class="line">$ ./server_darwin_amd64 -h</span><br><span class="line">NAME:</span><br><span class="line">   kcptun - server(with SMUX)</span><br><span class="line"></span><br><span class="line">USAGE:</span><br><span class="line">   server_darwin_amd64 [global options] command [command options] [arguments...]</span><br><span class="line"></span><br><span class="line">VERSION:</span><br><span class="line">   20170120</span><br><span class="line"></span><br><span class="line">COMMANDS:</span><br><span class="line">     help, h  Shows a list of commands or help for one command</span><br><span class="line"></span><br><span class="line">GLOBAL OPTIONS:</span><br><span class="line">   --listen value, -l value         kcp server listen address (default: &quot;:29900&quot;)</span><br><span class="line">   --target value, -t value         target server address (default: &quot;127.0.0.1:12948&quot;)</span><br><span class="line">   --key value                      pre-shared secret between client and server (default: &quot;it&apos;s a secrect&quot;) [$KCPTUN_KEY]</span><br><span class="line">   --crypt value                    aes, aes-128, aes-192, salsa20, blowfish, twofish, cast5, 3des, tea, xtea, xor, none (default: &quot;aes&quot;)</span><br><span class="line">   --mode value                     profiles: fast3, fast2, fast, normal (default: &quot;fast&quot;)</span><br><span class="line">   --mtu value                      set maximum transmission unit for UDP packets (default: 1350)</span><br><span class="line">   --sndwnd value                   set send window size(num of packets) (default: 1024)</span><br><span class="line">   --rcvwnd value                   set receive window size(num of packets) (default: 1024)</span><br><span class="line">   --datashard value, --ds value    set reed-solomon erasure coding - datashard (default: 10)</span><br><span class="line">   --parityshard value, --ps value  set reed-solomon erasure coding - parityshard (default: 3)</span><br><span class="line">   --dscp value                     set DSCP(6bit) (default: 0)</span><br><span class="line">   --nocomp                         disable compression</span><br><span class="line">   --snmplog value                  collect snmp to file, aware of timeformat in golang, like: ./snmp-20060102.log</span><br><span class="line">   --snmpperiod value               snmp collect period, in seconds (default: 60)</span><br><span class="line">   --log value                      specify a log file to output, default goes to stderr</span><br><span class="line">   -c value                         config from json file, which will override the command from shell</span><br><span class="line">   --help, -h                       show help</span><br><span class="line">   --version, -v                    print the version</span><br></pre></td></tr></table></figure>
-<h4 id="分层参数图"><a href="#分层参数图" class="headerlink" title="分层参数图"></a>分层参数图</h4><p align="left"><img src="layeredparams.png" alt="params" height="450px"></p>
-
-<p><strong>两端参数必须一致的有</strong>:</p>
-<ul>
-<li>datashard –前向纠错</li>
-<li>parityshard –前向纠错</li>
-<li>nocomp –压缩</li>
-<li>key –密钥</li>
-<li>crypt –加密算法</li>
-</ul>
-<p>其余为两边可独立设定的参数</p>
-<h3 id="内置模式"><a href="#内置模式" class="headerlink" title="内置模式"></a>内置模式</h3><p>响应速度:<br><em>fast3 &gt; fast2 &gt;</em> <strong>[fast]</strong> <em>&gt; normal &gt; default</em><br>有效载荷比:<br><em>default &gt; normal &gt;</em> <strong>[fast]</strong> <em>&gt; fast2 &gt; fast3</em><br>中间-mode参数比较均衡，总之就是越快，包重传越激进。<br>更高级的 <strong>手动档</strong> 需要理解KCP协议，并通过 <strong>隐藏参数</strong> 调整，例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-mode manual -nodelay 1 -resend 2 -nc 1 -interval 20</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>搭配1. fast + FEC(5,5)</li>
-<li>搭配2. fast2 + FEC(10,3)</li>
-<li>搭配3. fast2 + FEC(0,0)</li>
-</ul>
-<p>默认profile参考: <a href="https://github.com/xtaci/kcptun/blob/master/client/main.go#L248" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/blob/master/client/main.go#L248</a></p>
-<h3 id="前向纠错"><a href="#前向纠错" class="headerlink" title="前向纠错"></a>前向纠错</h3><p>前向纠错采用Reed Solomon纠删码, 它的基本原理如下： 给定n个数据块d1, d2,…, dn，n和一个正整数m， RS根据n个数据块生成m个校验块， c1, c2,…, cm。 对于任意的n和m， 从n个原始数据块和m 个校验块中任取n块就能解码出原始数据， 即RS最多<strong>容忍m个数据块或者校验块同时丢失</strong>。</p>
-<p><img src="rs.png" alt="reed-solomon"></p>
-<p>通过参数<figure class="highlight plain"><figcaption><span>n -parityshard m``` 在两端同时设定。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">数据包发送顺序严格遵循: n个datashard紧接m个parityshard，重复。</span><br><span class="line"></span><br><span class="line">注意：为了发挥FEC最佳效果，设置 parityshard/(parity+datashard) &gt; packet loss，比如5/(5+5) &gt; 30%</span><br><span class="line"></span><br><span class="line">### 窗口调整</span><br><span class="line">**简易窗口自我调优方法**：</span><br><span class="line"></span><br><span class="line">&gt; 第一步：同时在两端逐步增大client rcvwnd和server sndwnd;        </span><br><span class="line">&gt; 第二步：尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）到达预期则停止，否则跳转到第一步。</span><br><span class="line"></span><br><span class="line">**注意：产生大量重传时，一定是窗口偏大了**</span><br><span class="line"></span><br><span class="line">### 安全</span><br><span class="line"></span><br><span class="line">无论你上层如何加密，如果```-crypt none```，那么**协议头部**都是**明文**的，建议至少采用```-crypt aes-128```加密，并修改密码。</span><br><span class="line"></span><br><span class="line">密码可以通过`-key`指定，也可以通过环境变量`KCPTUN_KEY`指定。</span><br><span class="line"></span><br><span class="line">注意: ```-crypt xor``` 也是不安全的，除非你知道你在做什么。 </span><br><span class="line"></span><br><span class="line">附加密速度Benchmark：</span><br></pre></td></tr></table></figure></p>
-<p>BenchmarkAES128-4            200000         11182 ns/op<br>BenchmarkAES192-4            200000         12699 ns/op<br>BenchmarkAES256-4            100000         13757 ns/op<br>BenchmarkTEA-4                50000         26441 ns/op<br>BenchmarkSimpleXOR-4        3000000           441 ns/op<br>BenchmarkBlowfish-4           30000         48036 ns/op<br>BenchmarkNone-4            20000000           106 ns/op<br>BenchmarkCast5-4              20000         60222 ns/op<br>BenchmarkTripleDES-4           2000        878759 ns/op<br>BenchmarkTwofish-4            20000         68501 ns/op<br>BenchmarkXTEA-4               20000         77417 ns/op<br>BenchmarkSalsa20-4           300000          4998 ns/op<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 内存控制</span><br><span class="line"></span><br><span class="line">路由器，手机等嵌入式设备通常对**内存用量敏感**，通过调节环境变量GOGC（例如GOGC=20)后启动client，可以降低内存使用。      </span><br><span class="line">参考：https://blog.golang.org/go15gc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### DSCP</span><br><span class="line"></span><br><span class="line">DSCP差分服务代码点（Differentiated Services Code Point），IETF于1998年12月发布了Diff-Serv（Differentiated Service）的QoS分类标准。它在每个数据包IP头部的服务类别TOS标识字节中，利用已使用的**6比特**和未使用的2比特，通过编码值来区分优先级。     </span><br><span class="line">常用DSCP值可以参考[Wikipedia DSCP](https://en.wikipedia.org/wiki/Differentiated_services#Commonly_used_DSCP_values)，至于有没有用，完全取决于数据包经过的设备。 </span><br><span class="line"></span><br><span class="line">通过 ```-dscp ``` 参数指定dscp值，两端可分别设定。</span><br><span class="line"></span><br><span class="line">注意：设置dscp不一定会更好，需要尝试。</span><br><span class="line"></span><br><span class="line">### Snappy数据流压缩</span><br><span class="line"></span><br><span class="line">&gt; Snappy is a compression/decompression library. It does not aim for maximum</span><br><span class="line">&gt; compression, or compatibility with any other compression library; instead,</span><br><span class="line">&gt; it aims for very high speeds and reasonable compression. For instance,</span><br><span class="line">&gt; compared to the fastest mode of zlib, Snappy is an order of magnitude faster</span><br><span class="line">&gt; for most inputs, but the resulting compressed files are anywhere from 20% to</span><br><span class="line">&gt; 100% bigger.</span><br><span class="line"></span><br><span class="line">&gt; Reference: http://google.github.io/snappy/</span><br><span class="line"></span><br><span class="line">压缩对于非加密，非压缩的数据能降低传输数据量，比如点对点的HTTP数据转发。</span><br><span class="line"></span><br><span class="line">通过参数 ```-nocomp``` 在两端同时设定以关闭压缩。</span><br><span class="line">&gt; 提示: 关闭压缩可能会降低延迟。</span><br><span class="line"></span><br><span class="line">### 流量控制</span><br><span class="line"></span><br><span class="line">**必要性: 针对流量敏感的服务器，做双保险。**      </span><br><span class="line"></span><br><span class="line">&gt; 基本原则: SERVER的发送速率不能超过ADSL下行带宽，否则只会浪费您的服务器带宽。  </span><br><span class="line"></span><br><span class="line">在server通过linux tc，可以限制服务器发送带宽。   </span><br><span class="line">举例:  用linux tc限制server发送带宽为32mbit/s:</span><br></pre></td></tr></table></figure></p>
-<p>root@kcptun:~# cat tc.sh<br>tc qdisc del dev eth0 root<br>tc qdisc add dev eth0 root handle 1: htb<br>tc class add dev eth0 parent 1: classid 1:1 htb rate 32mbit<br>tc filter add dev eth0 protocol ip parent 1:0 prio 1 handle 10 fw flowid 1:1<br>iptables -t mangle -A POSTROUTING -o eth0  -j MARK –set-mark 10<br>root@kcptun:~#<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">其中eth0为网卡，有些服务器为ens3，有些为p2p1，通过ifconfig查询修改。</span><br><span class="line"></span><br><span class="line">### SNMP</span><br><span class="line"></span><br><span class="line">```go</span><br><span class="line">// Snmp defines network statistics indicator</span><br><span class="line">type Snmp struct &#123;</span><br><span class="line">    BytesSent        uint64 // raw bytes sent</span><br><span class="line">    BytesReceived    uint64</span><br><span class="line">    MaxConn          uint64</span><br><span class="line">    ActiveOpens      uint64</span><br><span class="line">    PassiveOpens     uint64</span><br><span class="line">    CurrEstab        uint64 // count of connections for now</span><br><span class="line">    InErrs           uint64 // udp read errors</span><br><span class="line">    InCsumErrors     uint64 // checksum errors from CRC32</span><br><span class="line">    KCPInErrors      uint64 // packet iput errors from kcp</span><br><span class="line">    InSegs           uint64</span><br><span class="line">    OutSegs          uint64</span><br><span class="line">    InBytes          uint64 // udp bytes received</span><br><span class="line">    OutBytes         uint64 // udp bytes sent</span><br><span class="line">    RetransSegs      uint64</span><br><span class="line">    FastRetransSegs  uint64</span><br><span class="line">    EarlyRetransSegs uint64</span><br><span class="line">    LostSegs         uint64 // number of segs infered as lost</span><br><span class="line">    RepeatSegs       uint64 // number of segs duplicated</span><br><span class="line">    FECRecovered     uint64 // correct packets recovered from FEC</span><br><span class="line">    FECErrs          uint64 // incorrect packets recovered from FEC</span><br><span class="line">    FECSegs          uint64 // FEC segments received</span><br><span class="line">    FECShortShards   uint64 // number of data shards that&apos;s not enough for recovery</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用<figure class="highlight plain"><figcaption><span>-SIGUSR1 pid``` 可以在控制台打印出SNMP信息，通常用于精细调整**当前链路的有效载荷比**。        </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">观察```RetransSegs,FastRetransSegs,LostSegs,OutSegs```这几者的数值比例，用于参考调整```-mode manual,fec```的参数。    </span><br><span class="line"></span><br><span class="line">#### 带宽计算公式</span><br></pre></td></tr></table></figure></p>
-<p>在不丢包的情况下，有最大-rcvwnd 个数据包在网络上正在向你传输，以平均数据包大小avgsize计算，在任意时刻，有：     </p>
-<pre><code>network_cap = rcvwnd*avgsize
-</code></pre><p>数据流向你，这个值再除以ping值(rtt)，等于最大带宽使用量。</p>
-<pre><code>max_bandwidth = network_cap/rtt = rcvwnd*avgsize/rtt
-</code></pre><p>举例，设rcvwnd = 1024, avgsize = 1KB, rtt = 400ms，则：</p>
-<pre><code>max_bandwidth = 1024 * 1KB / 400ms = 2.5MB/s ~= 25Mbps
-</code></pre><p>（注：以上计算不包括前向纠错的数据量）</p>
-<p>前向纠错是最大带宽量的一个固定比例增加：</p>
-<pre><code>max_bandwidth_fec = max_bandwidth*(datashard+parityshard)/datashard
-</code></pre><p>举例，设datashard = 10 , partiyshard = 3，则：</p>
-<pre><code>max_bandwidth_fec = max_bandwidth * (10 + 3) /10 = 1.3*max_bandwidth ＝ 1.3 * 25Mbps = 32.5Mbps
-</code></pre><p>```</p>
-<h3 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h3><blockquote>
-<p>Q: 客户端和服务器端<strong>皆无</strong> <code>stream opened</code>信息。<br>A: 连接客户端程序的端口设置错误。     </p>
-<p>Q: 客户端有 <code>stream opened</code>信息，服务器端没有。<br>A: 连接服务器的端口设置错误，或者被防火墙拦截。     </p>
-<p>Q: 客户端服务器<strong>皆有</strong> <code>stream opened</code>信息，但无法通信。<br>A: 上层软件的设定错误。     </p>
-</blockquote>
-<h3 id="免责申明"><a href="#免责申明" class="headerlink" title="免责申明"></a>免责申明</h3><p><strong>用户以各种方式使用本软件（包括但不限于修改使用、直接使用、通过第三方使用）的过程中，不得以任何方式利用本软件直接或间接从事违反中国法律、以及社会公德的行为。软件的使用者需对自身行为负责，因使用软件引发的一切纠纷，由使用者承担全部法律及连带责任。作者不承担任何法律及连带责任。</strong>       </p>
-<p><strong>对免责声明的解释、修改及更新权均属于作者本人所有。</strong></p>
-<h3 id="特别鸣谢"><a href="#特别鸣谢" class="headerlink" title="特别鸣谢"></a>特别鸣谢</h3><p>GITHUB上的各位大佬，就不打名字了</p>
-<p>好人一生平安!</p>
-]]></content>
+      <categories>
+          
+          <category> Shadowsocks </category>
+          
+      </categories>
       
-        <categories>
-            
-            <category> Shadowsocks </category>
-            
-        </categories>
-        
-        
+      
         <tags>
             
             <tag> Shadowsocks </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[Chrome下开启跨域功能]]></title>
-      <url>/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/</url>
-      <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p>
-<ol>
-<li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p>
-<pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData
-</code></pre></li>
-<li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p>
-</li>
-</ol>
-]]></content>
+      <title>Windows下快速删除Nodejs项目</title>
+      <link href="/2017/Nodejs/Windows%E4%B8%8B%E5%BF%AB%E9%80%9F%E5%88%A0%E9%99%A4Nodejs%E9%A1%B9%E7%9B%AE/"/>
+      <content type="html"><![CDATA[<h1 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h1><ul><li>删除一个Node项目在Windows下面是一件非常操蛋的事情</li></ul><h1 id="删除工具"><a href="#删除工具" class="headerlink" title="删除工具"></a>删除工具</h1><pre><code>npm install rimraf -grimraf node_modules</code></pre><h1 id="直接Powershell删除"><a href="#直接Powershell删除" class="headerlink" title="直接Powershell删除"></a>直接Powershell删除</h1><pre><code>如删除 D:\temp\目录下的所有文件的写法如下：rmdir d:\temp\</code></pre>]]></content>
       
-        <categories>
-            
-            <category> Other </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> Nodejs </category>
+          
+      </categories>
+      
+      
         <tags>
             
-            <tag> Other </tag>
-            
-            <tag> Chrome </tag>
+            <tag> NodeJS </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[Angula2中innerHtml的问题]]></title>
-      <url>/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-      <content type="html"><![CDATA[<h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p>
-<ol>
-<li><p>导入包</p>
-<pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;
-</code></pre></li>
-<li><p>constructor() 中添加</p>
-<pre><code>public sanitizer: DomSanitizer
-</code></pre></li>
-<li><p>转换数据</p>
-<pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);
-</code></pre></li>
-</ol>
-]]></content>
+      <title>Ubuntu使用KCPRAW伪装UDP请求,防止运营商拦截</title>
+      <link href="/2017/Shadowsocks/Ubuntu%E4%BD%BF%E7%94%A8KCPRAW%E4%BC%AA%E8%A3%85UDP%E8%AF%B7%E6%B1%82%E9%98%B2%E6%AD%A2%E8%BF%90%E8%90%A5%E5%95%86%E6%8B%A6%E6%88%AA/"/>
+      <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a><img src="logo.png" alt="kcptun" height="54px"></h1><p><img src="kcptun.png" alt="kcptun" height="300px"></p><p>-</p><h3 id="原因及原理"><a href="#原因及原理" class="headerlink" title="原因及原理"></a>原因及原理</h3><p>因为KCP多倍发包原理，有些地方运营商会拦截多倍的UDP请求，使用KCPRAW可以把UDP伪装成TCP流量，防止运营商拦截</p><h3 id="快速设定"><a href="#快速设定" class="headerlink" title="快速设定"></a>快速设定</h3><p>客户端、服务器分别<strong>下载</strong>对应平台的<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">预编译版本</a>，并<strong>解压</strong>，通过下面的命令<strong>启动</strong>端口转发。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">KCP客户端: ./client_darwin_amd64 -r &quot;KCP服务器IP地址:4000&quot; -l &quot;:8388&quot; -mode fast2</span><br><span class="line">KCP服务器: ./server_linux_amd64 -t &quot;目标服务器IP地址:8388&quot; -l &quot;:4000&quot; -mode fast2</span><br></pre></td></tr></table></figure></p><p>以上命令可以实现8388/tcp端口的转发（通过4000/udp端口），即：</p><p>Application -&gt; KCP客户端(8388/tcp) -&gt; KCP服务器(4000/udp) -&gt; Server(8388/tcp)</p><h3 id="从源码安装"><a href="#从源码安装" class="headerlink" title="从源码安装"></a>从源码安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$go get -u github.com/xtaci/kcptun/client</span><br><span class="line">$go get -u github.com/xtaci/kcptun/server</span><br></pre></td></tr></table></figure><p>注意: 如果出现错误提示，请确保依赖库能正确访问到。</p><p>Release中的所有二进制版本，是通过 <code>build-release.sh</code> 脚本生成并优化。</p><h3 id="速度对比"><a href="#速度对比" class="headerlink" title="速度对比"></a>速度对比</h3><p><img src="fast.png" alt="fast.com" height="256px">       </p><ul><li>测速网站: <a href="https://fast.com" target="_blank" rel="noopener">https://fast.com</a></li><li>接入速度: 100Mbps</li><li>WIFI: 5GHz TL-WDR3320</li></ul><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>在Mac OS X El Capitan下的帮助输出，注意默认值: </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">$ ./client_darwin_amd64 -h</span><br><span class="line">NAME:</span><br><span class="line">   kcptun - client(with SMUX)</span><br><span class="line"></span><br><span class="line">USAGE:</span><br><span class="line">   client_darwin_amd64 [global options] command [command options] [arguments...]</span><br><span class="line"></span><br><span class="line">VERSION:</span><br><span class="line">   20170120</span><br><span class="line"></span><br><span class="line">COMMANDS:</span><br><span class="line">     help, h  Shows a list of commands or help for one command</span><br><span class="line"></span><br><span class="line">GLOBAL OPTIONS:</span><br><span class="line">   --localaddr value, -l value      local listen address (default: &quot;:12948&quot;)</span><br><span class="line">   --remoteaddr value, -r value     kcp server address (default: &quot;vps:29900&quot;)</span><br><span class="line">   --key value                      pre-shared secret between client and server (default: &quot;it&apos;s a secrect&quot;) [$KCPTUN_KEY]</span><br><span class="line">   --crypt value                    aes, aes-128, aes-192, salsa20, blowfish, twofish, cast5, 3des, tea, xtea, xor, none (default: &quot;aes&quot;)</span><br><span class="line">   --mode value                     profiles: fast3, fast2, fast, normal (default: &quot;fast&quot;)</span><br><span class="line">   --conn value                     set num of UDP connections to server (default: 1)</span><br><span class="line">   --autoexpire value               set auto expiration time(in seconds) for a single UDP connection, 0 to disable (default: 0)</span><br><span class="line">   --mtu value                      set maximum transmission unit for UDP packets (default: 1350)</span><br><span class="line">   --sndwnd value                   set send window size(num of packets) (default: 128)</span><br><span class="line">   --rcvwnd value                   set receive window size(num of packets) (default: 512)</span><br><span class="line">   --datashard value, --ds value    set reed-solomon erasure coding - datashard (default: 10)</span><br><span class="line">   --parityshard value, --ps value  set reed-solomon erasure coding - parityshard (default: 3)</span><br><span class="line">   --dscp value                     set DSCP(6bit) (default: 0)</span><br><span class="line">   --nocomp                         disable compression</span><br><span class="line">   --snmplog value                  collect snmp to file, aware of timeformat in golang, like: ./snmp-20060102.log</span><br><span class="line">   --snmpperiod value               snmp collect period, in seconds (default: 60)</span><br><span class="line">   --log value                      specify a log file to output, default goes to stderr</span><br><span class="line">   -c value                         config from json file, which will override the command from shell</span><br><span class="line">   --help, -h                       show help</span><br><span class="line">   --version, -v                    print the version</span><br><span class="line"></span><br><span class="line">$ ./server_darwin_amd64 -h</span><br><span class="line">NAME:</span><br><span class="line">   kcptun - server(with SMUX)</span><br><span class="line"></span><br><span class="line">USAGE:</span><br><span class="line">   server_darwin_amd64 [global options] command [command options] [arguments...]</span><br><span class="line"></span><br><span class="line">VERSION:</span><br><span class="line">   20170120</span><br><span class="line"></span><br><span class="line">COMMANDS:</span><br><span class="line">     help, h  Shows a list of commands or help for one command</span><br><span class="line"></span><br><span class="line">GLOBAL OPTIONS:</span><br><span class="line">   --listen value, -l value         kcp server listen address (default: &quot;:29900&quot;)</span><br><span class="line">   --target value, -t value         target server address (default: &quot;127.0.0.1:12948&quot;)</span><br><span class="line">   --key value                      pre-shared secret between client and server (default: &quot;it&apos;s a secrect&quot;) [$KCPTUN_KEY]</span><br><span class="line">   --crypt value                    aes, aes-128, aes-192, salsa20, blowfish, twofish, cast5, 3des, tea, xtea, xor, none (default: &quot;aes&quot;)</span><br><span class="line">   --mode value                     profiles: fast3, fast2, fast, normal (default: &quot;fast&quot;)</span><br><span class="line">   --mtu value                      set maximum transmission unit for UDP packets (default: 1350)</span><br><span class="line">   --sndwnd value                   set send window size(num of packets) (default: 1024)</span><br><span class="line">   --rcvwnd value                   set receive window size(num of packets) (default: 1024)</span><br><span class="line">   --datashard value, --ds value    set reed-solomon erasure coding - datashard (default: 10)</span><br><span class="line">   --parityshard value, --ps value  set reed-solomon erasure coding - parityshard (default: 3)</span><br><span class="line">   --dscp value                     set DSCP(6bit) (default: 0)</span><br><span class="line">   --nocomp                         disable compression</span><br><span class="line">   --snmplog value                  collect snmp to file, aware of timeformat in golang, like: ./snmp-20060102.log</span><br><span class="line">   --snmpperiod value               snmp collect period, in seconds (default: 60)</span><br><span class="line">   --log value                      specify a log file to output, default goes to stderr</span><br><span class="line">   -c value                         config from json file, which will override the command from shell</span><br><span class="line">   --help, -h                       show help</span><br><span class="line">   --version, -v                    print the version</span><br></pre></td></tr></table></figure><h4 id="分层参数图"><a href="#分层参数图" class="headerlink" title="分层参数图"></a>分层参数图</h4><p align="left"><img src="layeredparams.png" alt="params" height="450px"></p><p><strong>两端参数必须一致的有</strong>:</p><ul><li>datashard –前向纠错</li><li>parityshard –前向纠错</li><li>nocomp –压缩</li><li>key –密钥</li><li>crypt –加密算法</li></ul><p>其余为两边可独立设定的参数</p><h3 id="内置模式"><a href="#内置模式" class="headerlink" title="内置模式"></a>内置模式</h3><p>响应速度:<br><em>fast3 &gt; fast2 &gt;</em> <strong>[fast]</strong> <em>&gt; normal &gt; default</em><br>有效载荷比:<br><em>default &gt; normal &gt;</em> <strong>[fast]</strong> <em>&gt; fast2 &gt; fast3</em><br>中间-mode参数比较均衡，总之就是越快，包重传越激进。<br>更高级的 <strong>手动档</strong> 需要理解KCP协议，并通过 <strong>隐藏参数</strong> 调整，例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-mode manual -nodelay 1 -resend 2 -nc 1 -interval 20</span><br></pre></td></tr></table></figure></p><ul><li>搭配1. fast + FEC(5,5)</li><li>搭配2. fast2 + FEC(10,3)</li><li>搭配3. fast2 + FEC(0,0)</li></ul><p>默认profile参考: <a href="https://github.com/xtaci/kcptun/blob/master/client/main.go#L248" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/blob/master/client/main.go#L248</a></p><h3 id="前向纠错"><a href="#前向纠错" class="headerlink" title="前向纠错"></a>前向纠错</h3><p>前向纠错采用Reed Solomon纠删码, 它的基本原理如下： 给定n个数据块d1, d2,…, dn，n和一个正整数m， RS根据n个数据块生成m个校验块， c1, c2,…, cm。 对于任意的n和m， 从n个原始数据块和m 个校验块中任取n块就能解码出原始数据， 即RS最多<strong>容忍m个数据块或者校验块同时丢失</strong>。</p><p><img src="rs.png" alt="reed-solomon"></p><p>通过参数<figure class="highlight plain"><figcaption><span>n -parityshard m``` 在两端同时设定。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">数据包发送顺序严格遵循: n个datashard紧接m个parityshard，重复。</span><br><span class="line"></span><br><span class="line">注意：为了发挥FEC最佳效果，设置 parityshard/(parity+datashard) &gt; packet loss，比如5/(5+5) &gt; 30%</span><br><span class="line"></span><br><span class="line">### 窗口调整</span><br><span class="line">**简易窗口自我调优方法**：</span><br><span class="line"></span><br><span class="line">&gt; 第一步：同时在两端逐步增大client rcvwnd和server sndwnd;        </span><br><span class="line">&gt; 第二步：尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）到达预期则停止，否则跳转到第一步。</span><br><span class="line"></span><br><span class="line">**注意：产生大量重传时，一定是窗口偏大了**</span><br><span class="line"></span><br><span class="line">### 安全</span><br><span class="line"></span><br><span class="line">无论你上层如何加密，如果```-crypt none```，那么**协议头部**都是**明文**的，建议至少采用```-crypt aes-128```加密，并修改密码。</span><br><span class="line"></span><br><span class="line">密码可以通过`-key`指定，也可以通过环境变量`KCPTUN_KEY`指定。</span><br><span class="line"></span><br><span class="line">注意: ```-crypt xor``` 也是不安全的，除非你知道你在做什么。 </span><br><span class="line"></span><br><span class="line">附加密速度Benchmark：</span><br></pre></td></tr></table></figure></p><p>BenchmarkAES128-4            200000         11182 ns/op<br>BenchmarkAES192-4            200000         12699 ns/op<br>BenchmarkAES256-4            100000         13757 ns/op<br>BenchmarkTEA-4                50000         26441 ns/op<br>BenchmarkSimpleXOR-4        3000000           441 ns/op<br>BenchmarkBlowfish-4           30000         48036 ns/op<br>BenchmarkNone-4            20000000           106 ns/op<br>BenchmarkCast5-4              20000         60222 ns/op<br>BenchmarkTripleDES-4           2000        878759 ns/op<br>BenchmarkTwofish-4            20000         68501 ns/op<br>BenchmarkXTEA-4               20000         77417 ns/op<br>BenchmarkSalsa20-4           300000          4998 ns/op<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 内存控制</span><br><span class="line"></span><br><span class="line">路由器，手机等嵌入式设备通常对**内存用量敏感**，通过调节环境变量GOGC（例如GOGC=20)后启动client，可以降低内存使用。      </span><br><span class="line">参考：https://blog.golang.org/go15gc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### DSCP</span><br><span class="line"></span><br><span class="line">DSCP差分服务代码点（Differentiated Services Code Point），IETF于1998年12月发布了Diff-Serv（Differentiated Service）的QoS分类标准。它在每个数据包IP头部的服务类别TOS标识字节中，利用已使用的**6比特**和未使用的2比特，通过编码值来区分优先级。     </span><br><span class="line">常用DSCP值可以参考[Wikipedia DSCP](https://en.wikipedia.org/wiki/Differentiated_services#Commonly_used_DSCP_values)，至于有没有用，完全取决于数据包经过的设备。 </span><br><span class="line"></span><br><span class="line">通过 ```-dscp ``` 参数指定dscp值，两端可分别设定。</span><br><span class="line"></span><br><span class="line">注意：设置dscp不一定会更好，需要尝试。</span><br><span class="line"></span><br><span class="line">### Snappy数据流压缩</span><br><span class="line"></span><br><span class="line">&gt; Snappy is a compression/decompression library. It does not aim for maximum</span><br><span class="line">&gt; compression, or compatibility with any other compression library; instead,</span><br><span class="line">&gt; it aims for very high speeds and reasonable compression. For instance,</span><br><span class="line">&gt; compared to the fastest mode of zlib, Snappy is an order of magnitude faster</span><br><span class="line">&gt; for most inputs, but the resulting compressed files are anywhere from 20% to</span><br><span class="line">&gt; 100% bigger.</span><br><span class="line"></span><br><span class="line">&gt; Reference: http://google.github.io/snappy/</span><br><span class="line"></span><br><span class="line">压缩对于非加密，非压缩的数据能降低传输数据量，比如点对点的HTTP数据转发。</span><br><span class="line"></span><br><span class="line">通过参数 ```-nocomp``` 在两端同时设定以关闭压缩。</span><br><span class="line">&gt; 提示: 关闭压缩可能会降低延迟。</span><br><span class="line"></span><br><span class="line">### 流量控制</span><br><span class="line"></span><br><span class="line">**必要性: 针对流量敏感的服务器，做双保险。**      </span><br><span class="line"></span><br><span class="line">&gt; 基本原则: SERVER的发送速率不能超过ADSL下行带宽，否则只会浪费您的服务器带宽。  </span><br><span class="line"></span><br><span class="line">在server通过linux tc，可以限制服务器发送带宽。   </span><br><span class="line">举例:  用linux tc限制server发送带宽为32mbit/s:</span><br></pre></td></tr></table></figure></p><p>root@kcptun:~# cat tc.sh<br>tc qdisc del dev eth0 root<br>tc qdisc add dev eth0 root handle 1: htb<br>tc class add dev eth0 parent 1: classid 1:1 htb rate 32mbit<br>tc filter add dev eth0 protocol ip parent 1:0 prio 1 handle 10 fw flowid 1:1<br>iptables -t mangle -A POSTROUTING -o eth0  -j MARK –set-mark 10<br>root@kcptun:~#<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">其中eth0为网卡，有些服务器为ens3，有些为p2p1，通过ifconfig查询修改。</span><br><span class="line"></span><br><span class="line">### SNMP</span><br><span class="line"></span><br><span class="line">```go</span><br><span class="line">// Snmp defines network statistics indicator</span><br><span class="line">type Snmp struct &#123;</span><br><span class="line">    BytesSent        uint64 // raw bytes sent</span><br><span class="line">    BytesReceived    uint64</span><br><span class="line">    MaxConn          uint64</span><br><span class="line">    ActiveOpens      uint64</span><br><span class="line">    PassiveOpens     uint64</span><br><span class="line">    CurrEstab        uint64 // count of connections for now</span><br><span class="line">    InErrs           uint64 // udp read errors</span><br><span class="line">    InCsumErrors     uint64 // checksum errors from CRC32</span><br><span class="line">    KCPInErrors      uint64 // packet iput errors from kcp</span><br><span class="line">    InSegs           uint64</span><br><span class="line">    OutSegs          uint64</span><br><span class="line">    InBytes          uint64 // udp bytes received</span><br><span class="line">    OutBytes         uint64 // udp bytes sent</span><br><span class="line">    RetransSegs      uint64</span><br><span class="line">    FastRetransSegs  uint64</span><br><span class="line">    EarlyRetransSegs uint64</span><br><span class="line">    LostSegs         uint64 // number of segs infered as lost</span><br><span class="line">    RepeatSegs       uint64 // number of segs duplicated</span><br><span class="line">    FECRecovered     uint64 // correct packets recovered from FEC</span><br><span class="line">    FECErrs          uint64 // incorrect packets recovered from FEC</span><br><span class="line">    FECSegs          uint64 // FEC segments received</span><br><span class="line">    FECShortShards   uint64 // number of data shards that&apos;s not enough for recovery</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>使用<figure class="highlight plain"><figcaption><span>-SIGUSR1 pid``` 可以在控制台打印出SNMP信息，通常用于精细调整**当前链路的有效载荷比**。        </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">观察```RetransSegs,FastRetransSegs,LostSegs,OutSegs```这几者的数值比例，用于参考调整```-mode manual,fec```的参数。    </span><br><span class="line"></span><br><span class="line">#### 带宽计算公式</span><br></pre></td></tr></table></figure></p><p>在不丢包的情况下，有最大-rcvwnd 个数据包在网络上正在向你传输，以平均数据包大小avgsize计算，在任意时刻，有：     </p><pre><code>network_cap = rcvwnd*avgsize</code></pre><p>数据流向你，这个值再除以ping值(rtt)，等于最大带宽使用量。</p><pre><code>max_bandwidth = network_cap/rtt = rcvwnd*avgsize/rtt</code></pre><p>举例，设rcvwnd = 1024, avgsize = 1KB, rtt = 400ms，则：</p><pre><code>max_bandwidth = 1024 * 1KB / 400ms = 2.5MB/s ~= 25Mbps</code></pre><p>（注：以上计算不包括前向纠错的数据量）</p><p>前向纠错是最大带宽量的一个固定比例增加：</p><pre><code>max_bandwidth_fec = max_bandwidth*(datashard+parityshard)/datashard</code></pre><p>举例，设datashard = 10 , partiyshard = 3，则：</p><pre><code>max_bandwidth_fec = max_bandwidth * (10 + 3) /10 = 1.3*max_bandwidth ＝ 1.3 * 25Mbps = 32.5Mbps</code></pre><p><code>`</code></p><h3 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h3><blockquote><p>Q: 客户端和服务器端<strong>皆无</strong> <code>stream opened</code>信息。<br>A: 连接客户端程序的端口设置错误。     </p></blockquote><blockquote><p>Q: 客户端有 <code>stream opened</code>信息，服务器端没有。<br>A: 连接服务器的端口设置错误，或者被防火墙拦截。     </p></blockquote><blockquote><p>Q: 客户端服务器<strong>皆有</strong> <code>stream opened</code>信息，但无法通信。<br>A: 上层软件的设定错误。     </p></blockquote><h3 id="免责申明"><a href="#免责申明" class="headerlink" title="免责申明"></a>免责申明</h3><p><strong>用户以各种方式使用本软件（包括但不限于修改使用、直接使用、通过第三方使用）的过程中，不得以任何方式利用本软件直接或间接从事违反中国法律、以及社会公德的行为。软件的使用者需对自身行为负责，因使用软件引发的一切纠纷，由使用者承担全部法律及连带责任。作者不承担任何法律及连带责任。</strong>       </p><p><strong>对免责声明的解释、修改及更新权均属于作者本人所有。</strong></p><h3 id="特别鸣谢"><a href="#特别鸣谢" class="headerlink" title="特别鸣谢"></a>特别鸣谢</h3><p>GITHUB上的各位大佬，就不打名字了</p><p>好人一生平安!</p>]]></content>
       
-        <categories>
+      <categories>
+          
+          <category> Shadowsocks </category>
+          
+      </categories>
+      
+      
+        <tags>
             
-            <category> JAVASCRIPT </category>
+            <tag> Shadowsocks </tag>
             
-            <category> Angular2+ </category>
-            
-        </categories>
-        
-        
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Angula2中innerHtml的问题</title>
+      <link href="/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <content type="html"><![CDATA[<h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p><ol><li><p>导入包</p><pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;</code></pre></li><li><p>constructor() 中添加</p><pre><code>public sanitizer: DomSanitizer</code></pre></li><li><p>转换数据</p><pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);</code></pre></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> Angular2+ </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> JAVASCRIPT </tag>
@@ -174,218 +83,85 @@ rmdir d:\temp\
             <tag> Angular2+ </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[Ubuntu 使用 KCPTUN 为 SS 加速]]></title>
-      <url>/2017/Shadowsocks/Ubuntu%E4%BD%BF%E7%94%A8KCPTUN%E4%B8%BASS%E5%8A%A0%E9%80%9F/</url>
-      <content type="html"><![CDATA[<p>首先，你需要部署好SS。<br>然后一行行运行下面脚本</p>
-<pre><code>wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.sh
-chmod +x ./kcptun.sh
-./kcptun.sh
-</code></pre><p>1.设置 Kcptun 的服务端端口：</p>
-<pre><code>请输入 Kcptun Server 端口 [1-65535]:
-(默认: 29900):
-请输入一个未被占用的端口，Kcptun 运行时将使用此端口。
-</code></pre><p>2.设置加速的 IP：</p>
-<pre><code>请输入需要加速的地址:
-(默认: 127.0.0.1):
-一般填入你服务器的IP。如果你想使用 IPv6，请直接填写 IPv6 地址，不需要加 []，脚本会自动添加。
-</code></pre><p>3.设置需要加速的端口：</p>
-<pre><code>请输入需要加速的端口 [1-65535]:
-(默认: 12948):
-填入上面获取到的加速端口。
-程序会检查当前是不是有程序占用着此端口，如果你的 Shadowsocks 没在运行，或者没有软件使用此端口，会弹出如下提示：
-当前没有软件使用此端口, 确定加速此端口?(y/n)
-如果你确认 Shadowsocks 运行时会使用此端口，那么输入 “y” 回车即可。
-</code></pre><p>4.设置 Kcptun 密码：</p>
-<pre><code>请输入 Kcptun 密码:
-(如果不想使用密码请留空):
-这就是说，你可以为 Kcptun 单独设置一个密码，防止被他人恶意使用。这个密码和 SS 的密码没有半毛钱关系，请不要把它们混淆了。
-再提一句，Kcptun 和 Shadowsocks 没有任何关系，请不要脑补它们之间存在任何联系，Kcptun 你可以理解为一款网络加速软件，只不过它是通过将 TCP 协议转换为 UDP 协议，然后再通过大量的发送数据包，浪费了带宽以换取网速的提升。它能加速所有以 TCP 协议传输数据的软件，不单单是 Shadowsocks。只是大家都用来……你懂的
-回到上面的密码设置问题，如果你这里选择直接回车，也就是代表你不自定义密码。但是 Kcptun 有一个默认的密码，这个密码是：  it&apos;s a secrect 。
-</code></pre><p>5.禁用压缩</p>
-<pre><code>是否禁用数据压缩?
-(默认: 不禁用) [y/n]:
-Kcptun 默认是启用压缩的。如果你这里设置为 y，也就是配置为 nocomp:true，那么就是禁用压缩。
-许多朋友这里设置的是保持默认（启用压缩），而偏偏在软件之中设置为禁用压缩，当然就连不上咯。
-其他配置项不用我说了，如果你了解它是干什么的，可以自定义配置。如果不知道，那么直接回车使用默认参数。
-但是，使用默认参数，是有可能浪费大量流量的，如果你想减少流量使用，你需要会调节参数：
-先将 client rcvwnd 和 server sndwnd 调到一个较小值；
-同时在两端逐步增大 client rcvwnd 和 server sndwnd ;
-尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第二步。
-任何事物都是有两面性的，选择了速度，就只有放弃流量。
-各参数详细信息请查看：https://github.com/xtaci/kcptun
-</code></pre><p>如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。<br>如果安装成功，应该能看到如下输出信息：</p>
-<pre><code>恭喜, Kcptun 服务端配置完毕！
-
-正在获取当前安装的 Kcptun 版本...
-
-服务器IP:  10.10.10.10
-端口:  29900
-加速地址: 127.0.0.1:8388
-密码: 123456
-加密方式 Crypt:  salsa20
-
-当前安装的 Kcptun 版本为: v20160922
-
-推荐的客户端配置为: 
-{
-&quot;localaddr&quot;: &quot;:8388&quot;,
-&quot;remoteaddr&quot;: &quot;10.10.10.10:29900&quot;,
-&quot;key&quot;: &quot;123456&quot;,
-&quot;crypt&quot;: &quot;salsa20&quot;,
-&quot;mode&quot;: &quot;fast&quot;,
-&quot;mtu&quot;: 1350,
-&quot;sndwnd&quot;: 1024,
-&quot;rcvwnd&quot;: 1024,
-&quot;datashard&quot;: 10,
-&quot;parityshard&quot;: 3,
-&quot;dscp&quot;: 0,
-&quot;conn&quot;: 1,
-&quot;autoexpire&quot;: 60,
-&quot;nocomp&quot;: false
-}
-
-手机端参数可以使用：
-*******
-
-其他参数请自行计算或设置, 详细信息可以查看: https://github.com/xtaci/kcptun
-
-Kcptun 安装目录: /usr/share/kcptun
-Kcptun 日志文件目录: /var/log/kcptun/
-请将以上的提示信息复制保存下来，后面配置客户端会用到这些提示信息。
-注意：服务端的 sndwnd 对应的是客户端的 recwnd，所以请不要问我为什么输出的客户端参数和你配置的服务端参数是反的。
-安装之后，Kcptun 服务交由 Supervisor 管理。
-Supervisor 相关命令：
-service supervisord {start|stop|restart|status}
-Kcptun 相关命令：
-supervisorctl {start|stop|restart|status} kcptun
-Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时先确保 Supervisor 已启动。
-</code></pre>]]></content>
+      <title>Chrome下开启跨域功能</title>
+      <link href="/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/"/>
+      <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p><ol><li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p><pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData</code></pre></li><li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p></li></ol>]]></content>
       
-        <categories>
+      <categories>
+          
+          <category> Other </category>
+          
+      </categories>
+      
+      
+        <tags>
             
-            <category> Shadowsocks </category>
+            <tag> Other </tag>
             
-        </categories>
-        
-        
+            <tag> Chrome </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Ubuntu 搭建 Shadowsocks 进行科学上网</title>
+      <link href="/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install setuptools    $ sudo pip install shadowsocks    $ apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"Server IP",        "server_port":8388,        "local_port":1080,        "password":"password",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> Shadowsocks </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> Shadowsocks </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[Ubuntu 搭建 Shadowsocks 进行科学上网]]></title>
-      <url>/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
-      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
-<pre class="brush:bash">
-    $ sudo apt-get update
-    $ sudo apt-get install python-gevent python-pip
-    $ sudo pip install setuptools
-    $ sudo pip install shadowsocks
-    $ apt-get install python-m2crypto
-</pre>
-
-<a id="more"></a>
-<p>创建config.json配置文件：</p>
-<pre class="brush:bash">
-    $ vi /etc/shadowsocks.json
-</pre>
-
-<p>修改config.json：</p>
-<pre class="brush:bash">
-    {
-        "server":"Server IP",
-        "server_port":8388,
-        "local_port":1080,
-        "password":"password",
-        "timeout":600,
-        "method":"aes-256-cfb"
-    }
-</pre>
-&nbsp;
-
-运行Shadowsocks：
-<pre class="brush:bash">
-    $ su -
-    $ ssserver -c /etc/shadowsocks.json -d start
-    $ ssserver -c /etc/shadowsocks.json -d stop
-</pre>
-
-<p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p>
-<p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p>
-<h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul>
-<li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li>
-</ul>
-]]></content>
+      <title>Ubuntu 使用 KCPTUN 为 SS 加速</title>
+      <link href="/2017/Shadowsocks/Ubuntu%E4%BD%BF%E7%94%A8KCPTUN%E4%B8%BASS%E5%8A%A0%E9%80%9F/"/>
+      <content type="html"><![CDATA[<p>首先，你需要部署好SS。<br>然后一行行运行下面脚本</p><pre><code>wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.shchmod +x ./kcptun.sh./kcptun.sh</code></pre><p>1.设置 Kcptun 的服务端端口：</p><pre><code>请输入 Kcptun Server 端口 [1-65535]:(默认: 29900):请输入一个未被占用的端口，Kcptun 运行时将使用此端口。</code></pre><p>2.设置加速的 IP：</p><pre><code>请输入需要加速的地址:(默认: 127.0.0.1):一般填入你服务器的IP。如果你想使用 IPv6，请直接填写 IPv6 地址，不需要加 []，脚本会自动添加。</code></pre><p>3.设置需要加速的端口：</p><pre><code>请输入需要加速的端口 [1-65535]:(默认: 12948):填入上面获取到的加速端口。程序会检查当前是不是有程序占用着此端口，如果你的 Shadowsocks 没在运行，或者没有软件使用此端口，会弹出如下提示：当前没有软件使用此端口, 确定加速此端口?(y/n)如果你确认 Shadowsocks 运行时会使用此端口，那么输入 “y” 回车即可。</code></pre><p>4.设置 Kcptun 密码：</p><pre><code>请输入 Kcptun 密码:(如果不想使用密码请留空):这就是说，你可以为 Kcptun 单独设置一个密码，防止被他人恶意使用。这个密码和 SS 的密码没有半毛钱关系，请不要把它们混淆了。再提一句，Kcptun 和 Shadowsocks 没有任何关系，请不要脑补它们之间存在任何联系，Kcptun 你可以理解为一款网络加速软件，只不过它是通过将 TCP 协议转换为 UDP 协议，然后再通过大量的发送数据包，浪费了带宽以换取网速的提升。它能加速所有以 TCP 协议传输数据的软件，不单单是 Shadowsocks。只是大家都用来……你懂的回到上面的密码设置问题，如果你这里选择直接回车，也就是代表你不自定义密码。但是 Kcptun 有一个默认的密码，这个密码是：  it&apos;s a secrect 。</code></pre><p>5.禁用压缩</p><pre><code>是否禁用数据压缩?(默认: 不禁用) [y/n]:Kcptun 默认是启用压缩的。如果你这里设置为 y，也就是配置为 nocomp:true，那么就是禁用压缩。许多朋友这里设置的是保持默认（启用压缩），而偏偏在软件之中设置为禁用压缩，当然就连不上咯。其他配置项不用我说了，如果你了解它是干什么的，可以自定义配置。如果不知道，那么直接回车使用默认参数。但是，使用默认参数，是有可能浪费大量流量的，如果你想减少流量使用，你需要会调节参数：先将 client rcvwnd 和 server sndwnd 调到一个较小值；同时在两端逐步增大 client rcvwnd 和 server sndwnd ;尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第二步。任何事物都是有两面性的，选择了速度，就只有放弃流量。各参数详细信息请查看：https://github.com/xtaci/kcptun</code></pre><p>如果你用国内服务器安装，可能会出现文件下载失败。这是由于脚本会到 Github 下载文件，而 Github 的某些下载地址在国内你懂的……所以文件下载失败真不是我的锅。<br>如果安装成功，应该能看到如下输出信息：</p><pre><code>恭喜, Kcptun 服务端配置完毕！正在获取当前安装的 Kcptun 版本...服务器IP:  10.10.10.10端口:  29900加速地址: 127.0.0.1:8388密码: 123456加密方式 Crypt:  salsa20当前安装的 Kcptun 版本为: v20160922推荐的客户端配置为: {&quot;localaddr&quot;: &quot;:8388&quot;,&quot;remoteaddr&quot;: &quot;10.10.10.10:29900&quot;,&quot;key&quot;: &quot;123456&quot;,&quot;crypt&quot;: &quot;salsa20&quot;,&quot;mode&quot;: &quot;fast&quot;,&quot;mtu&quot;: 1350,&quot;sndwnd&quot;: 1024,&quot;rcvwnd&quot;: 1024,&quot;datashard&quot;: 10,&quot;parityshard&quot;: 3,&quot;dscp&quot;: 0,&quot;conn&quot;: 1,&quot;autoexpire&quot;: 60,&quot;nocomp&quot;: false}手机端参数可以使用：*******其他参数请自行计算或设置, 详细信息可以查看: https://github.com/xtaci/kcptunKcptun 安装目录: /usr/share/kcptunKcptun 日志文件目录: /var/log/kcptun/请将以上的提示信息复制保存下来，后面配置客户端会用到这些提示信息。注意：服务端的 sndwnd 对应的是客户端的 recwnd，所以请不要问我为什么输出的客户端参数和你配置的服务端参数是反的。安装之后，Kcptun 服务交由 Supervisor 管理。Supervisor 相关命令：service supervisord {start|stop|restart|status}Kcptun 相关命令：supervisorctl {start|stop|restart|status} kcptunSupervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时先确保 Supervisor 已启动。</code></pre>]]></content>
       
-        <categories>
-            
-            <category> Shadowsocks </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> Shadowsocks </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> Shadowsocks </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[【IONIC2+】项目开发 - 3 - 添加页面]]></title>
-      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-3-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/</url>
-      <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol>
-<li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="noopener">IONIC官方教程</a></li>
-<li>如果你看不懂英文，没事，那我们就不学了。</li>
-</ol>
-<h4 id="创建页面有几个重要的地方"><a href="#创建页面有几个重要的地方" class="headerlink" title="创建页面有几个重要的地方"></a>创建页面有几个重要的地方</h4><ol>
-<li>创建 .ts 文件，这个文件是存放页面逻辑的地方，例如我们创建一个帖子页面在 post.ts 文件里<pre>
-export class PostPage {}
-</pre></li>
-<li>创建 .html 文件，这个文件是界面</li>
-<li>创建 .scss 文件，这个文件是CSS</li>
-<li>把 .ts 文件中的类的引用添加到 app/app.module.ts 中<pre>
-import {PostPage} from "../pages/post";
-</pre></li>
-<li>把类名添加到 NgModule 中的 declarations 和 entryComponents 中(所有新加的页面都要放到这里进行声明，不然会报错)<pre>
-declarations: [
-     MyApp,
-     TabsPage,
-     PostPage
-     ]
-</pre>
-<pre>
-entryComponents: [
-     MyApp,
-     TabsPage,
-     PostPage
-     ]
-</pre></li>
-<li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
-</ol>
-<ul>
-<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
-</ul>
-]]></content>
+      <title>【IONIC2+】项目开发 - 2 - 创建项目</title>
+      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol><li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li><li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li><li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li><li><p>安装ionic</p><pre><code>npm install -g cordova@6.5.0 ionic</code></pre></li><li><p>安装完成后，新建项目，这里有几个模板可选</p><pre><code>ionic start myApp tabs</code></pre></li><li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p><pre><code>cd myAppionic serve</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
       
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> IONIC2+ </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> IONIC2+ </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> Angular2+ </tag>
@@ -395,41 +171,23 @@ entryComponents: [
             <tag> NodeJS </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[【IONIC2+】项目开发 - 2 - 创建项目]]></title>
-      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/</url>
-      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol>
-<li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li>
-<li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li>
-<li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li>
-<li><p>安装ionic</p>
-<pre><code>npm install -g cordova@6.5.0 ionic
-</code></pre></li>
-<li><p>安装完成后，新建项目，这里有几个模板可选</p>
-<pre><code>ionic start myApp tabs
-</code></pre></li>
-<li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p>
-<pre><code>cd myApp
-ionic serve
-</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
-</ol>
-<ul>
-<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
-</ul>
-]]></content>
+      <title>【IONIC2+】项目开发 - 3 - 添加页面</title>
+      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-3-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/"/>
+      <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol><li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="noopener">IONIC官方教程</a></li><li>如果你看不懂英文，没事，那我们就不学了。</li></ol><h4 id="创建页面有几个重要的地方"><a href="#创建页面有几个重要的地方" class="headerlink" title="创建页面有几个重要的地方"></a>创建页面有几个重要的地方</h4><ol><li>创建 .ts 文件，这个文件是存放页面逻辑的地方，例如我们创建一个帖子页面在 post.ts 文件里<pre>export class PostPage {}</pre></li><li>创建 .html 文件，这个文件是界面</li><li>创建 .scss 文件，这个文件是CSS</li><li>把 .ts 文件中的类的引用添加到 app/app.module.ts 中<pre>import {PostPage} from "../pages/post";</pre></li><li>把类名添加到 NgModule 中的 declarations 和 entryComponents 中(所有新加的页面都要放到这里进行声明，不然会报错)<pre>declarations: [     MyApp,     TabsPage,     PostPage     ]</pre><pre>entryComponents: [     MyApp,     TabsPage,     PostPage     ]</pre></li><li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
       
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> IONIC2+ </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> IONIC2+ </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> Angular2+ </tag>
@@ -439,66 +197,43 @@ ionic serve
             <tag> NodeJS </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[【MacOS】查看端口占用进程以及强制清理进程.md]]></title>
-      <url>/2017/MacOS/%E3%80%90MacOS%E3%80%91%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E8%BF%9B%E7%A8%8B%E4%BB%A5%E5%8F%8A%E5%BC%BA%E5%88%B6%E6%B8%85%E7%90%86%E8%BF%9B%E7%A8%8B/</url>
-      <content type="html"><![CDATA[<h3 id="查看8000段口被占用进程："><a href="#查看8000段口被占用进程：" class="headerlink" title="查看8000段口被占用进程："></a>查看8000段口被占用进程：</h3><pre><code>$ lsof -i:8000
-COMMAND   PID      USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
-Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunnel (LISTEN)
-</code></pre><h3 id="kill掉无用进程"><a href="#kill掉无用进程" class="headerlink" title="kill掉无用进程"></a>kill掉无用进程</h3><pre><code>kill 13911
-</code></pre>]]></content>
+      <title>【MacOS】查看端口占用进程以及强制清理进程.md</title>
+      <link href="/2017/MacOS/%E3%80%90MacOS%E3%80%91%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E8%BF%9B%E7%A8%8B%E4%BB%A5%E5%8F%8A%E5%BC%BA%E5%88%B6%E6%B8%85%E7%90%86%E8%BF%9B%E7%A8%8B/"/>
+      <content type="html"><![CDATA[<h3 id="查看8000段口被占用进程："><a href="#查看8000段口被占用进程：" class="headerlink" title="查看8000段口被占用进程："></a>查看8000段口被占用进程：</h3><pre><code>$ lsof -i:8000COMMAND   PID      USER   FD   TYPE             DEVICE SIZE/OFF NODE NAMEPython  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunnel (LISTEN)</code></pre><h3 id="kill掉无用进程"><a href="#kill掉无用进程" class="headerlink" title="kill掉无用进程"></a>kill掉无用进程</h3><pre><code>kill 13911</code></pre>]]></content>
       
-        <categories>
-            
-            <category> MacOS </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> MacOS </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> MacOS </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[【IONIC2+】项目开发 - 目录]]></title>
-      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-1-%E7%9B%AE%E5%BD%95/</url>
-      <content type="html"><![CDATA[<h1 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h1><ul>
-<li>本次项目基于ionic2+，目前是ionic3</li>
-<li>typescript版本为2.2.2</li>
-<li>node -v 6.10.1</li>
-<li>这个系列的文章旨在教你写一个基于ionic2+的搜索App</li>
-<li>你可以学到如下知识：<ul>
-<li>写个跨平台的APP</li>
-<li>了解Angular2+的逻辑</li>
-<li>了解node爬虫</li>
-<li>可以爬到自己想要的东西</li>
-</ul>
-</li>
-<li>文章不会一步步教你怎么做，比如页面怎么写，这不是重点，重点在于编码与解决问题的思路<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1></li>
-</ul>
-<ol>
-<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
-<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
-<li>还在写…别急…</li>
-</ol>
-]]></content>
+      <title>【IONIC2+】项目开发 - 目录</title>
+      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-1-%E7%9B%AE%E5%BD%95/"/>
+      <content type="html"><![CDATA[<h1 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h1><ul><li>本次项目基于ionic2+，目前是ionic3</li><li>typescript版本为2.2.2</li><li>node -v 6.10.1</li><li>这个系列的文章旨在教你写一个基于ionic2+的搜索App</li><li>你可以学到如下知识：<ul><li>写个跨平台的APP</li><li>了解Angular2+的逻辑</li><li>了解node爬虫</li><li>可以爬到自己想要的东西</li></ul></li><li>文章不会一步步教你怎么做，比如页面怎么写，这不是重点，重点在于编码与解决问题的思路<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1></li></ul><ol><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li><li>还在写…别急…</li></ol>]]></content>
       
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> IONIC2+ </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> IONIC2+ </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> Angular2+ </tag>
@@ -508,32 +243,23 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
             <tag> NodeJS </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[【IONIC2+】项目开发 - 目录]]></title>
-      <url>/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
-      <content type="html"><![CDATA[<h4 id="IONIC2-的生命周期"><a href="#IONIC2-的生命周期" class="headerlink" title="IONIC2+ 的生命周期"></a>IONIC2+ 的生命周期</h4><ol>
-<li>ionViewLoaded - 页面加载完毕触发。该事件发生在页面被创建成 DOM 的时候，且仅仅执行一次。如果页面被缓存（Ionic默认是缓存的）就不会再次触发该事件。该事件中可以放置初始化页面的一些事件。</li>
-<li>ionViewWillEnter - 即将进入一个页面变成当前激活页面的时候执行的事件。</li>
-<li>ionViewDidEnter - 进入了一个页面且变成了当前的激活页面，该事件不管是第一次进入还是缓存后进入都将执行。</li>
-<li>ionViewWillLeave - 将要离开了该页面之后变成了不是当前激活页面的时候执行的事件。</li>
-<li>ionViewDidLeave - 在页面完成了离开该页面并变成了不是当前激活页面的时候执行的事件。</li>
-<li>ionViewWillUnload - 在页面销毁和页面中有元素移除之前执行的事件。</li>
-<li>ionViewDidUnload - 在页面销毁和页面中有元素移除之后执行的事件。</li>
-</ol>
-]]></content>
+      <title>【IONIC2+】项目开发 - 目录</title>
+      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+      <content type="html"><![CDATA[<h4 id="IONIC2-的生命周期"><a href="#IONIC2-的生命周期" class="headerlink" title="IONIC2+ 的生命周期"></a>IONIC2+ 的生命周期</h4><ol><li>ionViewLoaded - 页面加载完毕触发。该事件发生在页面被创建成 DOM 的时候，且仅仅执行一次。如果页面被缓存（Ionic默认是缓存的）就不会再次触发该事件。该事件中可以放置初始化页面的一些事件。</li><li>ionViewWillEnter - 即将进入一个页面变成当前激活页面的时候执行的事件。</li><li>ionViewDidEnter - 进入了一个页面且变成了当前的激活页面，该事件不管是第一次进入还是缓存后进入都将执行。</li><li>ionViewWillLeave - 将要离开了该页面之后变成了不是当前激活页面的时候执行的事件。</li><li>ionViewDidLeave - 在页面完成了离开该页面并变成了不是当前激活页面的时候执行的事件。</li><li>ionViewWillUnload - 在页面销毁和页面中有元素移除之前执行的事件。</li><li>ionViewDidUnload - 在页面销毁和页面中有元素移除之后执行的事件。</li></ol>]]></content>
       
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> IONIC2+ </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> IONIC2+ </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> Angular2+ </tag>
@@ -543,462 +269,155 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
             <tag> NodeJS </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[KCP客户端配置]]></title>
-      <url>/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p>
-<p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p>
-<p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p>
-<h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol>
-<li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li>
-<li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li>
-<li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li>
-<li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li>
-<li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li>
-<li>点击启动</li>
-<li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li>
-<li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li>
-<li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li>
-</ol>
-<h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol>
-<li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li>
-<li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li>
-<li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li>
-<li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li>
-<li>像Windows下面一样配置</li>
-<li>SS配置如同Windows</li>
-</ol>
-]]></content>
+      <title>KCP客户端配置</title>
+      <link href="/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
+      <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
       
-        <categories>
-            
-            <category> Shadowsocks </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> Shadowsocks </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> Shadowsocks </tag>
             
         </tags>
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)]]></title>
-      <url>/2016/Shadowsocks/Ubuntu%E9%85%8D%E7%BD%AESS_GO%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83(%E5%8C%85%E6%8B%ACKCP%E5%92%8CKCP%E5%8A%A0%E5%AF%86)/</url>
-      <content type="html"><![CDATA[<ol>
-<li><p>首先安装GO语言环境</p>
-<pre><code>apt-get update
-apt-get install golang-go
-</code></pre></li>
-<li><p>设置GOPATH变量，指定工作空间</p>
-<pre><code>echo &quot;export GOPATH=/opt/go&quot; &gt;&gt; ~/.bashrc       
-source ~/.bashrc
-</code></pre></li>
-<li><p>安装kcpraw集成环境</p>
-<pre><code>wget https://github.com/ccsexyz/kcpraw/releases/download/v20171019/kcpraw-linux-amd64-20171019.tar.gz
-tar -xvzf kcpraw-linux-amd64-20171019.tar.gz
-chmod 777 kcpraw_server_linux_amd64
-</code></pre></li>
-<li><p>新建bash</p>
-<pre><code>vim start_kcpraw
-</code></pre></li>
-<li><p>ESC + I 切换输入模式，输入以下东西</p>
-<pre><code>#!/bin/bash
-nohup ./kcpraw_server_linux_amd64 --target 服务器ip:8388 --ssproxy --sskey 密码
-</code></pre></li>
-<li><p>ESC + : 切换保存模式，输入 wq 保存退出</p>
-</li>
-<li><p>赋予脚本权限</p>
-<pre><code>chmod 777 start_kcpraw
-</code></pre></li>
-<li><p>运行脚本</p>
-<pre><code>./start_kcpraw
-</code></pre></li>
-</ol>
-]]></content>
+      <title>Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)</title>
+      <link href="/2016/Shadowsocks/Ubuntu%E9%85%8D%E7%BD%AESS_GO%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83(%E5%8C%85%E6%8B%ACKCP%E5%92%8CKCP%E5%8A%A0%E5%AF%86)/"/>
+      <content type="html"><![CDATA[<ol><li><p>首先安装GO语言环境</p><pre><code>apt-get updateapt-get install golang-go</code></pre></li><li><p>设置GOPATH变量，指定工作空间</p><pre><code>echo &quot;export GOPATH=/opt/go&quot; &gt;&gt; ~/.bashrc       source ~/.bashrc</code></pre></li><li><p>安装kcpraw集成环境</p><pre><code>wget https://github.com/ccsexyz/kcpraw/releases/download/v20171019/kcpraw-linux-amd64-20171019.tar.gztar -xvzf kcpraw-linux-amd64-20171019.tar.gzchmod 777 kcpraw_server_linux_amd64</code></pre></li><li><p>新建bash</p><pre><code>vim start_kcpraw</code></pre></li><li><p>ESC + I 切换输入模式，输入以下东西</p><pre><code>#!/bin/bashnohup ./kcpraw_server_linux_amd64 --target 服务器ip:8388 --ssproxy --sskey 密码</code></pre></li><li><p>ESC + : 切换保存模式，输入 wq 保存退出</p></li><li><p>赋予脚本权限</p><pre><code>chmod 777 start_kcpraw</code></pre></li><li><p>运行脚本</p><pre><code>./start_kcpraw</code></pre></li></ol>]]></content>
       
-        <categories>
-            
-            <category> Shadowsocks </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> Shadowsocks </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> Shadowsocks </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Ubuntu 14.04 更换内核]]></title>
-      <url>/2016/Linux/Ubuntu14.04%E6%9B%B4%E6%8D%A2%E5%86%85%E6%A0%B8/</url>
-      <content type="html"><![CDATA[<ol>
-<li><p>查看当前内核版本：</p>
-<pre class="brush:other">uname -r</pre>
-</li>
-<li><p>安装新内核：</p>
-<pre class="brush:other">$ sudo apt-get install linux-image-extra-3.16.0-43-generic</pre>
-</li>
-<li><p>卸载其他内核：</p>
-<pre class="brush:other"># 列出其他内核
-$ dpkg -l|grep linux-image
-# 卸载其他内核
-$ sudo apt-get purge linux-image-3.16.0-36-generic linux-image-extra-3.16.0-36-generic</pre>
-</li>
-<li><p>更新grub 系统引导文件并重启：<br><pre class="brush:other">$ sudo update-grub<br>$ sudo reboot</pre><br>OK！！！</p>
-</li>
-</ol>
-]]></content>
       
-        <categories>
-            
-            <category> 服务器 </category>
-            
-            <category> Linux </category>
-            
-        </categories>
-        
-        
     </entry>
     
     <entry>
-      <title><![CDATA[Linux下利用iptables添加访问许可]]></title>
-      <url>/2016/Linux/Linux%E4%B8%8B%E5%88%A9%E7%94%A8iptables%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E8%AE%B8%E5%8F%AF/</url>
-      <content type="html"><![CDATA[<p>禁用某个IP段：</p>
-<p><pre class="brush:other">iptables -I INPUT -s 14.215.1.0/24 -j DROP</pre><br>&nbsp;</p>
-]]></content>
+      <title>Ubuntu 14.04 更换内核</title>
+      <link href="/2016/Linux/Ubuntu14.04%E6%9B%B4%E6%8D%A2%E5%86%85%E6%A0%B8/"/>
+      <content type="html"><![CDATA[<ol><li><p>查看当前内核版本：</p><pre class="brush:other">uname -r</pre></li><li><p>安装新内核：</p><pre class="brush:other">$ sudo apt-get install linux-image-extra-3.16.0-43-generic</pre></li><li><p>卸载其他内核：</p><pre class="brush:other"># 列出其他内核$ dpkg -l|grep linux-image# 卸载其他内核$ sudo apt-get purge linux-image-3.16.0-36-generic linux-image-extra-3.16.0-36-generic</pre></li><li><p>更新grub 系统引导文件并重启：<br><pre class="brush:other">$ sudo update-grub<br>$ sudo reboot</pre><br>OK！！！</p></li></ol>]]></content>
       
-        <categories>
-            
-            <category> 服务器 </category>
-            
-            <category> Linux </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[使用SpringBoot + Mybatis快速搭建Spring Restful开发环境]]></title>
-      <url>/2016/Java/%E4%BD%BF%E7%94%A8SpringBoot%20+%20Mybatis%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BASpring%20Restful%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
-      <content type="html"><![CDATA[<p>最近项目需要用Spring搭建一个Restful API项目，因此重拾了很久没用的JAVA，发现Spring多了一个SpringBoot项目，集成了嵌入式Tomcat，Jetty容器，无需部署WAR包，Mybatis也有类似的与Spring集成的东西，叫 mybatis-spring-boot ，这两个可以免除写一堆XML配置文件，以前写JAVA痛苦的XML配置过程不堪回首，所以干脆用这个搭一个吧。其实官方给的例子已经很详细了，下面是搭建的经验，懂的可以不用看了。</p>
-<a id="more"></a>
-<p>官方链接：</p>
-<blockquote>
-<p><a href="https://spring.io/guides/gs/rest-service/" target="_blank" rel="noopener">https://spring.io/guides/gs/rest-service/</a></p>
-<p><a href="https://github.com/mybatis/mybatis-spring-boot" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-spring-boot</a></p>
-</blockquote>
-<ol>
-<li>建立Maven项目，我用的是IDEA</li>
-<li><p>复制pom.xml，添加依赖文件<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;project xmlns=”<a href="http://maven.apache.org/POM/4.0.0" target="_blank" rel="noopener">http://maven.apache.org/POM/4.0.0</a>“</pre></p>
-<pre><code>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&amp;gt;
-</code></pre><p>&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</p>
-<p>&lt;groupId&gt;visoon&lt;/groupId&gt;<br>&lt;artifactId&gt;visoon&lt;/artifactId&gt;<br>&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</p>
-<p>&lt;parent&gt;</p>
-<pre><code>&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;1.3.2.RELEASE&amp;lt;/version&amp;gt;
-</code></pre><p>&lt;/parent&gt;</p>
-<p>&lt;properties&gt;</p>
-<pre><code>&amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt;
-&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
-</code></pre><p>&lt;/properties&gt;</p>
-<p>&lt;dependencies&gt;</p>
-<pre><code>&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-starter-jdbc&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-
-&amp;lt;!--mysql--&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.apache.tomcat&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;tomcat-jdbc&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-</code></pre><p>&lt;/dependencies&gt;</p>
-<p>&lt;build&gt;</p>
-<pre><code>&amp;lt;plugins&amp;gt;
-    &amp;lt;plugin&amp;gt;
-        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-        &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
-    &amp;lt;/plugin&amp;gt;
-&amp;lt;/plugins&amp;gt;
-</code></pre><p>&lt;/build&gt;</p>
-<p>&lt;repositories&gt;</p>
-<pre><code>&amp;lt;repository&amp;gt;
-    &amp;lt;id&amp;gt;spring-releases&amp;lt;/id&amp;gt;
-    &amp;lt;url&amp;gt;https://repo.spring.io/libs-release&amp;lt;/url&amp;gt;
-&amp;lt;/repository&amp;gt;
-</code></pre><p>&lt;/repositories&gt;<br>&lt;pluginRepositories&gt;</p>
-<pre><code>&amp;lt;pluginRepository&amp;gt;
-    &amp;lt;id&amp;gt;spring-releases&amp;lt;/id&amp;gt;
-    &amp;lt;url&amp;gt;https://repo.spring.io/libs-release&amp;lt;/url&amp;gt;
-&amp;lt;/pluginRepository&amp;gt;
-</code></pre><p>&lt;/pluginRepositories&gt;<br>&lt;/project&gt;<br>&nbsp;</p>
-</li>
-<li>一般项目结构是这样的：<img src="http://blog.visoon.net/wp-content/uploads/2016/02/QQ截图20160205210959.png" alt="QQ截图20160205210959"></li>
-<li>编写Application.java<br><pre class="brush:java">package cn.visoon;</pre></li>
-</ol>
-<p>import org.apache.ibatis.session.SqlSessionFactory;<br>import org.apache.log4j.Logger;<br>import org.mybatis.spring.SqlSessionFactoryBean;<br>import org.mybatis.spring.annotation.MapperScan;<br>import org.springframework.boot.SpringApplication;<br>import org.springframework.boot.autoconfigure.EnableAutoConfiguration;<br>import org.springframework.boot.autoconfigure.SpringBootApplication;<br>import org.springframework.boot.context.properties.ConfigurationProperties;<br>import org.springframework.context.annotation.Bean;<br>import org.springframework.context.annotation.ComponentScan;<br>import org.springframework.core.io.support.PathMatchingResourcePatternResolver;<br>import org.springframework.jdbc.datasource.DataSourceTransactionManager;<br>import org.springframework.transaction.PlatformTransactionManager;</p>
-<p>import javax.sql.DataSource;</p>
-<p>@EnableAutoConfiguration<br>@SpringBootApplication<br>@ComponentScan<br>@MapperScan(“cn.visoon.wechat.mapper”)<br>public class Application {<br>    private static Logger logger = Logger.getLogger(Application.class);</p>
-<pre><code>@Bean
-@ConfigurationProperties(prefix=&quot;spring.datasource&quot;)
-public DataSource dataSource() {
-    return new org.apache.tomcat.jdbc.pool.DataSource();
-}
-
-@Bean
-public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
-
-    SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-    sqlSessionFactoryBean.setDataSource(dataSource());
-
-    PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-
-    sqlSessionFactoryBean.setMapperLocations(resolver.getResources(&quot;classpath:/mybatis/*.xml&quot;));
-
-    return sqlSessionFactoryBean.getObject();
-}
-
-@Bean
-public PlatformTransactionManager transactionManager() {
-    return new DataSourceTransactionManager(dataSource());
-}
-
-public static void main(String[] args) {
-    SpringApplication.run(Application.class, args);
-}
-</code></pre><p>}<br><br>&nbsp;</p>
-<ol>
-<li>编写User.java<br><pre class="brush:java">package cn.visoon.wechat.model;</pre></li>
-</ol>
-<p>public class User {<br>    private Integer id;<br>    private String name;<br>    private Integer age;<br>    private String password;</p>
-<pre><code>public String getName() {
-    return name;
-}
-
-public void setName(String name) {
-    this.name = name;
-}
-
-public Integer getAge() {
-    return age;
-}
-
-public void setAge(Integer age) {
-    this.age = age;
-}
-
-public String getPassword() {
-    return password;
-}
-
-public void setPassword(String password) {
-    this.password = password;
-}
-
-public Integer getId() {
-    return id;
-}
-
-public void setId(Integer id) {
-    this.id = id;
-}
-</code></pre><p>}<br><br>&nbsp;</p>
-<ol>
-<li>编写UserService.java<br><pre class="brush:java">package cn.visoon.wechat.service;</pre></li>
-</ol>
-<p>import cn.visoon.wechat.mapper.UserMapper;<br>import cn.visoon.wechat.model.User;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.stereotype.Service;</p>
-<p>@Service<br>public class UserService {<br>    @Autowired<br>    private UserMapper userMapper;</p>
-<pre><code>public User getUserInfo() {
-    User user = userMapper.findUserInfo();
-    return user;
-}
-</code></pre><p>}<br><br>&nbsp;</p>
-<ol>
-<li>编写UserMapper.java<br><pre class="brush:java">package cn.visoon.wechat.mapper;</pre></li>
-</ol>
-<p>import cn.visoon.wechat.model.User;</p>
-<p>public interface UserMapper {<br>    public User findUserInfo();<br>}<br><br>&nbsp;</p>
-<ol>
-<li>编写UserController.java<br><pre class="brush:java">package cn.visoon.wechat.controller;</pre></li>
-</ol>
-<p>import cn.visoon.wechat.model.User;<br>import cn.visoon.wechat.service.UserService;<br>import org.apache.log4j.Logger;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.web.bind.annotation.RequestMapping;<br>import org.springframework.web.bind.annotation.RequestParam;<br>import org.springframework.web.bind.annotation.RestController;</p>
-<p>import java.util.concurrent.atomic.AtomicLong;</p>
-<p>@RestController<br>public class UserController {</p>
-<pre><code>private Logger logger = Logger.getLogger(UserController.class);
-
-@Autowired
-private UserService userService;
-
-@RequestMapping(&quot;/getUser&quot;)
-public User getUser() {
-    User user = userService.getUserInfo();
-    if (user != null) {
-        logger.info(&quot;user.getId():&quot; + user.getId());
-        logger.info(&quot;user.getAge():&quot; + user.getAge());
-        logger.info(&quot;user.getName():&quot; + user.getName());
-    }
-    return user;
-}
-</code></pre><p>}<br><br>&nbsp;</p>
-<ol>
-<li>配置数据库<br><pre class="brush:other">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=gbk&amp;zeroDateTimeBehavior=convertToNull<br>spring.datasource.username=root<br>spring.datasource.password=root<br>spring.datasource.driver-class-name=com.mysql.jdbc.Driver</pre><br>&nbsp;</li>
-<li>配置log4j<br><pre class="brush:other">#config root logger<br>log4j.rootLogger = INFO,system.out<br>log4j.appender.system.out=org.apache.log4j.ConsoleAppender<br>log4j.appender.system.out.layout=org.apache.log4j.PatternLayout<br>log4j.appender.system.out.layout.ConversionPattern=[Log] %5p[%F:%L]:%m%n</pre></li>
-</ol>
-<p>#config this Project.file logger<br>log4j.logger.thisProject.file=INFO,thisProject.file.out<br>log4j.appender.thisProject.file.out=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.thisProject.file.out.File=logContentFile.log<br>log4j.appender.thisProject.file.out.layout=org.apache.log4j.PatternLayout<br><br>&nbsp;</p>
-<ol>
-<li><p>配置查询SQL。UserMapper.xml<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE mapper PUBLIC “-//mybatis.org//DTD Mapper 3.0//EN” “<a href="http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt</a>;<br>&lt;mapper namespace=”cn.visoon.wechat.mapper.UserMapper”&gt;</pre></p>
-<p>&lt;select id=”findUserInfo” resultType=”cn.visoon.wechat.model.User”&gt;<br>select id, name, age,password from user;<br>&lt;/select&gt;</p>
-</li>
-</ol>
-<p>&lt;/mapper&gt;<br>&nbsp;</p>
-<ol>
-<li>最后，运行Application.java，像运行java应用程序一样。程序就跑起来了~<br>&nbsp;</li>
-</ol>
-]]></content>
+      <categories>
+          
+          <category> 服务器 </category>
+          
+          <category> Linux </category>
+          
+      </categories>
       
-        <categories>
-            
-            <category> JAVA </category>
-            
-            <category> Spring </category>
-            
-        </categories>
-        
-        
+      
     </entry>
     
     <entry>
-      <title><![CDATA[IONIC手机浏览器INPUT标签点击放大]]></title>
-      <url>/2016/IONIC1/IONIC%E6%89%8B%E6%9C%BA%E6%B5%8F%E8%A7%88%E5%99%A8INPUT%E6%A0%87%E7%AD%BE%E7%82%B9%E5%87%BB%E6%94%BE%E5%A4%A7/</url>
+      <title>Linux下利用iptables添加访问许可</title>
+      <link href="/2016/Linux/Linux%E4%B8%8B%E5%88%A9%E7%94%A8iptables%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E8%AE%B8%E5%8F%AF/"/>
+      <content type="html"><![CDATA[<p>禁用某个IP段：</p><p><pre class="brush:other">iptables -I INPUT -s 14.215.1.0/24 -j DROP</pre><br>&nbsp;</p>]]></content>
+      
+      <categories>
+          
+          <category> 服务器 </category>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>使用SpringBoot + Mybatis快速搭建Spring Restful开发环境</title>
+      <link href="/2016/Java/%E4%BD%BF%E7%94%A8SpringBoot%20+%20Mybatis%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BASpring%20Restful%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+      <content type="html"><![CDATA[<p>最近项目需要用Spring搭建一个Restful API项目，因此重拾了很久没用的JAVA，发现Spring多了一个SpringBoot项目，集成了嵌入式Tomcat，Jetty容器，无需部署WAR包，Mybatis也有类似的与Spring集成的东西，叫 mybatis-spring-boot ，这两个可以免除写一堆XML配置文件，以前写JAVA痛苦的XML配置过程不堪回首，所以干脆用这个搭一个吧。其实官方给的例子已经很详细了，下面是搭建的经验，懂的可以不用看了。</p><a id="more"></a><p>官方链接：</p><blockquote><p><a href="https://spring.io/guides/gs/rest-service/" target="_blank" rel="noopener">https://spring.io/guides/gs/rest-service/</a></p><p><a href="https://github.com/mybatis/mybatis-spring-boot" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-spring-boot</a></p></blockquote><ol><li>建立Maven项目，我用的是IDEA</li><li><p>复制pom.xml，添加依赖文件<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;project xmlns=”<a href="http://maven.apache.org/POM/4.0.0&quot;" target="_blank" rel="noopener">http://maven.apache.org/POM/4.0.0&quot;</a></pre></p><pre><code>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&amp;gt;</code></pre><p>&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</p><p>&lt;groupId&gt;visoon&lt;/groupId&gt;<br>&lt;artifactId&gt;visoon&lt;/artifactId&gt;<br>&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</p><p>&lt;parent&gt;</p><pre><code>&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;&amp;lt;version&amp;gt;1.3.2.RELEASE&amp;lt;/version&amp;gt;</code></pre><p>&lt;/parent&gt;</p><p>&lt;properties&gt;</p><pre><code>&amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt;&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;</code></pre><p>&lt;/properties&gt;</p><p>&lt;dependencies&gt;</p><pre><code>&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;&amp;lt;/dependency&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot-starter-jdbc&amp;lt;/artifactId&amp;gt;&amp;lt;/dependency&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt;&amp;lt;/dependency&amp;gt;&amp;lt;!--mysql--&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.tomcat&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;tomcat-jdbc&amp;lt;/artifactId&amp;gt;&amp;lt;/dependency&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;&amp;lt;/dependency&amp;gt;</code></pre><p>&lt;/dependencies&gt;</p><p>&lt;build&gt;</p><pre><code>&amp;lt;plugins&amp;gt;    &amp;lt;plugin&amp;gt;        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;    &amp;lt;/plugin&amp;gt;&amp;lt;/plugins&amp;gt;</code></pre><p>&lt;/build&gt;</p><p>&lt;repositories&gt;</p><pre><code>&amp;lt;repository&amp;gt;    &amp;lt;id&amp;gt;spring-releases&amp;lt;/id&amp;gt;    &amp;lt;url&amp;gt;https://repo.spring.io/libs-release&amp;lt;/url&amp;gt;&amp;lt;/repository&amp;gt;</code></pre><p>&lt;/repositories&gt;<br>&lt;pluginRepositories&gt;</p><pre><code>&amp;lt;pluginRepository&amp;gt;    &amp;lt;id&amp;gt;spring-releases&amp;lt;/id&amp;gt;    &amp;lt;url&amp;gt;https://repo.spring.io/libs-release&amp;lt;/url&amp;gt;&amp;lt;/pluginRepository&amp;gt;</code></pre><p>&lt;/pluginRepositories&gt;<br>&lt;/project&gt;<br>&nbsp;</p></li><li>一般项目结构是这样的：<img src="http://blog.visoon.net/wp-content/uploads/2016/02/QQ截图20160205210959.png" alt="QQ截图20160205210959"></li><li>编写Application.java<br><pre class="brush:java">package cn.visoon;</pre></li></ol><p>import org.apache.ibatis.session.SqlSessionFactory;<br>import org.apache.log4j.Logger;<br>import org.mybatis.spring.SqlSessionFactoryBean;<br>import org.mybatis.spring.annotation.MapperScan;<br>import org.springframework.boot.SpringApplication;<br>import org.springframework.boot.autoconfigure.EnableAutoConfiguration;<br>import org.springframework.boot.autoconfigure.SpringBootApplication;<br>import org.springframework.boot.context.properties.ConfigurationProperties;<br>import org.springframework.context.annotation.Bean;<br>import org.springframework.context.annotation.ComponentScan;<br>import org.springframework.core.io.support.PathMatchingResourcePatternResolver;<br>import org.springframework.jdbc.datasource.DataSourceTransactionManager;<br>import org.springframework.transaction.PlatformTransactionManager;</p><p>import javax.sql.DataSource;</p><p>@EnableAutoConfiguration<br>@SpringBootApplication<br>@ComponentScan<br>@MapperScan(“cn.visoon.wechat.mapper”)<br>public class Application {<br>    private static Logger logger = Logger.getLogger(Application.class);</p><pre><code>@Bean@ConfigurationProperties(prefix=&quot;spring.datasource&quot;)public DataSource dataSource() {    return new org.apache.tomcat.jdbc.pool.DataSource();}@Beanpublic SqlSessionFactory sqlSessionFactoryBean() throws Exception {    SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();    sqlSessionFactoryBean.setDataSource(dataSource());    PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();    sqlSessionFactoryBean.setMapperLocations(resolver.getResources(&quot;classpath:/mybatis/*.xml&quot;));    return sqlSessionFactoryBean.getObject();}@Beanpublic PlatformTransactionManager transactionManager() {    return new DataSourceTransactionManager(dataSource());}public static void main(String[] args) {    SpringApplication.run(Application.class, args);}</code></pre><p>}<br><br>&nbsp;</p><ol><li>编写User.java<br><pre class="brush:java">package cn.visoon.wechat.model;</pre></li></ol><p>public class User {<br>    private Integer id;<br>    private String name;<br>    private Integer age;<br>    private String password;</p><pre><code>public String getName() {    return name;}public void setName(String name) {    this.name = name;}public Integer getAge() {    return age;}public void setAge(Integer age) {    this.age = age;}public String getPassword() {    return password;}public void setPassword(String password) {    this.password = password;}public Integer getId() {    return id;}public void setId(Integer id) {    this.id = id;}</code></pre><p>}<br><br>&nbsp;</p><ol><li>编写UserService.java<br><pre class="brush:java">package cn.visoon.wechat.service;</pre></li></ol><p>import cn.visoon.wechat.mapper.UserMapper;<br>import cn.visoon.wechat.model.User;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.stereotype.Service;</p><p>@Service<br>public class UserService {<br>    @Autowired<br>    private UserMapper userMapper;</p><pre><code>public User getUserInfo() {    User user = userMapper.findUserInfo();    return user;}</code></pre><p>}<br><br>&nbsp;</p><ol><li>编写UserMapper.java<br><pre class="brush:java">package cn.visoon.wechat.mapper;</pre></li></ol><p>import cn.visoon.wechat.model.User;</p><p>public interface UserMapper {<br>    public User findUserInfo();<br>}<br><br>&nbsp;</p><ol><li>编写UserController.java<br><pre class="brush:java">package cn.visoon.wechat.controller;</pre></li></ol><p>import cn.visoon.wechat.model.User;<br>import cn.visoon.wechat.service.UserService;<br>import org.apache.log4j.Logger;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.web.bind.annotation.RequestMapping;<br>import org.springframework.web.bind.annotation.RequestParam;<br>import org.springframework.web.bind.annotation.RestController;</p><p>import java.util.concurrent.atomic.AtomicLong;</p><p>@RestController<br>public class UserController {</p><pre><code>private Logger logger = Logger.getLogger(UserController.class);@Autowiredprivate UserService userService;@RequestMapping(&quot;/getUser&quot;)public User getUser() {    User user = userService.getUserInfo();    if (user != null) {        logger.info(&quot;user.getId():&quot; + user.getId());        logger.info(&quot;user.getAge():&quot; + user.getAge());        logger.info(&quot;user.getName():&quot; + user.getName());    }    return user;}</code></pre><p>}<br><br>&nbsp;</p><ol><li>配置数据库<br><pre class="brush:other">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=gbk&amp;zeroDateTimeBehavior=convertToNull<br>spring.datasource.username=root<br>spring.datasource.password=root<br>spring.datasource.driver-class-name=com.mysql.jdbc.Driver</pre><br>&nbsp;</li><li>配置log4j<br><pre class="brush:other">#config root logger<br>log4j.rootLogger = INFO,system.out<br>log4j.appender.system.out=org.apache.log4j.ConsoleAppender<br>log4j.appender.system.out.layout=org.apache.log4j.PatternLayout<br>log4j.appender.system.out.layout.ConversionPattern=[Log] %5p[%F:%L]:%m%n</pre></li></ol><p>#config this Project.file logger<br>log4j.logger.thisProject.file=INFO,thisProject.file.out<br>log4j.appender.thisProject.file.out=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.thisProject.file.out.File=logContentFile.log<br>log4j.appender.thisProject.file.out.layout=org.apache.log4j.PatternLayout<br><br>&nbsp;</p><ol><li><p>配置查询SQL。UserMapper.xml<br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE mapper PUBLIC “-//mybatis.org//DTD Mapper 3.0//EN” “<a href="http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</a>&gt;<br>&lt;mapper namespace=”cn.visoon.wechat.mapper.UserMapper”&gt;</pre></p><p>&lt;select id=”findUserInfo” resultType=”cn.visoon.wechat.model.User”&gt;<br>select id, name, age,password from user;<br>&lt;/select&gt;</p></li></ol><p>&lt;/mapper&gt;<br>&nbsp;</p><ol><li>最后，运行Application.java，像运行java应用程序一样。程序就跑起来了~<br>&nbsp;</li></ol>]]></content>
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> Spring </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>IONIC手机浏览器INPUT标签点击放大</title>
+      <link href="/2016/IONIC1/IONIC%E6%89%8B%E6%9C%BA%E6%B5%8F%E8%A7%88%E5%99%A8INPUT%E6%A0%87%E7%AD%BE%E7%82%B9%E5%87%BB%E6%94%BE%E5%A4%A7/"/>
       <content type="html"><![CDATA[<div>手机浏览器认为输入时16px才能让用户看清楚，因此在点击时把字体设置成16px以上就不会出现这个问题了：</div><br><div><br><pre class="brush:css">@media only screen<br>and (min-device-width : 320px)<br>and (max-device-width : 1024px) {<br>    select:focus,<br>    textarea:focus,<br>    input:focus {<br>        font-size: 16px !important;<br>    }<br>}<br><br></pre><br>&gt; <div>著作权归作者所有。<br>&gt; 商业转载请联系作者获得授权，非商业转载请注明出处。<br>&gt; 作者：周权<br>&gt; 链接：<a href="https://www.zhihu.com/question/20041793/answer/41798672" target="_blank" rel="noopener">https://www.zhihu.com/question/20041793/answer/41798672</a><br>&gt; 来源：知乎<br>&gt;<br>&gt; </div><br></div>]]></content>
       
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> AngularJs </category>
-            
-            <category> IONIC </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> AngularJs </category>
+          
+          <category> IONIC </category>
+          
+      </categories>
+      
+      
     </entry>
     
     <entry>
-      <title><![CDATA[Angular/Ionic中使用PUT方法遇到OPTIONS问题的解决方案]]></title>
-      <url>/2016/IONIC1/Angular_Ionic%E4%B8%AD%E4%BD%BF%E7%94%A8PUT%E6%96%B9%E6%B3%95%E9%81%87%E5%88%B0OPTIONS%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-      <content type="html"><![CDATA[<p>开发Angular/Ionic中遇到使用PUT方法遇到OPTIONS问题，使用PUT方法返回405错误，查了许久，看到这篇博文。</p>
-<blockquote>
-<p><a href="http://my.oschina.net/blogshi/blog/303758?fromerr=ALJoxiKg" target="_blank" rel="noopener">http://my.oschina.net/blogshi/blog/303758?fromerr=ALJoxiKg</a><br>CORS的本质让服务器通过新增响应头Access-Control-Allow-Origin,通过HTTP方式来实现资源共享,让每个请求的服务直接返回资源.它使用了HTTP交互方式来确定请求源是否有资格请求该资源,并且通过设置HTTP Header来控制访问资源的权限.</p>
-</blockquote>
-<p>因此需要在后端拦截OPTIONS方法，在headers中返回如下信息：</p>
-<p><pre class="brush:xml">Access-Control-Allow-Origin: “*”</pre></p>
-<p>Access-Control-Allow-Methods: “PUT”</p>
-<p>Access-Control-Max-Age: “60”<br>&nbsp;</p>
-<p>返回以上信息基本流程就可以处理下去了。</p>
-<p>&nbsp;</p>
-<p>但是开发中还遇到了PUT方法payload提交不正确，需要把提交的数据转换成JSON格式。原理是直接JSON.stringify()一下：</p>
-<p><pre class="brush:javascript">login: function (user) {<br>      var data = {<br>        ‘_format’: ‘json’,<br>        ‘password’: md5(user.password),<br>        ‘verifyCode’: user.verifyCode,<br>        ‘sessionMark’: user.sessionMark<br>      };<br>      data = JSON.stringify(data);<br>      return $http({<br>        method: ‘PUT’,<br>        url: HOST_URL + “/user/“ + user.userName + “/apiKey”,<br>        data: data<br>      }).success(function (response) {<br>        localStorage.removeItem(‘user’);<br>        USER = response;<br>      }).error(function (data, status, headers, config) {<br>        if (status == ‘404’) {<br>          $ionicLoading.show({<br>            template: ‘找不到该用户’,<br>            duration: 2000<br>          });<br>        } else {<br>          $ionicLoading.show({<br>            template: data.error.message,<br>            duration: 2000<br>          });<br>        }<br>      });<br>    },</pre><br>&nbsp;</p>
-]]></content>
+      <title>Angular/Ionic中使用PUT方法遇到OPTIONS问题的解决方案</title>
+      <link href="/2016/IONIC1/Angular_Ionic%E4%B8%AD%E4%BD%BF%E7%94%A8PUT%E6%96%B9%E6%B3%95%E9%81%87%E5%88%B0OPTIONS%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+      <content type="html"><![CDATA[<p>开发Angular/Ionic中遇到使用PUT方法遇到OPTIONS问题，使用PUT方法返回405错误，查了许久，看到这篇博文。</p><blockquote><p><a href="http://my.oschina.net/blogshi/blog/303758?fromerr=ALJoxiKg" target="_blank" rel="noopener">http://my.oschina.net/blogshi/blog/303758?fromerr=ALJoxiKg</a><br>CORS的本质让服务器通过新增响应头Access-Control-Allow-Origin,通过HTTP方式来实现资源共享,让每个请求的服务直接返回资源.它使用了HTTP交互方式来确定请求源是否有资格请求该资源,并且通过设置HTTP Header来控制访问资源的权限.</p></blockquote><p>因此需要在后端拦截OPTIONS方法，在headers中返回如下信息：</p><p><pre class="brush:xml">Access-Control-Allow-Origin: “*”</pre></p><p>Access-Control-Allow-Methods: “PUT”</p><p>Access-Control-Max-Age: “60”<br>&nbsp;</p><p>返回以上信息基本流程就可以处理下去了。</p><p>&nbsp;</p><p>但是开发中还遇到了PUT方法payload提交不正确，需要把提交的数据转换成JSON格式。原理是直接JSON.stringify()一下：</p><p><pre class="brush:javascript">login: function (user) {<br>      var data = {<br>        ‘_format’: ‘json’,<br>        ‘password’: md5(user.password),<br>        ‘verifyCode’: user.verifyCode,<br>        ‘sessionMark’: user.sessionMark<br>      };<br>      data = JSON.stringify(data);<br>      return $http({<br>        method: ‘PUT’,<br>        url: HOST_URL + “/user/“ + user.userName + “/apiKey”,<br>        data: data<br>      }).success(function (response) {<br>        localStorage.removeItem(‘user’);<br>        USER = response;<br>      }).error(function (data, status, headers, config) {<br>        if (status == ‘404’) {<br>          $ionicLoading.show({<br>            template: ‘找不到该用户’,<br>            duration: 2000<br>          });<br>        } else {<br>          $ionicLoading.show({<br>            template: data.error.message,<br>            duration: 2000<br>          });<br>        }<br>      });<br>    },</pre><br>&nbsp;</p>]]></content>
       
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> AngularJs </category>
-            
-            <category> IONIC </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> AngularJs </category>
+          
+          <category> IONIC </category>
+          
+      </categories>
+      
+      
     </entry>
     
     <entry>
-      <title><![CDATA[ionic/AngularJs service使用]]></title>
-      <url>/2016/IONIC1/ionic_AngularJs_service%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"><![CDATA[<p>列一个项目中用到factory的例子，基本上service原理都是单例。</p>
-<pre class="brush:javascript">services.factory(&#39;UserService&#39;, function ($http, $ionicLoading) {
-  // 用户对象
-  var user = null;
-
-  return {
-    /**
-     * 获取用户对象
-     * @returns 
-     */
-    getUser: function () {
-      return user;
-    },
-    /**
-     * 登录 - /v1/user/{userName}/apiKey
-     * @param user
-     */
-    login: function (user) {
-      $http.post(HOST_URL + &quot;/user/&quot; + user.userName + &quot;apiKey&quot;, {
-        password: md5(user.password),
-        verifyCode: user.verifyCode,
-        sessionMark: user.sessionMark
-      }).success(function (response) {
-        user = response;
-      }).error(function (response) {
-        $ionicLoading.show({
-          template: response,
-          duration: 2000
-        });
-      });
-    }
-  };
-});
-</pre>
-
-<p>&nbsp;</p>
-]]></content>
+      <title>ionic/AngularJs service使用</title>
+      <link href="/2016/IONIC1/ionic_AngularJs_service%E4%BD%BF%E7%94%A8/"/>
+      <content type="html"><![CDATA[<p>列一个项目中用到factory的例子，基本上service原理都是单例。</p><pre class="brush:javascript">services.factory(&#39;UserService&#39;, function ($http, $ionicLoading) {  // 用户对象  var user = null;  return {    /**     * 获取用户对象     * @returns      */    getUser: function () {      return user;    },    /**     * 登录 - /v1/user/{userName}/apiKey     * @param user     */    login: function (user) {      $http.post(HOST_URL + &quot;/user/&quot; + user.userName + &quot;apiKey&quot;, {        password: md5(user.password),        verifyCode: user.verifyCode,        sessionMark: user.sessionMark      }).success(function (response) {        user = response;      }).error(function (response) {        $ionicLoading.show({          template: response,          duration: 2000        });      });    }  };});</pre><p>&nbsp;</p>]]></content>
       
-        <categories>
-            
-            <category> JAVASCRIPT </category>
-            
-            <category> AngularJs </category>
-            
-            <category> IONIC </category>
-            
-        </categories>
-        
-        
+      <categories>
+          
+          <category> JAVASCRIPT </category>
+          
+          <category> AngularJs </category>
+          
+          <category> IONIC </category>
+          
+      </categories>
+      
+      
         <tags>
             
             <tag> 前端 </tag>
             
         </tags>
-        
+      
     </entry>
     
   

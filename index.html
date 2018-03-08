@@ -254,6 +254,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2018/Shadowsocks/Linux部署SSR/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visoon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Visoon's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/Shadowsocks/Linux部署SSR/" itemprop="url">Linux部署SSR</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T10:04:57+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shadowsocks/" itemprop="url" rel="index">
+                    <span itemprop="name">Shadowsocks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先，你需要一台运行在国外的服务器。<br>然后一行行运行下面脚本</p>
+<pre><code>wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh
+chmod +x shadowsocksR.sh
+./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log
+</code></pre><p>安装完成后，脚本提示如下：</p>
+<pre><code>Congratulations, ShadowsocksR server install completed!
+Your Server IP        :your_server_ip
+Your Server Port      :your_server_port
+Your Password         :your_password
+Your Protocol         :your_protocol
+Your obfs             :your_obfs
+Your Encryption Method:your_encryption_method
+
+Welcome to visit:https://shadowsocks.be/9.html
+Enjoy it!
+</code></pre><p>卸载方法：<br>使用 root 用户登录，运行以下命令：</p>
+<pre><code>./shadowsocksR.sh uninstall
+</code></pre><p>安装完成后即已后台启动 ShadowsocksR ，运行：</p>
+<pre><code>/etc/init.d/shadowsocks status
+</code></pre><p>可以查看 ShadowsocksR 进程是否已经启动。<br>本脚本安装完成后，已将 ShadowsocksR 自动加入开机自启动。</p>
+<p>使用命令：<br>启动：/etc/init.d/shadowsocks start<br>停止：/etc/init.d/shadowsocks stop<br>重启：/etc/init.d/shadowsocks restart<br>状态：/etc/init.d/shadowsocks status</p>
+<p>配置文件路径：/etc/shadowsocks.json<br>日志文件路径：/var/log/shadowsocks.log<br>代码安装目录：/usr/local/shadowsocks</p>
+<p>多用户配置示例：</p>
+<pre><code>{
+&quot;server&quot;:&quot;0.0.0.0&quot;,
+&quot;server_ipv6&quot;: &quot;[::]&quot;,
+&quot;local_address&quot;:&quot;127.0.0.1&quot;,
+&quot;local_port&quot;:1080,
+&quot;port_password&quot;:{
+    &quot;8989&quot;:&quot;password1&quot;,
+    &quot;8990&quot;:&quot;password2&quot;,
+    &quot;8991&quot;:&quot;password3&quot;
+},
+&quot;timeout&quot;:300,
+&quot;method&quot;:&quot;aes-256-cfb&quot;,
+&quot;protocol&quot;: &quot;origin&quot;,
+&quot;protocol_param&quot;: &quot;&quot;,
+&quot;obfs&quot;: &quot;plain&quot;,
+&quot;obfs_param&quot;: &quot;&quot;,
+&quot;redirect&quot;: &quot;&quot;,
+&quot;dns_ipv6&quot;: false,
+&quot;fast_open&quot;: false,
+&quot;workers&quot;: 1
+}
+</code></pre><p>如果你想修改配置文件，请参考：<br><a href="https://github.com/shadowsocksr-backup/shadowsocks-rss/wiki/Server-Setup" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocks-rss/wiki/Server-Setup</a><br><a href="https://github.com/shadowsocksr-backup/shadowsocks-rss/blob/master/ssr.md" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocks-rss/blob/master/ssr.md</a><br><a href="https://github.com/shadowsocksr-backup/shadowsocks-rss/wiki/config.json" target="_blank" rel="noopener">https://github.com/shadowsocksr-backup/shadowsocks-rss/wiki/config.json</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Nodejs/Windows下快速删除Nodejs项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -547,16 +733,184 @@ rmdir d:\temp\
 <pre><code>max_bandwidth_fec = max_bandwidth*(datashard+parityshard)/datashard
 </code></pre><p>举例，设datashard = 10 , partiyshard = 3，则：</p>
 <pre><code>max_bandwidth_fec = max_bandwidth * (10 + 3) /10 = 1.3*max_bandwidth ＝ 1.3 * 25Mbps = 32.5Mbps
-</code></pre><p>```</p>
+</code></pre><p><code>`</code></p>
 <h3 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h3><blockquote>
 <p>Q: 客户端和服务器端<strong>皆无</strong> <code>stream opened</code>信息。<br>A: 连接客户端程序的端口设置错误。     </p>
+</blockquote>
+<blockquote>
 <p>Q: 客户端有 <code>stream opened</code>信息，服务器端没有。<br>A: 连接服务器的端口设置错误，或者被防火墙拦截。     </p>
+</blockquote>
+<blockquote>
 <p>Q: 客户端服务器<strong>皆有</strong> <code>stream opened</code>信息，但无法通信。<br>A: 上层软件的设定错误。     </p>
 </blockquote>
 <h3 id="免责申明"><a href="#免责申明" class="headerlink" title="免责申明"></a>免责申明</h3><p><strong>用户以各种方式使用本软件（包括但不限于修改使用、直接使用、通过第三方使用）的过程中，不得以任何方式利用本软件直接或间接从事违反中国法律、以及社会公德的行为。软件的使用者需对自身行为负责，因使用软件引发的一切纠纷，由使用者承担全部法律及连带责任。作者不承担任何法律及连带责任。</strong>       </p>
 <p><strong>对免责声明的解释、修改及更新权均属于作者本人所有。</strong></p>
 <h3 id="特别鸣谢"><a href="#特别鸣谢" class="headerlink" title="特别鸣谢"></a>特别鸣谢</h3><p>GITHUB上的各位大佬，就不打名字了</p>
 <p>好人一生平安!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Angular2+/Angula2中innerHtml的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visoon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Visoon's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/Angular2+/Angula2中innerHtml的问题/" itemprop="url">Angula2中innerHtml的问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T00:00:00+08:00">
+                2017-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVASCRIPT/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVASCRIPT</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVASCRIPT/Angular2/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular2+</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p>
+<ol>
+<li><p>导入包</p>
+<pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;
+</code></pre></li>
+<li><p>constructor() 中添加</p>
+<pre><code>public sanitizer: DomSanitizer
+</code></pre></li>
+<li><p>转换数据</p>
+<pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);
+</code></pre></li>
+</ol>
 
           
         
@@ -754,7 +1108,7 @@ rmdir d:\temp\
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Angular2+/Angula2中innerHtml的问题/">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Visoon">
@@ -773,7 +1127,7 @@ rmdir d:\temp\
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/Angular2+/Angula2中innerHtml的问题/" itemprop="url">Angula2中innerHtml的问题</a></h1>
+                <a class="post-title-link" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/" itemprop="url">Ubuntu 搭建 Shadowsocks 进行科学上网</a></h1>
         
 
         <div class="post-meta">
@@ -785,8 +1139,8 @@ rmdir d:\temp\
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T00:00:00+08:00">
-                2017-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T00:00:00+08:00">
+                2017-10-19
               </time>
             
 
@@ -808,19 +1162,8 @@ rmdir d:\temp\
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVASCRIPT/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVASCRIPT</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVASCRIPT/Angular2/" itemprop="url" rel="index">
-                    <span itemprop="name">Angular2+</span>
+                  <a href="/categories/Shadowsocks/" itemprop="url" rel="index">
+                    <span itemprop="name">Shadowsocks</span>
                   </a>
                 </span>
 
@@ -857,21 +1200,21 @@ rmdir d:\temp\
 
       
         
-          
-            <h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p>
-<ol>
-<li><p>导入包</p>
-<pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;
-</code></pre></li>
-<li><p>constructor() 中添加</p>
-<pre><code>public sanitizer: DomSanitizer
-</code></pre></li>
-<li><p>转换数据</p>
-<pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);
-</code></pre></li>
-</ol>
-
-          
+          <p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
+<pre class="brush:bash">
+    $ sudo apt-get update
+    $ sudo apt-get install python-gevent python-pip
+    $ sudo pip install setuptools
+    $ sudo pip install shadowsocks
+    $ apt-get install python-m2crypto
+</pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1142,7 +1485,7 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发-2-创建项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Visoon">
@@ -1161,7 +1504,7 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/" itemprop="url">Ubuntu 搭建 Shadowsocks 进行科学上网</a></h1>
+                <a class="post-title-link" href="/2017/IONIC2+/【IONIC2+】项目开发-2-创建项目/" itemprop="url">【IONIC2+】项目开发 - 2 - 创建项目</a></h1>
         
 
         <div class="post-meta">
@@ -1173,8 +1516,8 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T00:00:00+08:00">
-                2017-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-13T16:16:59+08:00">
+                2017-06-13
               </time>
             
 
@@ -1196,8 +1539,19 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Shadowsocks/" itemprop="url" rel="index">
-                    <span itemprop="name">Shadowsocks</span>
+                  <a href="/categories/JAVASCRIPT/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVASCRIPT</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVASCRIPT/IONIC2/" itemprop="url" rel="index">
+                    <span itemprop="name">IONIC2+</span>
                   </a>
                 </span>
 
@@ -1234,21 +1588,27 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
 
       
         
-          <p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
-<pre class="brush:bash">
-    $ sudo apt-get update
-    $ sudo apt-get install python-gevent python-pip
-    $ sudo pip install setuptools
-    $ sudo pip install shadowsocks
-    $ apt-get install python-m2crypto
-</pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol>
+<li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li>
+<li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li>
+<li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li>
+<li><p>安装ionic</p>
+<pre><code>npm install -g cordova@6.5.0 ionic
+</code></pre></li>
+<li><p>安装完成后，新建项目，这里有几个模板可选</p>
+<pre><code>ionic start myApp tabs
+</code></pre></li>
+<li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p>
+<pre><code>cd myApp
+ionic serve
+</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
+</ol>
+<ul>
+<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
+</ul>
+
+          
         
       
     </div>
@@ -1479,176 +1839,6 @@ entryComponents: [
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发-2-创建项目/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Visoon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Visoon's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/IONIC2+/【IONIC2+】项目开发-2-创建项目/" itemprop="url">【IONIC2+】项目开发 - 2 - 创建项目</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-13T16:16:59+08:00">
-                2017-06-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVASCRIPT/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVASCRIPT</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVASCRIPT/IONIC2/" itemprop="url" rel="index">
-                    <span itemprop="name">IONIC2+</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol>
-<li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li>
-<li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li>
-<li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li>
-<li><p>安装ionic</p>
-<pre><code>npm install -g cordova@6.5.0 ionic
-</code></pre></li>
-<li><p>安装完成后，新建项目，这里有几个模板可选</p>
-<pre><code>ionic start myApp tabs
-</code></pre></li>
-<li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p>
-<pre><code>cd myApp
-ionic serve
-</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
-</ol>
-<ul>
-<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/MacOS/【MacOS】查看端口占用进程以及强制清理进程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1781,177 +1971,6 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发-1-目录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Visoon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Visoon's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/IONIC2+/【IONIC2+】项目开发-1-目录/" itemprop="url">【IONIC2+】项目开发 - 目录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T16:16:59+08:00">
-                2017-05-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVASCRIPT/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVASCRIPT</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVASCRIPT/IONIC2/" itemprop="url" rel="index">
-                    <span itemprop="name">IONIC2+</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h1><ul>
-<li>本次项目基于ionic2+，目前是ionic3</li>
-<li>typescript版本为2.2.2</li>
-<li>node -v 6.10.1</li>
-<li>这个系列的文章旨在教你写一个基于ionic2+的搜索App</li>
-<li>你可以学到如下知识：<ul>
-<li>写个跨平台的APP</li>
-<li>了解Angular2+的逻辑</li>
-<li>了解node爬虫</li>
-<li>可以爬到自己想要的东西</li>
-</ul>
-</li>
-<li>文章不会一步步教你怎么做，比如页面怎么写，这不是重点，重点在于编码与解决问题的思路<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1></li>
-</ul>
-<ol>
-<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
-<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
-<li>还在写…别急…</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2006,7 +2025,7 @@ Python  13911    Visoon    6u  IPv4 0x8c39173908c3db9f      0t0  TCP *:vcom-tunn
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

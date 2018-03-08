@@ -402,10 +402,14 @@
 <pre><code>max_bandwidth_fec = max_bandwidth*(datashard+parityshard)/datashard
 </code></pre><p>举例，设datashard = 10 , partiyshard = 3，则：</p>
 <pre><code>max_bandwidth_fec = max_bandwidth * (10 + 3) /10 = 1.3*max_bandwidth ＝ 1.3 * 25Mbps = 32.5Mbps
-</code></pre><p>```</p>
+</code></pre><p><code>`</code></p>
 <h3 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h3><blockquote>
 <p>Q: 客户端和服务器端<strong>皆无</strong> <code>stream opened</code>信息。<br>A: 连接客户端程序的端口设置错误。     </p>
+</blockquote>
+<blockquote>
 <p>Q: 客户端有 <code>stream opened</code>信息，服务器端没有。<br>A: 连接服务器的端口设置错误，或者被防火墙拦截。     </p>
+</blockquote>
+<blockquote>
 <p>Q: 客户端服务器<strong>皆有</strong> <code>stream opened</code>信息，但无法通信。<br>A: 上层软件的设定错误。     </p>
 </blockquote>
 <h3 id="免责申明"><a href="#免责申明" class="headerlink" title="免责申明"></a>免责申明</h3><p><strong>用户以各种方式使用本软件（包括但不限于修改使用、直接使用、通过第三方使用）的过程中，不得以任何方式利用本软件直接或间接从事违反中国法律、以及社会公德的行为。软件的使用者需对自身行为负责，因使用软件引发的一切纠纷，由使用者承担全部法律及连带责任。作者不承担任何法律及连带责任。</strong>       </p>
@@ -442,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/Other/Chrome下开启跨域功能/" rel="next" title="Chrome下开启跨域功能">
-                <i class="fa fa-chevron-left"></i> Chrome下开启跨域功能
+              <a href="/2017/Angular2+/Angula2中innerHtml的问题/" rel="next" title="Angula2中innerHtml的问题">
+                <i class="fa fa-chevron-left"></i> Angula2中innerHtml的问题
               </a>
             
           </div>
@@ -535,7 +539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -613,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"><a href="#" class="headerlink" title=""></a><img src="logo.png" alt="kcptun" height="54px"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原因及原理"><span class="nav-number">1.0.1.</span> <span class="nav-text"><a href="#&#x539F;&#x56E0;&#x53CA;&#x539F;&#x7406;" class="headerlink" title="&#x539F;&#x56E0;&#x53CA;&#x539F;&#x7406;"></a>&#x539F;&#x56E0;&#x53CA;&#x539F;&#x7406;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速设定"><span class="nav-number">1.0.2.</span> <span class="nav-text"><a href="#&#x5FEB;&#x901F;&#x8BBE;&#x5B9A;" class="headerlink" title="&#x5FEB;&#x901F;&#x8BBE;&#x5B9A;"></a>&#x5FEB;&#x901F;&#x8BBE;&#x5B9A;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从源码安装"><span class="nav-number">1.0.3.</span> <span class="nav-text"><a href="#&#x4ECE;&#x6E90;&#x7801;&#x5B89;&#x88C5;" class="headerlink" title="&#x4ECE;&#x6E90;&#x7801;&#x5B89;&#x88C5;"></a>&#x4ECE;&#x6E90;&#x7801;&#x5B89;&#x88C5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#速度对比"><span class="nav-number">1.0.4.</span> <span class="nav-text"><a href="#&#x901F;&#x5EA6;&#x5BF9;&#x6BD4;" class="headerlink" title="&#x901F;&#x5EA6;&#x5BF9;&#x6BD4;"></a>&#x901F;&#x5EA6;&#x5BF9;&#x6BD4;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法"><span class="nav-number">1.0.5.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;&#x65B9;&#x6CD5;" class="headerlink" title="&#x4F7F;&#x7528;&#x65B9;&#x6CD5;"></a>&#x4F7F;&#x7528;&#x65B9;&#x6CD5;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分层参数图"><span class="nav-number">1.0.5.1.</span> <span class="nav-text"><a href="#&#x5206;&#x5C42;&#x53C2;&#x6570;&#x56FE;" class="headerlink" title="&#x5206;&#x5C42;&#x53C2;&#x6570;&#x56FE;"></a>&#x5206;&#x5C42;&#x53C2;&#x6570;&#x56FE;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置模式"><span class="nav-number">1.0.6.</span> <span class="nav-text"><a href="#&#x5185;&#x7F6E;&#x6A21;&#x5F0F;" class="headerlink" title="&#x5185;&#x7F6E;&#x6A21;&#x5F0F;"></a>&#x5185;&#x7F6E;&#x6A21;&#x5F0F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前向纠错"><span class="nav-number">1.0.7.</span> <span class="nav-text"><a href="#&#x524D;&#x5411;&#x7EA0;&#x9519;" class="headerlink" title="&#x524D;&#x5411;&#x7EA0;&#x9519;"></a>&#x524D;&#x5411;&#x7EA0;&#x9519;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#故障排除"><span class="nav-number">1.0.8.</span> <span class="nav-text"><a href="#&#x6545;&#x969C;&#x6392;&#x9664;" class="headerlink" title="&#x6545;&#x969C;&#x6392;&#x9664;"></a>&#x6545;&#x969C;&#x6392;&#x9664;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#免责申明"><span class="nav-number">1.0.9.</span> <span class="nav-text"><a href="#&#x514D;&#x8D23;&#x7533;&#x660E;" class="headerlink" title="&#x514D;&#x8D23;&#x7533;&#x660E;"></a>&#x514D;&#x8D23;&#x7533;&#x660E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特别鸣谢"><span class="nav-number">1.0.10.</span> <span class="nav-text"><a href="#&#x7279;&#x522B;&#x9E23;&#x8C22;" class="headerlink" title="&#x7279;&#x522B;&#x9E23;&#x8C22;"></a>&#x7279;&#x522B;&#x9E23;&#x8C22;</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原因及原理"><span class="nav-number">1.0.1.</span> <span class="nav-text">原因及原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速设定"><span class="nav-number">1.0.2.</span> <span class="nav-text">快速设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从源码安装"><span class="nav-number">1.0.3.</span> <span class="nav-text">从源码安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#速度对比"><span class="nav-number">1.0.4.</span> <span class="nav-text">速度对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分层参数图"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">分层参数图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置模式"><span class="nav-number">1.0.6.</span> <span class="nav-text">内置模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前向纠错"><span class="nav-number">1.0.7.</span> <span class="nav-text">前向纠错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#故障排除"><span class="nav-number">1.0.8.</span> <span class="nav-text">故障排除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#免责申明"><span class="nav-number">1.0.9.</span> <span class="nav-text">免责申明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特别鸣谢"><span class="nav-number">1.0.10.</span> <span class="nav-text">特别鸣谢</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
