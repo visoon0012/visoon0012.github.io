@@ -254,6 +254,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2018/Django/Djaong问题与解决方案一览/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visoon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Visoon's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/Django/Djaong问题与解决方案一览/" itemprop="url">Djaong问题与解决方案一览</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T00:00:00+08:00">
+                2018-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Django</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Django/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>Django 拓展 User 表</p>
+<pre><code>model中继承 AbstractUser：
+class User(AbstractUser)
+
+settings中添加：
+AUTH_USER_MODEL = &apos;app_user.User&apos;
+</code></pre></li>
+<li><p>settings按照环境自动选择数据库</p>
+<pre><code># 服务器本地环境
+DATABASES = {}
+if &apos;runserver&apos; in sys.argv:
+    print(&apos;使用远程数据库&apos;)
+    ....省略代码....
+if &apos;test&apos; in sys.argv:
+    print(&apos;使用测试数据库&apos;)
+    ....省略代码....
+</code></pre></li>
+<li><p>django rest serializer 创建前调用</p>
+<pre><code>例如创建前调用设置用户密码
+class UserCreateSerializer(serializers.ModelSerializer):
+   class Meta:
+       model = User
+       fields = (&apos;id&apos;, &apos;username&apos;, &apos;email&apos;, &apos;phone&apos;, &apos;password&apos;)
+
+   def create(self, data):
+       user = User.objects.create(**data)
+       user.set_password(data[&apos;password&apos;])
+       user.save()
+       return user
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2018/Shadowsocks/Linux部署SSR/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -970,155 +1154,6 @@ rmdir d:\temp\
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Other/Chrome下开启跨域功能/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Visoon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Visoon's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/Other/Chrome下开启跨域功能/" itemprop="url">Chrome下开启跨域功能</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T00:00:00+08:00">
-                2017-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Other/" itemprop="url" rel="index">
-                    <span itemprop="name">Other</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p>
-<ol>
-<li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p>
-<pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData
-</code></pre></li>
-<li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Angular2+/Angula2中innerHtml的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1283,7 +1318,7 @@ rmdir d:\temp\
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Other/Chrome下开启跨域功能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Visoon">
@@ -1302,7 +1337,7 @@ rmdir d:\temp\
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/" itemprop="url">Ubuntu 搭建 Shadowsocks 进行科学上网</a></h1>
+                <a class="post-title-link" href="/2017/Other/Chrome下开启跨域功能/" itemprop="url">Chrome下开启跨域功能</a></h1>
         
 
         <div class="post-meta">
@@ -1314,8 +1349,8 @@ rmdir d:\temp\
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T00:00:00+08:00">
-                2017-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T00:00:00+08:00">
+                2017-11-14
               </time>
             
 
@@ -1337,8 +1372,8 @@ rmdir d:\temp\
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Shadowsocks/" itemprop="url" rel="index">
-                    <span itemprop="name">Shadowsocks</span>
+                  <a href="/categories/Other/" itemprop="url" rel="index">
+                    <span itemprop="name">Other</span>
                   </a>
                 </span>
 
@@ -1375,21 +1410,17 @@ rmdir d:\temp\
 
       
         
-          <p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
-<pre class="brush:bash">
-    $ sudo apt-get update
-    $ sudo apt-get install python-gevent python-pip
-    $ sudo pip install setuptools
-    $ sudo pip install shadowsocks
-    $ apt-get install python-m2crypto
-</pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p>
+<ol>
+<li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p>
+<pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData
+</code></pre></li>
+<li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p>
+</li>
+</ol>
+
+          
         
       
     </div>
@@ -1660,6 +1691,159 @@ Supervisor 启动的时候会同时启动 Kcptun，运行 kcptun 相关命令时
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Visoon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Visoon's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/" itemprop="url">Ubuntu 搭建 Shadowsocks 进行科学上网</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T00:00:00+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shadowsocks/" itemprop="url" rel="index">
+                    <span itemprop="name">Shadowsocks</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p>
+<pre class="brush:bash">
+    $ sudo apt-get update
+    $ sudo apt-get install python-gevent python-pip
+    $ sudo pip install setuptools
+    $ sudo pip install shadowsocks
+    $ apt-get install python-m2crypto
+</pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发-2-创建项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1817,195 +2001,11 @@ ionic serve
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://visoon0012.github.io/2017/IONIC2+/【IONIC2+】项目开发-3-添加页面/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Visoon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Visoon's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/IONIC2+/【IONIC2+】项目开发-3-添加页面/" itemprop="url">【IONIC2+】项目开发 - 3 - 添加页面</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-13T16:16:59+08:00">
-                2017-06-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVASCRIPT/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVASCRIPT</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVASCRIPT/IONIC2/" itemprop="url" rel="index">
-                    <span itemprop="name">IONIC2+</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol>
-<li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="noopener">IONIC官方教程</a></li>
-<li>如果你看不懂英文，没事，那我们就不学了。</li>
-</ol>
-<h4 id="创建页面有几个重要的地方"><a href="#创建页面有几个重要的地方" class="headerlink" title="创建页面有几个重要的地方"></a>创建页面有几个重要的地方</h4><ol>
-<li>创建 .ts 文件，这个文件是存放页面逻辑的地方，例如我们创建一个帖子页面在 post.ts 文件里<pre>
-export class PostPage {}
-</pre></li>
-<li>创建 .html 文件，这个文件是界面</li>
-<li>创建 .scss 文件，这个文件是CSS</li>
-<li>把 .ts 文件中的类的引用添加到 app/app.module.ts 中<pre>
-import {PostPage} from "../pages/post";
-</pre></li>
-<li>把类名添加到 NgModule 中的 declarations 和 entryComponents 中(所有新加的页面都要放到这里进行声明，不然会报错)<pre>
-declarations: [
-     MyApp,
-     TabsPage,
-     PostPage
-     ]
-</pre>
-<pre>
-entryComponents: [
-     MyApp,
-     TabsPage,
-     PostPage
-     ]
-</pre></li>
-<li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li>
-</ol>
-<ul>
-<li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2055,7 +2055,7 @@ entryComponents: [
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2066,7 +2066,7 @@ entryComponents: [
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2077,7 +2077,7 @@ entryComponents: [
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

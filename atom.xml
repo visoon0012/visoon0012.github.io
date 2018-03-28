@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://visoon0012.github.io/"/>
-  <updated>2018-03-08T02:11:50.628Z</updated>
+  <updated>2018-03-28T08:47:08.580Z</updated>
   <id>http://visoon0012.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Djaong问题与解决方案一览</title>
+    <link href="http://visoon0012.github.io/2018/Django/Djaong%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%80%E8%A7%88/"/>
+    <id>http://visoon0012.github.io/2018/Django/Djaong问题与解决方案一览/</id>
+    <published>2018-03-27T16:00:00.000Z</published>
+    <updated>2018-03-28T08:47:08.580Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>Django 拓展 User 表</p><pre><code>model中继承 AbstractUser：class User(AbstractUser)settings中添加：AUTH_USER_MODEL = &apos;app_user.User&apos;</code></pre></li><li><p>settings按照环境自动选择数据库</p><pre><code># 服务器本地环境DATABASES = {}if &apos;runserver&apos; in sys.argv:    print(&apos;使用远程数据库&apos;)    ....省略代码....if &apos;test&apos; in sys.argv:    print(&apos;使用测试数据库&apos;)    ....省略代码....</code></pre></li><li><p>django rest serializer 创建前调用</p><pre><code>例如创建前调用设置用户密码class UserCreateSerializer(serializers.ModelSerializer):   class Meta:       model = User       fields = (&apos;id&apos;, &apos;username&apos;, &apos;email&apos;, &apos;phone&apos;, &apos;password&apos;)   def create(self, data):       user = User.objects.create(**data)       user.set_password(data[&apos;password&apos;])       user.save()       return user</code></pre></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Django 拓展 User 表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;model中继承 AbstractUser：
+class User(AbstractUser)
+
+settings中添加：
+AUTH_USER_MODEL = &amp;apos;app_user.U
+      
+    
+    </summary>
+    
+      <category term="Django" scheme="http://visoon0012.github.io/categories/Django/"/>
+    
+      <category term="Python" scheme="http://visoon0012.github.io/categories/Django/Python/"/>
+    
+    
+      <category term="Python" scheme="http://visoon0012.github.io/tags/Python/"/>
+    
+      <category term="Django" scheme="http://visoon0012.github.io/tags/Django/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux部署SSR</title>
@@ -129,33 +164,6 @@
   </entry>
   
   <entry>
-    <title>Chrome下开启跨域功能</title>
-    <link href="http://visoon0012.github.io/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/"/>
-    <id>http://visoon0012.github.io/2017/Other/Chrome下开启跨域功能/</id>
-    <published>2017-11-13T16:00:00.000Z</published>
-    <updated>2017-11-14T03:59:03.225Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p><ol><li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p><pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData</code></pre></li><li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;Chrome下开启跨域功能&quot;&gt;&lt;a href=&quot;#Chrome下开启跨域功能&quot; class=&quot;headerlink&quot; title=&quot;Chrome下开启跨域功能&quot;&gt;&lt;/a&gt;Chrome下开启跨域功能&lt;/h4&gt;&lt;p&gt;默认情况下，Chrome等浏览器是不允许跨域访问的(
-      
-    
-    </summary>
-    
-      <category term="Other" scheme="http://visoon0012.github.io/categories/Other/"/>
-    
-    
-      <category term="Other" scheme="http://visoon0012.github.io/tags/Other/"/>
-    
-      <category term="Chrome" scheme="http://visoon0012.github.io/tags/Chrome/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Angula2中innerHtml的问题</title>
     <link href="http://visoon0012.github.io/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://visoon0012.github.io/2017/Angular2+/Angula2中innerHtml的问题/</id>
@@ -185,31 +193,29 @@
   </entry>
   
   <entry>
-    <title>Ubuntu 搭建 Shadowsocks 进行科学上网</title>
-    <link href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    <id>http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/</id>
-    <published>2017-10-18T16:00:00.000Z</published>
-    <updated>2017-10-19T07:28:27.382Z</updated>
+    <title>Chrome下开启跨域功能</title>
+    <link href="http://visoon0012.github.io/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/"/>
+    <id>http://visoon0012.github.io/2017/Other/Chrome下开启跨域功能/</id>
+    <published>2017-11-13T16:00:00.000Z</published>
+    <updated>2017-11-14T03:59:03.225Z</updated>
     
-    <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install setuptools    $ sudo pip install shadowsocks    $ apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"Server IP",        "server_port":8388,        "local_port":1080,        "password":"password",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p><ol><li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p><pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData</code></pre></li><li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p></li></ol>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。&lt;/p&gt;
-&lt;pre class=&quot;brush:bash&quot;&gt;
-    $ sudo apt-get update
-    $ sudo apt-get install python-gevent python-pip
-    $ sudo pip install setuptools
-    $ sudo pip install shadowsocks
-    $ apt-get install python-m2crypto
-&lt;/pre&gt;
+      
+      
+        &lt;h4 id=&quot;Chrome下开启跨域功能&quot;&gt;&lt;a href=&quot;#Chrome下开启跨域功能&quot; class=&quot;headerlink&quot; title=&quot;Chrome下开启跨域功能&quot;&gt;&lt;/a&gt;Chrome下开启跨域功能&lt;/h4&gt;&lt;p&gt;默认情况下，Chrome等浏览器是不允许跨域访问的(
+      
     
     </summary>
     
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
+      <category term="Other" scheme="http://visoon0012.github.io/categories/Other/"/>
     
     
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
+      <category term="Other" scheme="http://visoon0012.github.io/tags/Other/"/>
+    
+      <category term="Chrome" scheme="http://visoon0012.github.io/tags/Chrome/"/>
     
   </entry>
   
@@ -229,6 +235,35 @@
         &lt;p&gt;首先，你需要部署好SS。&lt;br&gt;然后一行行运行下面脚本&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.
       
+    
+    </summary>
+    
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
+    
+    
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu 搭建 Shadowsocks 进行科学上网</title>
+    <link href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    <id>http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/</id>
+    <published>2017-10-18T16:00:00.000Z</published>
+    <updated>2018-03-27T01:52:18.091Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install setuptools    $ sudo pip install shadowsocks    $ apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"207.148.121.22",        "server_port":8388,        "local_port":1080,        "password":"plover.cloud",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。&lt;/p&gt;
+&lt;pre class=&quot;brush:bash&quot;&gt;
+    $ sudo apt-get update
+    $ sudo apt-get install python-gevent python-pip
+    $ sudo pip install setuptools
+    $ sudo pip install shadowsocks
+    $ apt-get install python-m2crypto
+&lt;/pre&gt;
     
     </summary>
     
@@ -362,6 +397,33 @@
   </entry>
   
   <entry>
+    <title>KCP客户端配置</title>
+    <link href="http://visoon0012.github.io/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
+    <id>http://visoon0012.github.io/2016/Shadowsocks/KCP客户端配置/</id>
+    <published>2016-12-12T03:04:57.000Z</published>
+    <updated>2017-10-19T03:12:28.339Z</updated>
+    
+    <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net&lt;/p&gt;
+&lt;p&gt;SS客户端
+      
+    
+    </summary>
+    
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
+    
+    
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)</title>
     <link href="http://visoon0012.github.io/2016/Shadowsocks/Ubuntu%E9%85%8D%E7%BD%AESS_GO%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83(%E5%8C%85%E6%8B%ACKCP%E5%92%8CKCP%E5%8A%A0%E5%AF%86)/"/>
     <id>http://visoon0012.github.io/2016/Shadowsocks/Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)/</id>
@@ -381,33 +443,6 @@ apt-get install golang-go
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;设置GOPATH变量，指定工作空间&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ec
-      
-    
-    </summary>
-    
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
-    
-    
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>KCP客户端配置</title>
-    <link href="http://visoon0012.github.io/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
-    <id>http://visoon0012.github.io/2016/Shadowsocks/KCP客户端配置/</id>
-    <published>2016-12-12T03:04:57.000Z</published>
-    <updated>2017-10-19T03:12:28.339Z</updated>
-    
-    <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net&lt;/p&gt;
-&lt;p&gt;SS客户端
       
     
     </summary>
@@ -551,36 +586,6 @@ apt-get install golang-go
     
       <category term="IONIC" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/AngularJs/IONIC/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>ionic/AngularJs service使用</title>
-    <link href="http://visoon0012.github.io/2016/IONIC1/ionic_AngularJs_service%E4%BD%BF%E7%94%A8/"/>
-    <id>http://visoon0012.github.io/2016/IONIC1/ionic_AngularJs_service使用/</id>
-    <published>2016-01-27T07:10:14.000Z</published>
-    <updated>2017-10-19T03:04:04.861Z</updated>
-    
-    <content type="html"><![CDATA[<p>列一个项目中用到factory的例子，基本上service原理都是单例。</p><pre class="brush:javascript">services.factory(&#39;UserService&#39;, function ($http, $ionicLoading) {  // 用户对象  var user = null;  return {    /**     * 获取用户对象     * @returns      */    getUser: function () {      return user;    },    /**     * 登录 - /v1/user/{userName}/apiKey     * @param user     */    login: function (user) {      $http.post(HOST_URL + &quot;/user/&quot; + user.userName + &quot;apiKey&quot;, {        password: md5(user.password),        verifyCode: user.verifyCode,        sessionMark: user.sessionMark      }).success(function (response) {        user = response;      }).error(function (response) {        $ionicLoading.show({          template: response,          duration: 2000        });      });    }  };});</pre><p>&nbsp;</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;列一个项目中用到factory的例子，基本上service原理都是单例。&lt;/p&gt;
-&lt;pre class=&quot;brush:javascript&quot;&gt;services.factory(&amp;#39;UserService&amp;#39;, function ($http, $ionicLoa
-      
-    
-    </summary>
-    
-      <category term="JAVASCRIPT" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/"/>
-    
-      <category term="AngularJs" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/AngularJs/"/>
-    
-      <category term="IONIC" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/AngularJs/IONIC/"/>
-    
-    
-      <category term="前端" scheme="http://visoon0012.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
