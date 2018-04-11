@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Visoon&#39;s Blog">
 <meta property="og:description" content="Django 拓展 User 表 model中继承 AbstractUser： class User(AbstractUser)  settings中添加： AUTH_USER_MODEL = &amp;apos;app_user.User&amp;apos;  settings按照环境自动选择数据库 # 服务器本地环境 DATABASES = {} if &amp;apos;runserver&amp;apos; in sy">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-28T08:47:08.580Z">
+<meta property="og:updated_time" content="2018-03-30T02:04:37.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Djaong问题与解决方案一览">
 <meta name="twitter:description" content="Django 拓展 User 表 model中继承 AbstractUser： class User(AbstractUser)  settings中添加： AUTH_USER_MODEL = &amp;apos;app_user.User&amp;apos;  settings按照环境自动选择数据库 # 服务器本地环境 DATABASES = {} if &amp;apos;runserver&amp;apos; in sy">
@@ -381,7 +381,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
        fields = (&apos;id&apos;, &apos;username&apos;, &apos;email&apos;, &apos;phone&apos;, &apos;password&apos;)
 
    def create(self, data):
-       user = User.objects.create(**data)
+       user = User(**data)
        user.set_password(data[&apos;password&apos;])
        user.save()
        return user
@@ -428,6 +428,10 @@ class UserCreateSerializer(serializers.ModelSerializer):
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/Shadowsocks/Ubuntu部署SS和BBR加速/" rel="prev" title="Ubuntu部署SS和BBR加速">
+                Ubuntu部署SS和BBR加速 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -499,7 +503,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -521,7 +525,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
