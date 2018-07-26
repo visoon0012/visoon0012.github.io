@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://visoon0012.github.io/"/>
-  <updated>2018-07-26T02:34:49.985Z</updated>
+  <updated>2018-07-26T04:28:30.879Z</updated>
   <id>http://visoon0012.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://visoon0012.github.io/2018/Shadowsocks/Ubuntu%E9%85%8D%E7%BD%AEV2Ray%E5%92%8CBBR%E5%8A%A0%E9%80%9F(%E6%9C%80%E6%96%B0%E6%8A%80%E6%9C%AF%EF%BC%8C%E6%AF%94SS%E5%92%8CSSR%E6%9B%B4%E6%8A%97%E5%B0%81%E9%94%81)/"/>
     <id>http://visoon0012.github.io/2018/Shadowsocks/Ubuntu配置V2Ray和BBR加速(最新技术，比SS和SSR更抗封锁)/</id>
     <published>2018-07-26T03:04:57.000Z</published>
-    <updated>2018-07-26T02:34:49.985Z</updated>
+    <updated>2018-07-26T04:28:30.879Z</updated>
     
-    <content type="html"><![CDATA[<ol><li><p>安装V2Ray</p><pre><code>bash &lt;(curl -s -L https://233blog.com/v2ray.sh)</code></pre></li><li><p>如果提示 curl: command not found ，那是因为你的服务器没装 Curl(没出错就跳过，出错就装这个然后重复1)</p><pre><code>ubuntu/debian 系统安装 Curl 方法: apt-get update -y &amp;&amp; apt-get install curl -ycentos 系统安装 Curl 方法: yum update -y &amp;&amp; yum install curl -y</code></pre></li><li><p>安装，不懂的话一路默认就好了</p></li><li><p>启动BBR，一般已经集成到了ubuntu 18.04里</p><pre><code>sudo -iecho &quot;net.core.default_qdisc=fq&quot; &gt;&gt; /etc/sysctl.confecho &quot;net.ipv4.tcp_congestion_control=bbr&quot; &gt;&gt; /etc/sysctl.confsysctl -p</code></pre></li><li><p>把刚才安装V2Ray后给出的参数填入你的V2Ray客户端，即可上网。(一般重要参数如下)</p><pre><code>服务器地址(Address):端口(Port):用户ID(id):额外ID(alterID):加密方式(security):传输协议(netword):</code></pre></li></ol>]]></content>
+    <content type="html"><![CDATA[<ol><li><p>安装V2Ray</p><pre><code>bash &lt;(curl -s -L https://233blog.com/v2ray.sh)</code></pre></li><li><p>如果提示 curl: command not found ，那是因为你的服务器没装 Curl(没出错就跳过，出错就装这个然后重复1)</p><pre><code>ubuntu/debian 系统安装 Curl 方法: apt-get update -y &amp;&amp; apt-get install curl -ycentos 系统安装 Curl 方法: yum update -y &amp;&amp; yum install curl -y</code></pre></li><li><p>安装，不懂的话一路默认就好了</p></li><li><p>启动BBR，一般已经集成到了ubuntu 18.04里</p><pre><code>sed -i &apos;/net.core.default_qdisc/d&apos; /etc/sysctl.confsed -i &apos;/net.ipv4.tcp_congestion_control/d&apos; /etc/sysctl.confecho &quot;net.core.default_qdisc = fq&quot; &gt;&gt; /etc/sysctl.confecho &quot;net.ipv4.tcp_congestion_control = bbr&quot; &gt;&gt; /etc/sysctl.confsysctl -p</code></pre></li><li><p>把刚才安装V2Ray后给出的参数填入你的V2Ray客户端，即可上网。(一般重要参数如下)</p><pre><code>服务器地址(Address):端口(Port):用户ID(id):额外ID(alterID):加密方式(security):传输协议(netword):</code></pre></li></ol>]]></content>
     
     <summary type="html">
     
@@ -163,11 +163,11 @@ AUTH_USER_MODEL = &amp;apos;app_user.U
       <category term="IONIC2+" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC2/"/>
     
     
+      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
+    
       <category term="IONIC2+" scheme="http://visoon0012.github.io/tags/IONIC2/"/>
     
       <category term="NodeJS" scheme="http://visoon0012.github.io/tags/NodeJS/"/>
-    
-      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
     
   </entry>
   
@@ -225,6 +225,35 @@ AUTH_USER_MODEL = &amp;apos;app_user.U
   </entry>
   
   <entry>
+    <title>Angula2中innerHtml的问题</title>
+    <link href="http://visoon0012.github.io/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://visoon0012.github.io/2017/Angular2+/Angula2中innerHtml的问题/</id>
+    <published>2017-11-13T16:00:00.000Z</published>
+    <updated>2017-11-14T03:50:19.092Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p><ol><li><p>导入包</p><pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;</code></pre></li><li><p>constructor() 中添加</p><pre><code>public sanitizer: DomSanitizer</code></pre></li><li><p>转换数据</p><pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);</code></pre></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;innerHtml报不安全问题&quot;&gt;&lt;a href=&quot;#innerHtml报不安全问题&quot; class=&quot;headerlink&quot; title=&quot;innerHtml报不安全问题&quot;&gt;&lt;/a&gt;innerHtml报不安全问题&lt;/h4&gt;&lt;p&gt;Angular2引入外部html时候
+      
+    
+    </summary>
+    
+      <category term="JAVASCRIPT" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/"/>
+    
+      <category term="Angular2+" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/Angular2/"/>
+    
+    
+      <category term="JAVASCRIPT" scheme="http://visoon0012.github.io/tags/JAVASCRIPT/"/>
+    
+      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Chrome下开启跨域功能</title>
     <link href="http://visoon0012.github.io/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/"/>
     <id>http://visoon0012.github.io/2017/Other/Chrome下开启跨域功能/</id>
@@ -252,31 +281,31 @@ AUTH_USER_MODEL = &amp;apos;app_user.U
   </entry>
   
   <entry>
-    <title>Angula2中innerHtml的问题</title>
-    <link href="http://visoon0012.github.io/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://visoon0012.github.io/2017/Angular2+/Angula2中innerHtml的问题/</id>
-    <published>2017-11-13T16:00:00.000Z</published>
-    <updated>2017-11-14T03:50:19.092Z</updated>
+    <title>Ubuntu 搭建 Shadowsocks 进行科学上网</title>
+    <link href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    <id>http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/</id>
+    <published>2017-10-18T16:00:00.000Z</published>
+    <updated>2018-03-30T03:58:32.639Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p><ol><li><p>导入包</p><pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;</code></pre></li><li><p>constructor() 中添加</p><pre><code>public sanitizer: DomSanitizer</code></pre></li><li><p>转换数据</p><pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);</code></pre></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install setuptools    $ sudo pip install shadowsocks    $ sudo apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"207.148.121.22",        "server_port":22,        "local_port":1080,        "password":"plover.cloud",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h4 id=&quot;innerHtml报不安全问题&quot;&gt;&lt;a href=&quot;#innerHtml报不安全问题&quot; class=&quot;headerlink&quot; title=&quot;innerHtml报不安全问题&quot;&gt;&lt;/a&gt;innerHtml报不安全问题&lt;/h4&gt;&lt;p&gt;Angular2引入外部html时候
-      
+      &lt;p&gt;首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。&lt;/p&gt;
+&lt;pre class=&quot;brush:bash&quot;&gt;
+    $ sudo apt-get update
+    $ sudo apt-get install python-gevent python-pip
+    $ sudo pip install setuptools
+    $ sudo pip install shadowsocks
+    $ sudo apt-get install python-m2crypto
+&lt;/pre&gt;
     
     </summary>
     
-      <category term="JAVASCRIPT" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/"/>
-    
-      <category term="Angular2+" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/Angular2/"/>
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
     
     
-      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
-    
-      <category term="JAVASCRIPT" scheme="http://visoon0012.github.io/tags/JAVASCRIPT/"/>
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
     
   </entry>
   
@@ -296,35 +325,6 @@ AUTH_USER_MODEL = &amp;apos;app_user.U
         &lt;p&gt;首先，你需要部署好SS。&lt;br&gt;然后一行行运行下面脚本&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.
       
-    
-    </summary>
-    
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
-    
-    
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu 搭建 Shadowsocks 进行科学上网</title>
-    <link href="http://visoon0012.github.io/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    <id>http://visoon0012.github.io/2017/Shadowsocks/Ubuntu搭建Shadowsocks进行科学上网/</id>
-    <published>2017-10-18T16:00:00.000Z</published>
-    <updated>2018-03-30T03:58:32.639Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install setuptools    $ sudo pip install shadowsocks    $ sudo apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"207.148.121.22",        "server_port":22,        "local_port":1080,        "password":"plover.cloud",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。&lt;/p&gt;
-&lt;pre class=&quot;brush:bash&quot;&gt;
-    $ sudo apt-get update
-    $ sudo apt-get install python-gevent python-pip
-    $ sudo pip install setuptools
-    $ sudo pip install shadowsocks
-    $ sudo apt-get install python-m2crypto
-&lt;/pre&gt;
     
     </summary>
     
@@ -359,11 +359,11 @@ AUTH_USER_MODEL = &amp;apos;app_user.U
       <category term="IONIC2+" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC2/"/>
     
     
+      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
+    
       <category term="IONIC2+" scheme="http://visoon0012.github.io/tags/IONIC2/"/>
     
       <category term="NodeJS" scheme="http://visoon0012.github.io/tags/NodeJS/"/>
-    
-      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
     
   </entry>
   
@@ -391,11 +391,11 @@ AUTH_USER_MODEL = &amp;apos;app_user.U
       <category term="IONIC2+" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC2/"/>
     
     
+      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
+    
       <category term="IONIC2+" scheme="http://visoon0012.github.io/tags/IONIC2/"/>
     
       <category term="NodeJS" scheme="http://visoon0012.github.io/tags/NodeJS/"/>
-    
-      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
     
   </entry>
   
@@ -449,11 +449,38 @@ AUTH_USER_MODEL = &amp;apos;app_user.U
       <category term="IONIC2+" scheme="http://visoon0012.github.io/categories/JAVASCRIPT/IONIC2/"/>
     
     
+      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
+    
       <category term="IONIC2+" scheme="http://visoon0012.github.io/tags/IONIC2/"/>
     
       <category term="NodeJS" scheme="http://visoon0012.github.io/tags/NodeJS/"/>
     
-      <category term="Angular2+" scheme="http://visoon0012.github.io/tags/Angular2/"/>
+  </entry>
+  
+  <entry>
+    <title>KCP客户端配置</title>
+    <link href="http://visoon0012.github.io/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
+    <id>http://visoon0012.github.io/2016/Shadowsocks/KCP客户端配置/</id>
+    <published>2016-12-12T03:04:57.000Z</published>
+    <updated>2017-10-19T03:12:28.339Z</updated>
+    
+    <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net&lt;/p&gt;
+&lt;p&gt;SS客户端
+      
+    
+    </summary>
+    
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
+    
+    
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
     
   </entry>
   
@@ -477,33 +504,6 @@ apt-get install golang-go
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;设置GOPATH变量，指定工作空间&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ec
-      
-    
-    </summary>
-    
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
-    
-    
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>KCP客户端配置</title>
-    <link href="http://visoon0012.github.io/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
-    <id>http://visoon0012.github.io/2016/Shadowsocks/KCP客户端配置/</id>
-    <published>2016-12-12T03:04:57.000Z</published>
-    <updated>2017-10-19T03:12:28.339Z</updated>
-    
-    <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net&lt;/p&gt;
-&lt;p&gt;SS客户端
       
     
     </summary>

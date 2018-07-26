@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Visoon&#39;s Blog">
 <meta property="og:description" content="安装V2Ray bash &amp;lt;(curl -s -L https://233blog.com/v2ray.sh)  如果提示 curl: command not found ，那是因为你的服务器没装 Curl(没出错就跳过，出错就装这个然后重复1) ubuntu/debian 系统安装 Curl 方法:  apt-get update -y &amp;amp;&amp;amp; apt-get instal">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T02:34:49.985Z">
+<meta property="og:updated_time" content="2018-07-26T04:28:30.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu配置V2Ray和BBR加速(最新技术，比SS和SSR更抗封锁)">
 <meta name="twitter:description" content="安装V2Ray bash &amp;lt;(curl -s -L https://233blog.com/v2ray.sh)  如果提示 curl: command not found ，那是因为你的服务器没装 Curl(没出错就跳过，出错就装这个然后重复1) ubuntu/debian 系统安装 Curl 方法:  apt-get update -y &amp;amp;&amp;amp; apt-get instal">
@@ -357,11 +357,13 @@ yum update -y &amp;&amp; yum install curl -y
 <li><p>安装，不懂的话一路默认就好了</p>
 </li>
 <li><p>启动BBR，一般已经集成到了ubuntu 18.04里</p>
-<pre><code>sudo -i
+<pre><code>sed -i &apos;/net.core.default_qdisc/d&apos; /etc/sysctl.conf
 
-echo &quot;net.core.default_qdisc=fq&quot; &gt;&gt; /etc/sysctl.conf
+sed -i &apos;/net.ipv4.tcp_congestion_control/d&apos; /etc/sysctl.conf
 
-echo &quot;net.ipv4.tcp_congestion_control=bbr&quot; &gt;&gt; /etc/sysctl.conf
+echo &quot;net.core.default_qdisc = fq&quot; &gt;&gt; /etc/sysctl.conf
+
+echo &quot;net.ipv4.tcp_congestion_control = bbr&quot; &gt;&gt; /etc/sysctl.conf
 
 sysctl -p
 </code></pre></li>
