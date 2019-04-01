@@ -179,28 +179,6 @@
     </entry>
     
     <entry>
-      <title>Chrome下开启跨域功能</title>
-      <link href="/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/"/>
-      <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p><ol><li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p><pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData</code></pre></li><li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p></li></ol>]]></content>
-      
-      <categories>
-          
-          <category> Other </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Other </tag>
-            
-            <tag> Chrome </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>Angula2中innerHtml的问题</title>
       <link href="/2017/Angular2+/Angula2%E4%B8%ADinnerHtml%E7%9A%84%E9%97%AE%E9%A2%98/"/>
       <content type="html"><![CDATA[<h4 id="innerHtml报不安全问题"><a href="#innerHtml报不安全问题" class="headerlink" title="innerHtml报不安全问题"></a>innerHtml报不安全问题</h4><p>Angular2引入外部html时候，会报不安全提示，此时如果你信任html来源，则添加如下转换：</p><ol><li><p>导入包</p><pre><code>import {DomSanitizer} from &quot;@angular/platform-browser&quot;;</code></pre></li><li><p>constructor() 中添加</p><pre><code>public sanitizer: DomSanitizer</code></pre></li><li><p>转换数据</p><pre><code>innerHtml = this.sanitizer.bypassSecurityTrustHtml(&apos;html信息&apos;);</code></pre></li></ol>]]></content>
@@ -225,20 +203,22 @@
     </entry>
     
     <entry>
-      <title>Ubuntu 搭建 Shadowsocks 进行科学上网</title>
-      <link href="/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install setuptools    $ sudo pip install shadowsocks    $ sudo apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"207.148.121.22",        "server_port":22,        "local_port":1080,        "password":"plover.cloud",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
+      <title>Chrome下开启跨域功能</title>
+      <link href="/2017/Other/Chrome%E4%B8%8B%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E5%8A%9F%E8%83%BD/"/>
+      <content type="html"><![CDATA[<h4 id="Chrome下开启跨域功能"><a href="#Chrome下开启跨域功能" class="headerlink" title="Chrome下开启跨域功能"></a>Chrome下开启跨域功能</h4><p>默认情况下，Chrome等浏览器是不允许跨域访问的(而App开发的时候跨域方便一点，还可以用爬虫)，想要开启则需要：</p><ol><li><p>在桌面Chrome图标下右键-属性-目标中填入以下信息</p><pre><code>&quot;你的Chrome路径&quot; --disable-web-security --user-data-dir=C:\MyChromeDevUserData</code></pre></li><li><p>C:\MyChromeDevUserData 这个目录需要自己创建</p></li></ol>]]></content>
       
       <categories>
           
-          <category> Shadowsocks </category>
+          <category> Other </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Shadowsocks </tag>
+            <tag> Other </tag>
+            
+            <tag> Chrome </tag>
             
         </tags>
       
@@ -265,9 +245,29 @@
     </entry>
     
     <entry>
-      <title>【IONIC2+】项目开发 - 3 - 添加页面</title>
-      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-3-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/"/>
-      <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol><li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="noopener">IONIC官方教程</a></li><li>如果你看不懂英文，没事，那我们就不学了。</li></ol><h4 id="创建页面有几个重要的地方"><a href="#创建页面有几个重要的地方" class="headerlink" title="创建页面有几个重要的地方"></a>创建页面有几个重要的地方</h4><ol><li>创建 .ts 文件，这个文件是存放页面逻辑的地方，例如我们创建一个帖子页面在 post.ts 文件里<pre>export class PostPage {}</pre></li><li>创建 .html 文件，这个文件是界面</li><li>创建 .scss 文件，这个文件是CSS</li><li>把 .ts 文件中的类的引用添加到 app/app.module.ts 中<pre>import {PostPage} from "../pages/post";</pre></li><li>把类名添加到 NgModule 中的 declarations 和 entryComponents 中(所有新加的页面都要放到这里进行声明，不然会报错)<pre>declarations: [     MyApp,     TabsPage,     PostPage     ]</pre><pre>entryComponents: [     MyApp,     TabsPage,     PostPage     ]</pre></li><li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
+      <title>Ubuntu 搭建 Shadowsocks 进行科学上网</title>
+      <link href="/2017/Shadowsocks/Ubuntu%E6%90%AD%E5%BB%BAShadowsocks%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+      <content type="html"><![CDATA[<p>首先，你需要一台在科学国度的服务器，这里我们用ubuntu来进行搭建。</p><pre class="brush:bash">    $ sudo apt-get update    $ sudo apt-get install python-gevent python-pip    $ sudo pip install setuptools    $ sudo pip install shadowsocks    $ sudo apt-get install python-m2crypto</pre><a id="more"></a><p>创建config.json配置文件：</p><pre class="brush:bash">    $ vi /etc/shadowsocks.json</pre><p>修改config.json：</p><pre class="brush:bash">    {        "server":"207.148.121.22",        "server_port":22,        "local_port":1080,        "password":"plover.cloud",        "timeout":600,        "method":"aes-256-cfb"    }</pre>&nbsp;运行Shadowsocks：<pre class="brush:bash">    $ su -    $ ssserver -c /etc/shadowsocks.json -d start    $ ssserver -c /etc/shadowsocks.json -d stop</pre><p>然后用你的Shadowsocks客户端输入服务器信息，科学上网完毕。</p><p>注意：<br>1.需要python27环境，一般ubuntu都自带了。<br>2.附赠WIN客户端链接：<a href="https://github.com/shadowsocks/shadowsocks-csharp/releases/download/2.5.6/Shadowsocks-win-2.5.6.zip" target="_blank" rel="noopener">点我下载</a></p><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4><ul><li><a href="https://visoon0012.github.io/2017/Shadowsocks/Ubuntu使用KCPTUN为SS加速/">用KCPTUN为SS加速</a></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> Shadowsocks </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Shadowsocks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>【IONIC2+】项目开发 - 2 - 创建项目</title>
+      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol><li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li><li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li><li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li><li><p>安装ionic</p><pre><code>npm install -g cordova@6.5.0 ionic</code></pre></li><li><p>安装完成后，新建项目，这里有几个模板可选</p><pre><code>ionic start myApp tabs</code></pre></li><li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p><pre><code>cd myAppionic serve</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
       
       <categories>
           
@@ -291,9 +291,9 @@
     </entry>
     
     <entry>
-      <title>【IONIC2+】项目开发 - 2 - 创建项目</title>
-      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
-      <content type="html"><![CDATA[<h4 id="创建一个IONIC2-的项目"><a href="#创建一个IONIC2-的项目" class="headerlink" title="创建一个IONIC2+的项目"></a>创建一个IONIC2+的项目</h4><ol><li>前往官网 <a href="https://ionicframework.com/" target="_blank" rel="noopener">IONIC官网</a></li><li>现在我们可以看到，当前IONIC的最新版本是3.3.0，这个版本也属于IONIC2+，代码风格是一样的，不像IONIC1和IONIC2改动这么大。</li><li>现在我们要安装 nodejs ，自己去官网下吧，最好是稳定版。</li><li><p>安装ionic</p><pre><code>npm install -g cordova@6.5.0 ionic</code></pre></li><li><p>安装完成后，新建项目，这里有几个模板可选</p><pre><code>ionic start myApp tabs</code></pre></li><li><p>经过比较长时间的等待，安装完啦，进入目录，运行浏览，我们就可以在浏览器中看到项目大概的样子了</p><pre><code>cd myAppionic serve</code></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
+      <title>【IONIC2+】项目开发 - 3 - 添加页面</title>
+      <link href="/2017/IONIC2+/%E3%80%90IONIC2+%E3%80%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91-3-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2/"/>
+      <content type="html"><![CDATA[<h4 id="往刚才创建的项目中添加页面"><a href="#往刚才创建的项目中添加页面" class="headerlink" title="往刚才创建的项目中添加页面"></a>往刚才创建的项目中添加页面</h4><ol><li>前往官网，查看 <a href="https://ionicframework.com/docs/intro/tutorial/" target="_blank" rel="noopener">IONIC官方教程</a></li><li>如果你看不懂英文，没事，那我们就不学了。</li></ol><h4 id="创建页面有几个重要的地方"><a href="#创建页面有几个重要的地方" class="headerlink" title="创建页面有几个重要的地方"></a>创建页面有几个重要的地方</h4><ol><li>创建 .ts 文件，这个文件是存放页面逻辑的地方，例如我们创建一个帖子页面在 post.ts 文件里<pre>export class PostPage {}</pre></li><li>创建 .html 文件，这个文件是界面</li><li>创建 .scss 文件，这个文件是CSS</li><li>把 .ts 文件中的类的引用添加到 app/app.module.ts 中<pre>import {PostPage} from "../pages/post";</pre></li><li>把类名添加到 NgModule 中的 declarations 和 entryComponents 中(所有新加的页面都要放到这里进行声明，不然会报错)<pre>declarations: [     MyApp,     TabsPage,     PostPage     ]</pre><pre>entryComponents: [     MyApp,     TabsPage,     PostPage     ]</pre></li><li>要跳转到 PostPage 的页面，只需要在需要的地方使用(后面的参数是传递过去的值，在 PostPage 中你可以用 NavParams 接收)<br><pre><br>this.navCtrl.push(PostPage, { item: item });<br></pre><h4 id="下一章节"><a href="#下一章节" class="headerlink" title="下一章节"></a>下一章节</h4></li></ol><ul><li><a href="http://example.com/" target="_blank" rel="noopener">创建一个ionic2+ 的项目。</a></li></ul>]]></content>
       
       <categories>
           
