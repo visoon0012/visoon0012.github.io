@@ -3,6 +3,30 @@
   
     
     <entry>
+      <title>VUE遇到的问题</title>
+      <link href="/2019/VUE/VUE%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <content type="html"><![CDATA[<h4 id="运行时遇到的问题"><a href="#运行时遇到的问题" class="headerlink" title="运行时遇到的问题"></a>运行时遇到的问题</h4><ol><li><blockquote><p>Uncaught TypeError: Cannot assign to read only property ‘exports’ of object ‘#<object>‘ at Module.eval (BaseClient.js?e917:12)</object></p><p>原因：根据字面意思，猜测是解析JS的时候不认识 exports</p><p>解决：/build/webpack.base.conf.js 中，注释下面代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        test: /\.js$/,</span><br><span class="line">        loader: &apos;babel-loader&apos;,</span><br><span class="line">        // include: [resolve(&apos;src&apos;), resolve(&apos;test&apos;), resolve(&apos;node_modules/webpack-dev-server/client&apos;)],</span><br><span class="line">        include: [resolve(&apos;src&apos;), resolve(&apos;test&apos;)]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></blockquote></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> NODEJS </category>
+          
+          <category> VUE </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NODEJS </tag>
+            
+            <tag> VUE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Djaong Rest 返回格式化后的时间</title>
       <link href="/2019/Django/Djaong%20Rest%20%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%90%8E%E7%9A%84%E6%97%B6%E9%97%B4/"/>
       <content type="html"><![CDATA[<ol><li><p>Django 中我们一般时间是这样写的，返回的格式太长了，一般前端显示不需要这么长</p><pre><code># modelscreate_time = models.DateTimeField(blank=True, auto_now_add=True, null=True)</code></pre></li><li><p>在序列化类中重写你需要格式化的对象</p><pre><code>TestSerializer(serializers.ModelSerializer):    create_time = serializers.DateTimeField(format=&quot;%Y-%m-%d %H:%M:%S&quot;, required=False, read_only=True)    class Meta:        model = Test        fields = &apos;__all__&apos;</code></pre></li><li><p>如果返回的时间是默认时区，需要在setting文件中修改一下时区</p><pre><code>LANGUAGE_CODE = &apos;zh-cn&apos;TIME_ZONE = &apos;Asia/Shanghai&apos;</code></pre></li></ol>]]></content>
@@ -363,9 +387,9 @@
     </entry>
     
     <entry>
-      <title>Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)</title>
-      <link href="/2016/Shadowsocks/Ubuntu%E9%85%8D%E7%BD%AESS_GO%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83(%E5%8C%85%E6%8B%ACKCP%E5%92%8CKCP%E5%8A%A0%E5%AF%86)/"/>
-      <content type="html"><![CDATA[<ol><li><p>首先安装GO语言环境</p><pre><code>apt-get updateapt-get install golang-go</code></pre></li><li><p>设置GOPATH变量，指定工作空间</p><pre><code>echo &quot;export GOPATH=/opt/go&quot; &gt;&gt; ~/.bashrc       source ~/.bashrc</code></pre></li><li><p>安装kcpraw集成环境</p><pre><code>wget https://github.com/ccsexyz/kcpraw/releases/download/v20171019/kcpraw-linux-amd64-20171019.tar.gztar -xvzf kcpraw-linux-amd64-20171019.tar.gzchmod 777 kcpraw_server_linux_amd64</code></pre></li><li><p>新建bash</p><pre><code>vim start_kcpraw</code></pre></li><li><p>ESC + I 切换输入模式，输入以下东西</p><pre><code>#!/bin/bashnohup ./kcpraw_server_linux_amd64 --target 服务器ip:8388 --ssproxy --sskey 密码</code></pre></li><li><p>ESC + : 切换保存模式，输入 wq 保存退出</p></li><li><p>赋予脚本权限</p><pre><code>chmod 777 start_kcpraw</code></pre></li><li><p>运行脚本</p><pre><code>./start_kcpraw</code></pre></li></ol>]]></content>
+      <title>KCP客户端配置</title>
+      <link href="/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
+      <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
       
       <categories>
           
@@ -383,9 +407,9 @@
     </entry>
     
     <entry>
-      <title>KCP客户端配置</title>
-      <link href="/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
-      <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
+      <title>Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)</title>
+      <link href="/2016/Shadowsocks/Ubuntu%E9%85%8D%E7%BD%AESS_GO%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83(%E5%8C%85%E6%8B%ACKCP%E5%92%8CKCP%E5%8A%A0%E5%AF%86)/"/>
+      <content type="html"><![CDATA[<ol><li><p>首先安装GO语言环境</p><pre><code>apt-get updateapt-get install golang-go</code></pre></li><li><p>设置GOPATH变量，指定工作空间</p><pre><code>echo &quot;export GOPATH=/opt/go&quot; &gt;&gt; ~/.bashrc       source ~/.bashrc</code></pre></li><li><p>安装kcpraw集成环境</p><pre><code>wget https://github.com/ccsexyz/kcpraw/releases/download/v20171019/kcpraw-linux-amd64-20171019.tar.gztar -xvzf kcpraw-linux-amd64-20171019.tar.gzchmod 777 kcpraw_server_linux_amd64</code></pre></li><li><p>新建bash</p><pre><code>vim start_kcpraw</code></pre></li><li><p>ESC + I 切换输入模式，输入以下东西</p><pre><code>#!/bin/bashnohup ./kcpraw_server_linux_amd64 --target 服务器ip:8388 --ssproxy --sskey 密码</code></pre></li><li><p>ESC + : 切换保存模式，输入 wq 保存退出</p></li><li><p>赋予脚本权限</p><pre><code>chmod 777 start_kcpraw</code></pre></li><li><p>运行脚本</p><pre><code>./start_kcpraw</code></pre></li></ol>]]></content>
       
       <categories>
           

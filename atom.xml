@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://visoon0012.github.io/"/>
-  <updated>2019-01-15T02:20:02.343Z</updated>
+  <updated>2019-12-28T05:58:22.701Z</updated>
   <id>http://visoon0012.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VUE遇到的问题</title>
+    <link href="http://visoon0012.github.io/2019/VUE/VUE%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://visoon0012.github.io/2019/VUE/VUE遇到的问题/</id>
+    <published>2019-12-28T05:58:07.000Z</published>
+    <updated>2019-12-28T05:58:22.701Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="运行时遇到的问题"><a href="#运行时遇到的问题" class="headerlink" title="运行时遇到的问题"></a>运行时遇到的问题</h4><ol><li><blockquote><p>Uncaught TypeError: Cannot assign to read only property ‘exports’ of object ‘#<object>‘ at Module.eval (BaseClient.js?e917:12)</object></p><p>原因：根据字面意思，猜测是解析JS的时候不认识 exports</p><p>解决：/build/webpack.base.conf.js 中，注释下面代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        test: /\.js$/,</span><br><span class="line">        loader: &apos;babel-loader&apos;,</span><br><span class="line">        // include: [resolve(&apos;src&apos;), resolve(&apos;test&apos;), resolve(&apos;node_modules/webpack-dev-server/client&apos;)],</span><br><span class="line">        include: [resolve(&apos;src&apos;), resolve(&apos;test&apos;)]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></blockquote></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;运行时遇到的问题&quot;&gt;&lt;a href=&quot;#运行时遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;运行时遇到的问题&quot;&gt;&lt;/a&gt;运行时遇到的问题&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;Uncaught TypeError: Cann
+      
+    
+    </summary>
+    
+      <category term="NODEJS" scheme="http://visoon0012.github.io/categories/NODEJS/"/>
+    
+      <category term="VUE" scheme="http://visoon0012.github.io/categories/NODEJS/VUE/"/>
+    
+    
+      <category term="NODEJS" scheme="http://visoon0012.github.io/tags/NODEJS/"/>
+    
+      <category term="VUE" scheme="http://visoon0012.github.io/tags/VUE/"/>
+    
+  </entry>
   
   <entry>
     <title>Djaong Rest 返回格式化后的时间</title>
@@ -490,6 +521,33 @@ AUTH_USER_MODEL = &amp;apos;app_user.U
   </entry>
   
   <entry>
+    <title>KCP客户端配置</title>
+    <link href="http://visoon0012.github.io/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
+    <id>http://visoon0012.github.io/2016/Shadowsocks/KCP客户端配置/</id>
+    <published>2016-12-12T03:04:57.000Z</published>
+    <updated>2017-10-19T03:12:28.339Z</updated>
+    
+    <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net&lt;/p&gt;
+&lt;p&gt;SS客户端
+      
+    
+    </summary>
+    
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
+    
+    
+      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)</title>
     <link href="http://visoon0012.github.io/2016/Shadowsocks/Ubuntu%E9%85%8D%E7%BD%AESS_GO%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83(%E5%8C%85%E6%8B%ACKCP%E5%92%8CKCP%E5%8A%A0%E5%AF%86)/"/>
     <id>http://visoon0012.github.io/2016/Shadowsocks/Ubuntu配置SS_GO集成环境(包括KCP和KCP加密)/</id>
@@ -521,33 +579,6 @@ apt-get install golang-go
   </entry>
   
   <entry>
-    <title>KCP客户端配置</title>
-    <link href="http://visoon0012.github.io/2016/Shadowsocks/KCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/"/>
-    <id>http://visoon0012.github.io/2016/Shadowsocks/KCP客户端配置/</id>
-    <published>2016-12-12T03:04:57.000Z</published>
-    <updated>2017-10-19T03:12:28.339Z</updated>
-    
-    <content type="html"><![CDATA[<p><span style="color: #ff0000;">如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回</span></p><p>免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net</p><p>SS客户端和KCP客户端在右下角的时候是可以<span style="color: #ff0000;">右击</span>的，有些功能请右击出来。</p><h1 id="Windows端配置："><a href="#Windows端配置：" class="headerlink" title="Windows端配置："></a>Windows端配置：</h1><ol><li>首先你需要KCP客户端软件，在群217973315的群文件里可以找到。</li><li>看图：<img src="/img/KCP客户端配置/Kcptun_GUI_config.png" alt="kcptun_gui_config"></li><li>选择你的KCP客户端文件，图里3那个位置，群文件里下下来放哪里你就选哪里</li><li>修改基本参数，只需要修改：本地侦听端口（多个服务器这里端口必须不一样），KCP服务器地址（我的服务器地址），端口（我的服务器端口）</li><li>其他的都不要动！！！可选参数那里也不要打钩！！！不知道的请参照原来有的免费的配置，请确定除了第4条要修改的东西不一样外，其他都保持一致。</li><li>点击启动</li><li>去SS里，填写服务器地址为：127.0.0.1，密码是我给你的密码，端口是KCP客户端里基本参数里面的本地侦听端口。</li><li>开启SS，选择127.0.0.1这个服务器，然后愉快的上网。</li><li>SS的代理模式请使用PAC模式，不要全局代理，不然国内网站访问会慢。</li></ol><h1 id="Mac端配置："><a href="#Mac端配置：" class="headerlink" title="Mac端配置："></a>Mac端配置：</h1><ol><li>下载Mac端软件，请到程序猿交友网站下载：<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-386-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-386-20161207.tar.gz</a> 这个是32位的</strong></li><li><strong><a href="https://github.com/xtaci/kcptun/releases/download/v20161207/kcptun-darwin-amd64-20161207.tar.gz" target="_blank" rel="noopener">kcptun-darwin-amd64-20161207.tar.gz</a> 这个是64位的</strong></li><li>这个是GUI界面：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></li><li>像Windows下面一样配置</li><li>SS配置如同Windows</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;如果下面教程看不懂，在群里问，我有空会回的，也不要私聊我，忙的时候没空回&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;免费服务器如果开启KCP，在SS客户端里面配置的密码是：blog.visoon.net&lt;/p&gt;
-&lt;p&gt;SS客户端
-      
-    
-    </summary>
-    
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/categories/Shadowsocks/"/>
-    
-    
-      <category term="Shadowsocks" scheme="http://visoon0012.github.io/tags/Shadowsocks/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Ubuntu 14.04 更换内核</title>
     <link href="http://visoon0012.github.io/2016/Linux/Ubuntu14.04%E6%9B%B4%E6%8D%A2%E5%86%85%E6%A0%B8/"/>
     <id>http://visoon0012.github.io/2016/Linux/Ubuntu14.04更换内核/</id>
@@ -566,33 +597,6 @@ apt-get install golang-go
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;安装新内核：&lt;/p&gt;
 &lt;pre class=&quot;brush:other&quot;&gt;$ sudo apt-get install li
-      
-    
-    </summary>
-    
-      <category term="服务器" scheme="http://visoon0012.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-      <category term="Linux" scheme="http://visoon0012.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/Linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Linux下利用iptables添加访问许可</title>
-    <link href="http://visoon0012.github.io/2016/Linux/Linux%E4%B8%8B%E5%88%A9%E7%94%A8iptables%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E8%AE%B8%E5%8F%AF/"/>
-    <id>http://visoon0012.github.io/2016/Linux/Linux下利用iptables添加访问许可/</id>
-    <published>2016-03-18T06:12:47.000Z</published>
-    <updated>2017-10-19T03:04:04.779Z</updated>
-    
-    <content type="html"><![CDATA[<p>禁用某个IP段：</p><p><pre class="brush:other">iptables -I INPUT -s 14.215.1.0/24 -j DROP</pre><br>&nbsp;</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;禁用某个IP段：&lt;/p&gt;
-&lt;p&gt;&lt;pre class=&quot;brush:other&quot;&gt;iptables -I INPUT -s 14.215.1.0/24 -j DROP&lt;/pre&gt;&lt;br&gt;&amp;nbsp;&lt;/p&gt;
-
       
     
     </summary>
