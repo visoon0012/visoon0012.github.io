@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title>Trojan配置</title>
+      <link href="/2020/Trojan/Trojan%E9%85%8D%E7%BD%AE/"/>
+      <content type="html"><![CDATA[<h1 id="服务器配置："><a href="#服务器配置：" class="headerlink" title="服务器配置："></a>服务器配置：</h1><ol><li>sudo bash -c “$(curl -fsSL <a href="https://raw.githubusercontent.com/johnrosen1/trojan-gfw-script/master/vps.sh)&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/johnrosen1/trojan-gfw-script/master/vps.sh)&quot;</a></li></ol><h1 id="Android端："><a href="#Android端：" class="headerlink" title="Android端："></a>Android端：</h1><ol><li><a href="https://github.com/trojan-gfw/igniter" target="_blank" rel="noopener">https://github.com/trojan-gfw/igniter</a></li></ol><h1 id="Win端："><a href="#Win端：" class="headerlink" title="Win端："></a>Win端：</h1><ol><li><a href="https://github.com/trojan-gfw/trojan/releases" target="_blank" rel="noopener">https://github.com/trojan-gfw/trojan/releases</a></li></ol><h1 id="chrome端："><a href="#chrome端：" class="headerlink" title="chrome端："></a>chrome端：</h1><ol><li><a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif" target="_blank" rel="noopener">https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif</a></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> Trojan </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Trojan </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>VUE遇到的问题</title>
       <link href="/2019/VUE/VUE%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
       <content type="html"><![CDATA[<h4 id="运行时遇到的问题"><a href="#运行时遇到的问题" class="headerlink" title="运行时遇到的问题"></a>运行时遇到的问题</h4><ol><li><blockquote><p>Uncaught TypeError: Cannot assign to read only property ‘exports’ of object ‘#<object>‘ at Module.eval (BaseClient.js?e917:12)</object></p><p>原因：根据字面意思，猜测是解析JS的时候不认识 exports</p><p>解决：/build/webpack.base.conf.js 中，注释下面代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        test: /\.js$/,</span><br><span class="line">        loader: &apos;babel-loader&apos;,</span><br><span class="line">        // include: [resolve(&apos;src&apos;), resolve(&apos;test&apos;), resolve(&apos;node_modules/webpack-dev-server/client&apos;)],</span><br><span class="line">        include: [resolve(&apos;src&apos;), resolve(&apos;test&apos;)]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></blockquote></li></ol>]]></content>
